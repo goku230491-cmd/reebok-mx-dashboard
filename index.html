@@ -14,7 +14,6 @@
             --rb-white:#F7F7F7;
             --rb-grey:#D1D5DB;
             --rb-grey-dark:#6B7280;
-            --bg:#0B0C1A;
         }
         *{margin:0;padding:0;box-sizing:border-box}
         body{
@@ -37,12 +36,14 @@
         .logo-box{
             display:flex;
             flex-direction:column;
-            align-items:flex-start;
             gap:6px;
             padding-bottom:16px;
             border-bottom:1px solid #1F2937;
         }
-        .logo-box img{height:32px;width:auto;}
+        .logo-box img{
+            height:32px;
+            width:auto;
+        }
         .logo-title{
             font-size:.75rem;
             letter-spacing:.18em;
@@ -316,7 +317,7 @@
 <div class="layout">
     <aside class="sidebar">
         <div class="logo-box">
-            <img src="logo-reebok.png" alt="Reebok">
+            <img src="image.jpg" alt="Reebok">
             <div class="logo-title">Reebok México | Business Workspace</div>
             <div class="tagline">Sport is Every Thing</div>
         </div>
@@ -390,18 +391,17 @@
                     <li>Plan de expansión retail: 3–4 nuevas tiendas en 2026 para CDMX, Guadalajara, Monterrey y ciudad vinculada a Xolos (Tijuana) [web:73][web:176].</li>
                     <li>Con Xolos de Tijuana, Reebok regresa a la Liga MX tras 14 años fuera del fútbol mexicano, con jerseys en tres niveles de precio [web:92].</li>
                     <li>En México sigue ejecutando la mayor inversión que la marca ha hecho en 20 años a nivel local, con enfoque en omnicanalidad [web:99].</li>
-                    <li>Reebok.mx refuerza campañas como “Reebok Days” y Social Run, integrando promociones y activaciones digitales en el mercado mexicano [web:353][web:364].</li>
                 </ul>
             </div>
 
             <div class="grid g2">
                 <div class="card">
                     <h3>📊 Ingresos globales 2024 (USD B)</h3>
-                    <canvas id="c-global" style="height:220px;"></canvas>
+                    <canvas id="c-global" style="height:260px;"></canvas>
                 </div>
                 <div class="card">
                     <h3>📈 Crecimiento anual 2024–2025 (%)</h3>
-                    <canvas id="c-growth" style="height:220px;"></canvas>
+                    <canvas id="c-growth" style="height:260px;"></canvas>
                 </div>
             </div>
         </section>
@@ -438,7 +438,7 @@
                         <td>5</td><td>Under Armour</td><td>~4%</td><td>Reestructura</td><td class="down">‑3.4%</td><td>~30</td><td>&mdash;</td><td>Pérdida de momentum y foco en ajustes.</td>
                     </tr>
                     <tr>
-                        <td>6</td><td>New Balance</td><td>~3%</td><td>En crecimiento</td><td class="up">+19%</td><td>~19</td><td>&mdash;</td><td>Crecimiento fuerte en lifestyle y running premium.</td>
+                        <td>6</td><td>New Balance</td><td>~3%</td><td class="up">+19%</td><td>~19</td><td>&mdash;</td><td>Crecimiento fuerte en lifestyle y running premium.</td>
                     </tr>
                     </tbody>
                 </table>
@@ -496,11 +496,11 @@
             <div class="grid g2">
                 <div class="card">
                     <h3>🍩 Cuota de mercado México</h3>
-                    <canvas id="c-share" style="height:230px;"></canvas>
+                    <canvas id="c-share" style="height:260px;"></canvas>
                 </div>
                 <div class="card">
                     <h3>🕸️ Momentum competitivo</h3>
-                    <canvas id="c-momentum" style="height:230px;"></canvas>
+                    <canvas id="c-momentum" style="height:260px;"></canvas>
                 </div>
             </div>
         </section>
@@ -536,26 +536,6 @@
                             <span class="tag tag-r">Reebok</span><span class="tag tag-y">Precios</span>
                         </div>
                     </a>
-
-                    <a href="https://trendyurbano.mx/2025/11/19/reebok-continua-su-expansion-en-mexico-con-la-apertura-de-su-nueva-tienda-en-parque-tezontle/" target="_blank" style="text-decoration:none;color:inherit">
-                        <div class="news-card">
-                            <div class="news-date">18 Nov 2025</div>
-                            <span class="news-source">Trendy Urbano</span>
-                            <h4>Reebok continúa su expansión en México con Parque Tezontle</h4>
-                            <p>Se consolida la red de tiendas propias con un concepto inmersivo y foco en training y lifestyle.</p>
-                            <span class="tag tag-r">Retail</span><span class="tag tag-b">CDMX</span>
-                        </div>
-                    </a>
-
-                    <a href="https://www.milenio.com/negocios/reebok-abre-su-primera-tienda-oficial-en-cdmx" target="_blank" style="text-decoration:none;color:inherit">
-                        <div class="news-card">
-                            <div class="news-date">06 Ago 2023</div>
-                            <span class="news-source">Milenio</span>
-                            <h4>Reebok abre su primera tienda oficial en CdMx</h4>
-                            <p>La tienda de Forum Buenavista marca el regreso directo de la marca al retail mexicano.</p>
-                            <span class="tag tag-r">Retail</span><span class="tag tag-g">Foro Buenavista</span>
-                        </div>
-                    </a>
                 </div>
 
                 <div>
@@ -570,26 +550,6 @@
                             <span class="tag tag-b">Nike</span><span class="tag tag-y">Global</span>
                         </div>
                     </a>
-
-                    <a href="https://www.eluniversal.com.mx/deportes/adidas-lanza-coleccion-para-fans-de-mexico-rumbo-al-mundial-2026/" target="_blank" style="text-decoration:none;color:inherit">
-                        <div class="news-card">
-                            <div class="news-date">06 Ene 2026</div>
-                            <span class="news-source">El Universal</span>
-                            <h4>Adidas lanza colección para fans de México rumbo al Mundial 2026</h4>
-                            <p>Refuerza su posición como marca de la Selección Mexicana, con enfoque en producto lifestyle.</p>
-                            <span class="tag tag-y">Adidas</span><span class="tag tag-g">Mundial 2026</span>
-                        </div>
-                    </a>
-
-                    <a href="https://expansion.mx/empresas/2024/07/24/nike-abre-su-tienda-mas-grande-de-america-latina-en-la-cdmx" target="_blank" style="text-decoration:none;color:inherit">
-                        <div class="news-card">
-                            <div class="news-date">24 Jul 2024</div>
-                            <span class="news-source">Expansión</span>
-                            <h4>Nike abre su tienda más grande de América Latina en CDMX</h4>
-                            <p>La tienda eleva el estándar de experiencia de marca en el Centro de la ciudad.</p>
-                            <span class="tag tag-b">Nike</span><span class="tag tag-b">Retail</span>
-                        </div>
-                    </a>
                 </div>
 
                 <div>
@@ -599,19 +559,9 @@
                         <div class="news-card">
                             <div class="news-date">Feb 2026</div>
                             <span class="news-source">FashionNetwork</span>
-                            <h4>New Balance roza las 20 tiendas en México</h4>
-                            <p>La marca acelera aperturas en el país apoyada en su boom global de running y moda.</p>
+                            <h4>New Balance crece en tiendas en México</h4>
+                            <p>La marca acelera aperturas apoyada en su boom global de running y moda.</p>
                             <span class="tag tag-p">New Balance</span><span class="tag tag-g">Retail</span>
-                        </div>
-                    </a>
-
-                    <a href="https://mx.investing.com" target="_blank" style="text-decoration:none;color:inherit">
-                        <div class="news-card">
-                            <div class="news-date">Nov 2025</div>
-                            <span class="news-source">Investing</span>
-                            <h4>Under Armour mantiene plan de reestructura global</h4>
-                            <p>Revisa su portafolio y posicionamiento tras varios trimestres de presión en ventas.</p>
-                            <span class="tag tag-p">Under Armour</span><span class="tag tag-y">Reestructura</span>
                         </div>
                     </a>
                 </div>
@@ -685,11 +635,11 @@
             <div class="grid g2">
                 <div class="card">
                     <h3>📊 Ingresos globales 2024</h3>
-                    <canvas id="c-vs1" style="height:230px;"></canvas>
+                    <canvas id="c-vs1" style="height:260px;"></canvas>
                 </div>
                 <div class="card">
                     <h3>🍩 Cuota de mercado México</h3>
-                    <canvas id="c-vs2" style="height:230px;"></canvas>
+                    <canvas id="c-vs2" style="height:260px;"></canvas>
                 </div>
             </div>
         </section>
@@ -788,7 +738,7 @@
                         <tr><td>Mundo E</td><td>EdoMex &mdash; corredor norte.</td><td>Cobertura periferia CDMX.</td></tr>
                         <tr><td>Parque Tepeyac</td><td>CDMX &mdash; formato amplio.</td><td>Experiencia 360°.</td></tr>
                         <tr><td>Parque Las Antenas</td><td>CDMX &mdash; oriente.</td><td>Refuerza presencia al sur‑oriente.</td></tr>
-                        <tr><td>Parque Tezontle</td><td>CDMX &mdash; centro‑oriente [web:107].</td><td>Nueva apertura 2025.</td></tr>
+                        <tr><td>Parque Tezontle</td><td>CDMX &mdash; centro‑oriente.</td><td>Nueva apertura 2025.</td></tr>
                         <tr><td>Parque Puebla</td><td>Puebla &mdash; full price regional.</td><td>Entrada fuerte a Puebla.</td></tr>
                         </tbody>
                     </table>
