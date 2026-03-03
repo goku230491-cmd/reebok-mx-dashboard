@@ -6,10 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-  <!-- Leaflet para mapa de calor -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
 
   <style>
     :root{
@@ -446,21 +442,6 @@
       font-size:.74rem;
     }
 
-    /* MAPA */
-    #map-mx{
-      width:100%;
-      height:230px;
-      border-radius:10px;
-      border:1px solid #111827;
-      margin-top:4px;
-      overflow:hidden;
-    }
-    .map-note{
-      font-size:.7rem;
-      color:#9CA3AF;
-      margin-top:4px;
-    }
-
     @media(max-width:1000px){
       .sidebar{display:none;}
       .topbar{padding-left:12px;padding-right:12px;}
@@ -527,7 +508,7 @@
           <span class="tb-pill">Marzo 2026 · Datos verificados</span>
         </div>
         <div class="tb-sub">
-          Resumen ejecutivo, score de competencia y mapa de calor de tiendas en México.
+          Resumen ejecutivo, score de competencia y tablero por secciones para México.
         </div>
       </div>
       <div class="tb-right">
@@ -1080,7 +1061,7 @@
         </div>
       </section>
 
-      <!-- TIENDAS & MAPA -->
+      <!-- TIENDAS & E-COMMERCE (SIN MAPA) -->
       <section id="view-stores" class="pane-left" style="display:none;">
         <div class="section-label">Tiendas & E‑commerce México</div>
 
@@ -1134,22 +1115,11 @@
         <div class="grid g2-tight">
           <div class="card">
             <div class="card-header">
-              <div class="card-title">🗺️ Mapa de calor — Tiendas Reebok México</div>
-            </div>
-            <div id="map-mx"></div>
-            <div class="map-note">
-              Zonas en rojo concentran mayor densidad de tiendas y tráfico potencial (CDMX y área metropolitana, Puebla, Bajío y Caribe).
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header">
               <div class="card-title">📊 Distribución de Tiendas por Tipo</div>
             </div>
             <div style="height:210px;">
               <canvas id="chart-stores"></canvas>
             </div>
-
             <div class="card-sub" style="margin-top:6px;">Tiendas Full Price</div>
             <div style="max-height:120px;overflow:auto;">
               <table>
@@ -1200,82 +1170,82 @@
               </table>
             </div>
           </div>
-        </div>
 
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">🛒 Canales de E‑commerce</div>
-          </div>
-          <div style="max-height:200px;overflow:auto;margin-top:4px;">
-            <table>
-              <thead>
-              <tr>
-                <th>Canal</th>
-                <th>Plataforma</th>
-                <th>Tipo</th>
-                <th>Envío Gratis</th>
-                <th>Notas</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>Reebok.mx</td>
-                <td>reebok.mx</td>
-                <td>Tienda oficial</td>
-                <td>Sí (&gt;$1,599 y miembros)</td>
-                <td>Catálogo completo, 3–5 días hábiles, foco en running y training.</td>
-              </tr>
-              <tr>
-                <td>Mercado Libre</td>
-                <td>mercadolibre.com.mx</td>
-                <td>Marketplace</td>
-                <td>Sí (Full)</td>
-                <td>Tienda oficial verificada; alto alcance nacional.</td>
-              </tr>
-              <tr>
-                <td>Amazon México</td>
-                <td>amazon.com.mx</td>
-                <td>Marketplace</td>
-                <td>Sí (Prime)</td>
-                <td>Selección de best sellers y lanzamientos clave.</td>
-              </tr>
-              <tr>
-                <td>Liverpool</td>
-                <td>liverpool.com.mx</td>
-                <td>Departamental</td>
-                <td>Sí (&gt;$999)</td>
-                <td>MSI y cobertura omnicanal (tienda + online).</td>
-              </tr>
-              <tr>
-                <td>Sears</td>
-                <td>sears.com.mx</td>
-                <td>Departamental</td>
-                <td>Sí (&gt;$999)</td>
-                <td>Mix casual, training y running.</td>
-              </tr>
-              <tr>
-                <td>Innovasport</td>
-                <td>innovasport.com</td>
-                <td>Especializada</td>
-                <td>Sí</td>
-                <td>Portafolio performance; fuerte en Nano y FloatZig.</td>
-              </tr>
-              <tr>
-                <td>Martí</td>
-                <td>marti.mx</td>
-                <td>Especializada</td>
-                <td>Variable</td>
-                <td>Red de tiendas + e‑commerce deportivo.</td>
-              </tr>
-              <tr>
-                <td>Coppel</td>
-                <td>coppel.com</td>
-                <td>Departamental</td>
-                <td>Variable</td>
-                <td>Alcance masivo vía crédito y tiendas en provincia.</td>
-              </tr>
-              </tbody>
-            </table>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🛒 Canales de E‑commerce</div>
+            </div>
+            <div style="max-height:230px;overflow:auto;margin-top:4px;">
+              <table>
+                <thead>
+                <tr>
+                  <th>Canal</th>
+                  <th>Plataforma</th>
+                  <th>Tipo</th>
+                  <th>Envío Gratis</th>
+                  <th>Notas</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Reebok.mx</td>
+                  <td>reebok.mx</td>
+                  <td>Tienda oficial</td>
+                  <td>Sí (&gt;$1,599 y miembros)</td>
+                  <td>Catálogo completo, 3–5 días hábiles, foco en running y training.</td>
+                </tr>
+                <tr>
+                  <td>Mercado Libre</td>
+                  <td>mercadolibre.com.mx</td>
+                  <td>Marketplace</td>
+                  <td>Sí (Full)</td>
+                  <td>Tienda oficial verificada; alto alcance nacional.</td>
+                </tr>
+                <tr>
+                  <td>Amazon México</td>
+                  <td>amazon.com.mx</td>
+                  <td>Marketplace</td>
+                  <td>Sí (Prime)</td>
+                  <td>Selección de best sellers y lanzamientos clave.</td>
+                </tr>
+                <tr>
+                  <td>Liverpool</td>
+                  <td>liverpool.com.mx</td>
+                  <td>Departamental</td>
+                  <td>Sí (&gt;$999)</td>
+                  <td>MSI y cobertura omnicanal (tienda + online).</td>
+                </tr>
+                <tr>
+                  <td>Sears</td>
+                  <td>sears.com.mx</td>
+                  <td>Departamental</td>
+                  <td>Sí (&gt;$999)</td>
+                  <td>Mix casual, training y running.</td>
+                </tr>
+                <tr>
+                  <td>Innovasport</td>
+                  <td>innovasport.com</td>
+                  <td>Especializada</td>
+                  <td>Sí</td>
+                  <td>Portafolio performance; fuerte en Nano y FloatZig.</td>
+                </tr>
+                <tr>
+                  <td>Martí</td>
+                  <td>marti.mx</td>
+                  <td>Especializada</td>
+                  <td>Variable</td>
+                  <td>Red de tiendas + e‑commerce deportivo.</td>
+                </tr>
+                <tr>
+                  <td>Coppel</td>
+                  <td>coppel.com</td>
+                  <td>Departamental</td>
+                  <td>Variable</td>
+                  <td>Alcance masivo vía crédito y tiendas en provincia.</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>
@@ -1376,7 +1346,7 @@
         </div>
       </section>
 
-      <!-- PANE DERECHO -->
+      <!-- PANEL DERECHO -->
       <aside class="pane-right">
         <div class="section-label">Insights rápidos</div>
 
@@ -1559,48 +1529,6 @@ new Chart(document.getElementById('chart-stores'),{
     scales:{x:{grid:{display:false}},y:{grid:{color:'#111827'},ticks:{precision:0}}}
   }
 });
-
-/* Mapa de calor de tiendas */
-const map = L.map('map-mx',{
-  zoomControl:false,
-  attributionControl:false
-}).setView([23.5,-102],5);
-
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
-  maxZoom:18
-}).addTo(map);
-
-/* Coordenadas aproximadas (full + outlet) */
-const tiendaPoints = [
-  [19.4445,-99.1500,0.9],  // Forum Buenavista
-  [19.3569,-99.1763,0.9],  // Mitikah
-  [19.5090,-99.2470,0.8],  // Mundo E
-  [19.4840,-99.0810,0.9],  // Parque Tepeyac
-  [19.3210,-99.0740,0.8],  // Parque Las Antenas
-  [19.3867,-99.0900,0.8],  // Parque Tezontle
-  [19.0653,-98.1753,0.8],  // Parque Puebla
-  [19.6780,-99.2000,0.7],  // Outlet Punta Norte
-  [19.3700,-99.0970,0.7],  // Outlet Plaza Central
-  [19.5300,-99.0300,0.7],  // Multiplaza Aragón
-  [19.2910,-99.5190,0.6],  // Lerma Outlet
-  [21.1120,-101.6630,0.6], // León Outlet
-  [20.8783,-86.8670,0.8],  // Riviera Maya Outlet
-  [19.0280,-98.1850,0.6],  // Outlet Puebla Premier
-  [18.9360,-99.2210,0.6]   // Outlet Cuernavaca
-];
-
-L.heatLayer(tiendaPoints,{
-  radius:25,
-  blur:18,
-  maxZoom:12,
-  gradient:{
-    0.2:'#60A5FA',
-    0.4:'#22C55E',
-    0.6:'#F97316',
-    0.8:'#C41230',
-    1.0:'#FFFFFF'
-  }
-}).addTo(map);
 </script>
 </body>
 </html>
