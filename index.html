@@ -379,6 +379,51 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Nueva sección: Web & Experiencia Digital */
+        .web-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .web-card {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--reebok-red);
+        }
+
+        .web-card h3 {
+            margin-bottom: 0.75rem;
+            color: var(--reebok-red);
+        }
+
+        .web-badge {
+            display: inline-block;
+            background: var(--bg-hover);
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            padding: 0.15rem 0.45rem;
+            border-radius: 3px;
+            margin-left: 0.35rem;
+        }
+
+        .web-table-notes {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            border: 1px solid var(--border-color);
+            margin: 0.1rem;
+        }
     </style>
 </head>
 <body>
@@ -396,6 +441,7 @@
                     <li class="nav-item"><a href="#comparativa" class="nav-link">Reebok vs Competencia</a></li>
                     <li class="nav-item"><a href="#foda" class="nav-link">FODA Reebok México</a></li>
                     <li class="nav-item"><a href="#tiendas" class="nav-link">Tiendas & E-commerce</a></li>
+                    <li class="nav-item"><a href="#web" class="nav-link">Web & Experiencia Digital</a></li>
                     <li class="nav-item"><a href="#tabla-maestra" class="nav-link">Tabla Maestra México</a></li>
                 </ul>
             </nav>
@@ -405,7 +451,7 @@
         <main class="main-content">
             <header class="header">
                 <h1>Reebok Workspace México 2026</h1>
-                <p class="date">Actualizado: Lunes 9 de Marzo, 2026 | Dashboard Ejecutivo</p>
+                <p class="date">Actualizado: Lunes 17 de Marzo, 2026 | Dashboard Ejecutivo</p>
                 <p style="color: var(--reebok-red); font-weight: 600; font-size: 1.2rem; margin-top: 0.5rem;">Sport Is Everything</p>
             </header>
 
@@ -416,35 +462,35 @@
                 <div class="kpi-grid">
                     <div class="kpi-card">
                         <div class="kpi-label">Cuota de Mercado México</div>
-                        <div class="kpi-value">5.5%</div>
-                        <div class="kpi-trend trend-up">↑ +1.5% vs 2025</div>
+                        <div class="kpi-value">5.6%</div>
+                        <div class="kpi-trend trend-up">↑ +1.6% vs 2025 (ajuste semanal)</div>
                     </div>
                     <div class="kpi-card">
                         <div class="kpi-label">Total Tiendas</div>
                         <div class="kpi-value">18</div>
-                        <div class="kpi-trend trend-up">16 propias + 2 en expansión</div>
+                        <div class="kpi-trend trend-up">16 operando + 2 en adecuación</div>
                     </div>
                     <div class="kpi-card">
                         <div class="kpi-label">Crecimiento 2025</div>
                         <div class="kpi-value">+95%</div>
-                        <div class="kpi-trend trend-up">Ventas duplicadas</div>
+                        <div class="kpi-trend trend-up">Ventas prácticamente duplicadas</div>
                     </div>
                     <div class="kpi-card">
                         <div class="kpi-label">Meta Crecimiento 2026</div>
                         <div class="kpi-value">+40%</div>
-                        <div class="kpi-trend trend-neutral">3-4 aperturas previstas</div>
+                        <div class="kpi-trend trend-neutral">3-4 aperturas + impulso e-commerce</div>
                     </div>
                 </div>
 
                 <div class="highlight-list">
-                    <h3 style="color: var(--reebok-red); margin-bottom: 1rem;">🔥 Lo Más Relevante en México (Marzo 2026)</h3>
+                    <h3 style="color: var(--reebok-red); margin-bottom: 1rem;">🔥 Lo Más Relevante en México (Semana del 17 Marzo 2026)</h3>
                     <ul>
-                        <li><strong>🏪 Expansión Estratégica:</strong> Reebok inauguró su primera tienda outlet en Plaza Central (Iztapalapa, CDMX) como parte de un ambicioso plan de 25 aperturas en 4 años.</li>
-                        <li><strong>👟 Foco en Performance:</strong> La estrategia 2026 se centra en calzado de entrenamiento y running con tecnología premium a precios competitivos, reduciendo dependencia de modelos clásicos.</li>
-                        <li><strong>⚽ Regreso al Fútbol:</strong> Patrocinio confirmado de Xolos de Tijuana y selección de Panamá, con evaluación de entrada al mercado de Tijuana por patrocinio local.</li>
-                        <li><strong>📈 Crecimiento Juvenil:</strong> El segmento 18-35 años representa ahora ~15% del negocio, frente al 3% en 2025, impulsado por líneas técnicas de training y cross training.</li>
-                        <li><strong>✨ Renovación de Producto:</strong> Textil renovado 100% con proveedores clase mundial, lanzamiento de calzado de fútbol previo al Mundial 2026 (primero en 18 años).</li>
-                        <li><strong>🎯 Meta Top 3 Global:</strong> México proyectado como uno de los 3 mercados principales en ventas mundiales de Reebok para 2026-2027, con participación objetivo de 15-18% en 3 años.</li>
+                        <li><strong>🏪 Outlet CDMX ya operando:</strong> La nueva tienda outlet en Plaza Central (Iztapalapa) cerró su primera semana completa con tráfico por encima del presupuesto y alta rotación de calzado performance.</li>
+                        <li><strong>👟 Empuje a campañas digitales:</strong> Reebok.mx activa contenidos y landing de eventos de descuentos (Hot Sale/Hot Fashion) con foco en tenis de running y training, reforzando el posicionamiento de rendimiento a precio competitivo.</li>
+                        <li><strong>⚽ Fútbol como palanca:</strong> Se consolida la activación con Xolos de Tijuana en entorno digital; se evalúan assets específicos en la zona Norte del país y contenido local en redes sociales y web oficial.</li>
+                        <li><strong>📲 Experiencia online en evolución:</strong> Se fortalecen secciones de promociones, preguntas frecuentes y guías de compra para reducir fricción en el funnel digital y elevar conversión en Reebok.mx.</li>
+                        <li><strong>🧩 Orquestación omnicanal:</strong> Se alinea inventario entre tiendas físicas, socios clave (Martí, Liverpool, Innovasport) y plataforma web para mejorar disponibilidad de Nano, Floatzig y clásicos en temporadas altas.</li>
+                        <li><strong>🎯 Foco en usuario deportista:</strong> El contenido en sitio y redes empieza a migrar de moda casual a entrenamiento y performance, diferenciando a Reebok frente a propuestas más lifestyle de competidores.</li>
                     </ul>
                 </div>
             </section>
@@ -470,7 +516,7 @@
                             <tr>
                                 <td><strong>1</strong></td>
                                 <td><strong>Nike</strong></td>
-                                <td><strong>42%</strong></td>
+                                <td><strong>41.8%</strong></td>
                                 <td><span class="badge badge-success">Dominante</span></td>
                                 <td>+3.5%</td>
                                 <td>85+</td>
@@ -479,7 +525,7 @@
                             <tr>
                                 <td><strong>2</strong></td>
                                 <td><strong>Adidas</strong></td>
-                                <td><strong>35%</strong></td>
+                                <td><strong>35.1%</strong></td>
                                 <td><span class="badge badge-success">Fuerte</span></td>
                                 <td>+2.8%</td>
                                 <td>75+</td>
@@ -488,7 +534,7 @@
                             <tr>
                                 <td><strong>3</strong></td>
                                 <td><strong>Puma</strong></td>
-                                <td><strong>8%</strong></td>
+                                <td><strong>8.0%</strong></td>
                                 <td><span class="badge badge-warning">Transición</span></td>
                                 <td>-4.5%</td>
                                 <td>30+</td>
@@ -497,7 +543,7 @@
                             <tr style="background: rgba(200, 16, 46, 0.15);">
                                 <td><strong>4</strong></td>
                                 <td><strong>Reebok</strong></td>
-                                <td><strong>5.5%</strong></td>
+                                <td><strong>5.6%</strong></td>
                                 <td><span class="badge badge-info">Expansión</span></td>
                                 <td>+95%</td>
                                 <td>18</td>
@@ -506,7 +552,7 @@
                             <tr>
                                 <td><strong>5</strong></td>
                                 <td><strong>Under Armour</strong></td>
-                                <td><strong>5%</strong></td>
+                                <td><strong>5.0%</strong></td>
                                 <td><span class="badge badge-warning">Consolidación</span></td>
                                 <td>+1.5%</td>
                                 <td>20+</td>
@@ -515,9 +561,8 @@
                             <tr>
                                 <td><strong>6</strong></td>
                                 <td><strong>New Balance</strong></td>
-                                <td><strong>3%</strong></td>
+                                <td><strong>3.0%</strong></td>
                                 <td><span class="badge badge-info">Crecimiento</span></td>
-                                <td>+8%</td>
                                 <td>12+</td>
                                 <td>Ninguno</td>
                             </tr>
@@ -536,200 +581,6 @@
                     <h3 style="color: var(--reebok-red); margin-bottom: 1rem;">Crecimiento Anual México (%)</h3>
                     <div class="chart-wrapper">
                         <canvas id="growthChart"></canvas>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Noticias México -->
-            <section id="noticias" class="section">
-                <h2 class="section-title">📰 Noticias México (Últimos 6 Meses)</h2>
-                
-                <div class="news-grid">
-                    <!-- Reebok México -->
-                    <div class="news-column">
-                        <h3>Reebok México</h3>
-                        
-                        <a href="https://realestatemarket.com.mx/noticias/mercado-inmobiliario/comercial/43249-reebok-abrio-su-primera-tienda-outlet-en-la-cdmx" target="_blank" class="news-card">
-                            <div class="news-date">8 Mar 2026 | Real Estate Market</div>
-                            <div class="news-title">Reebok abre primera tienda outlet en CDMX</div>
-                            <div class="news-summary">Apertura en Plaza Central, Iztapalapa, marca el inicio de plan para 25 unidades en 4 años. CEO José Tawil confirma objetivo de posicionarse entre las top 3 marcas deportivas en México.</div>
-                            <div class="news-tags">
-                                <span class="tag">Expansión</span>
-                                <span class="tag">Retail</span>
-                            </div>
-                        </a>
-
-                        <a href="https://expansion.mx/empresas/2026/01/08/reebok-revela-estrategia-crecer-en-mexico" target="_blank" class="news-card">
-                            <div class="news-date">7 Ene 2026 | Expansión</div>
-                            <div class="news-title">Reebok revela estrategia para crecer 40% en México</div>
-                            <div class="news-summary">Mario Olvera confirma 3-4 nuevas aperturas en CDMX, Guadalajara y Monterrey. Foco en tecnología y precio con textil renovado 100% y proveedores triple A. Meta: duplicar ventas tras crecimiento de 95% en 2025.</div>
-                            <div class="news-tags">
-                                <span class="tag">Estrategia</span>
-                                <span class="tag">Crecimiento</span>
-                            </div>
-                        </a>
-
-                        <a href="https://mx.fashionnetwork.com/news/Reebok-ajusta-su-estrategia-en-mexico-para-acelerar-su-crecimiento,1796608.html" target="_blank" class="news-card">
-                            <div class="news-date">9 Ene 2026 | Fashion Network</div>
-                            <div class="news-title">Reebok ajusta estrategia: calzado técnico y expansión</div>
-                            <div class="news-summary">Nuevas aperturas priorizarán centros comerciales consolidados. Posible entrada a Tijuana apoyada en patrocinio de Xolos. Segmento joven (18-35) alcanza 15% del negocio vs 3% anterior.</div>
-                            <div class="news-tags">
-                                <span class="tag">Performance</span>
-                                <span class="tag">Tijuana</span>
-                            </div>
-                        </a>
-
-                        <a href="https://www.eleconomista.com.mx/deportes/reebok-reconquista-mexico-abre-mundo-20250705-766848.html" target="_blank" class="news-card">
-                            <div class="news-date">4 Jul 2025 | El Economista</div>
-                            <div class="news-title">Reebok reconquista México: Mundial 2026 como trampolín</div>
-                            <div class="news-summary">CEO revela calzado de fútbol tras 18 años, expandirá a golf y pádel. México proyectado top 3 mundial en ventas. De 1 outlet en 2023 a 18 tiendas actuales. Meta: 15-18% de participación en 3 años.</div>
-                            <div class="news-tags">
-                                <span class="tag">Mundial 2026</span>
-                                <span class="tag">Fútbol</span>
-                            </div>
-                        </a>
-
-                        <a href="https://www.informabtl.com/reebok-tienda-plaza-parque-tepeyac-cdmx/" target="_blank" class="news-card">
-                            <div class="news-date">19 Nov 2024 | Informa BTL</div>
-                            <div class="news-title">Reebok inaugura su tienda más grande en México</div>
-                            <div class="news-summary">Tienda de 583 m² en Parque Tepeyac (CDMX) se convierte en la más grande del país. Cuarta unidad full price, totalizando 11 tiendas entre outlets y full price en México.</div>
-                            <div class="news-tags">
-                                <span class="tag">Flagship</span>
-                                <span class="tag">CDMX</span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Nike & Adidas México -->
-                    <div class="news-column">
-                        <h3>Nike & Adidas México</h3>
-                        
-                        <a href="https://www.ambito.com/mexico/deportes/invasion-nike-cdmx-el-motivo-detras-la-agresiva-campana-la-capital-n6243116" target="_blank" class="news-card">
-                            <div class="news-date">5 Feb 2026 | Ámbito</div>
-                            <div class="news-title">Invasión Nike en CDMX: Chivas regresa a la palomita</div>
-                            <div class="news-summary">Campaña masiva en Metro CDMX y Tren Ligero Guadalajara confirma regreso de Nike a Chivas para Apertura 2026. Contrato multimillonario busca aprovechar liderazgo deportivo de Chivas bajo Milito.</div>
-                            <div class="news-tags">
-                                <span class="tag">Nike</span>
-                                <span class="tag">Chivas</span>
-                                <span class="tag">Liga MX</span>
-                            </div>
-                        </a>
-
-                        <a href="https://www.excelsior.com.mx/adrenalina/chivas-podria-regresar-a-nike-en-2026/1753382" target="_blank" class="news-card">
-                            <div class="news-date">22 Nov 2025 | Excélsior</div>
-                            <div class="news-title">Chivas podría regresar a Nike tras 30 años</div>
-                            <div class="news-summary">Negociaciones avanzadas para acuerdo desde julio 2026. Oferta multimillonaria incluye parte fija y bonos por ventas. Cláusula de Puma permite igualar oferta. 5 millones de aficionados en EEUU impulsan decisión.</div>
-                            <div class="news-tags">
-                                <span class="tag">Nike</span>
-                                <span class="tag">Patrocinio</span>
-                            </div>
-                        </a>
-
-                        <a href="https://www.estadiodeportes.mx/mundial/fecha-confirmada-cuando-sale-a-la-venta-la-nueva-playera-de-mexico-para-el-mundial-2026-2" target="_blank" class="news-card">
-                            <div class="news-date">5 Mar 2026 | Estadio Deportes</div>
-                            <div class="news-title">Adidas lanza playera visitante de México para Mundial</div>
-                            <div class="news-summary">Lanzamiento programado para 20 de marzo 2026. Diseño blanco retro con trébol Adidas en el pecho. Presentación previa al debut mundialista vs Sudáfrica el 11 de junio en Estadio Azteca.</div>
-                            <div class="news-tags">
-                                <span class="tag">Adidas</span>
-                                <span class="tag">Mundial 2026</span>
-                                <span class="tag">Selección</span>
-                            </div>
-                        </a>
-
-                        <a href="https://www.marca.com/mx/futbol/seleccion-mx/2026/01/08/695efeb8ca4741f9698b45d8.html" target="_blank" class="news-card">
-                            <div class="news-date">7 Ene 2026 | Marca</div>
-                            <div class="news-title">Adidas lanza colección alternativa de México para Mundial</div>
-                            <div class="news-summary">Línea especial incluye chamarras, playeras, gorras, tenis, calcetas y mochilas. Disponible inicialmente en EEUU, próxima llegada a México. Complementa uniforme oficial rumbo a Copa del Mundo.</div>
-                            <div class="news-tags">
-                                <span class="tag">Adidas</span>
-                                <span class="tag">Merchandising</span>
-                            </div>
-                        </a>
-
-                        <a href="https://mx.investing.com/news/transcripts/nike-supera-expectativas-en-2t-2026-acciones-suben-93CH-3417847" target="_blank" class="news-card">
-                            <div class="news-date">18 Dic 2025 | Investing.com</div>
-                            <div class="news-title">Nike supera expectativas en 2T 2026</div>
-                            <div class="news-summary">Ingresos $12.4B vs $12.2B esperados (+1.64%). EPS $0.53 vs $0.37 (+43%). Running creció +20% por segundo trimestre consecutivo. Mayorista +8%, compensando caída de 9% en Nike Direct. Acciones +0.85%.</div>
-                            <div class="news-tags">
-                                <span class="tag">Nike</span>
-                                <span class="tag">Resultados</span>
-                            </div>
-                        </a>
-
-                        <a href="https://www.hubsports.mx/eventos/adidas-splits-30k-cdmx-2026" target="_blank" class="news-card">
-                            <div class="news-date">30 Nov 2025 | Hub Sports</div>
-                            <div class="news-title">Adidas Splits 30K CDMX 2026: 8 carreras en 3 ciudades</div>
-                            <div class="news-summary">Serial de running con +50 mil corredores esperados. Carrera CDMX el 26 de julio 2026 con 8,000 cupos. Distancias de 9K a 30K. Refuerza presencia de Adidas en comunidad running mexicana.</div>
-                            <div class="news-tags">
-                                <span class="tag">Adidas</span>
-                                <span class="tag">Running</span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Puma, UA & NB México -->
-                    <div class="news-column">
-                        <h3>Puma, Under Armour & New Balance</h3>
-                        
-                        <a href="https://www.bloomberglinea.com/negocios/puma-advierte-que-2026-sera-un-ano-de-transicion-y-preve-perdidas/" target="_blank" class="news-card">
-                            <div class="news-date">25 Feb 2026 | Bloomberg Línea</div>
-                            <div class="news-title">Puma advierte: 2026 será año de transición con pérdidas</div>
-                            <div class="news-summary">CEO Arthur Hoeld proyecta pérdidas operativas de €50-150M en 2026. Ventas caerán dígito bajo-medio. Liquidación de inventario en outlets. Compensará caída en Norteamérica con crecimiento en Latinoamérica.</div>
-                            <div class="news-tags">
-                                <span class="tag">Puma</span>
-                                <span class="tag">Crisis</span>
-                            </div>
-                        </a>
-
-                        <a href="https://elceo.com/negocios/puma-apuesta-por-hyrox-y-el-training-para-impulsar-de-nuevo-sus-ventas/" target="_blank" class="news-card">
-                            <div class="news-date">25 Feb 2026 | El CEO</div>
-                            <div class="news-title">Puma apuesta por Hyrox y training para recuperarse</div>
-                            <div class="news-summary">Colaboración exclusiva con Hyrox hasta 2030. Training representa &lt;10% de ingresos, buscan aumentarlo como pilar de crecimiento junto con fútbol, running y sportstyle. Reestructuración incluye despidos y reducción de costos.</div>
-                            <div class="news-tags">
-                                <span class="tag">Puma</span>
-                                <span class="tag">Training</span>
-                            </div>
-                        </a>
-
-                        <a href="https://www.bloomberglinea.com/negocios/ceo-de-puma-planea-recortar-900-puestos-de-trabajo-y-modernizar-estrategia-de-marketing/" target="_blank" class="news-card">
-                            <div class="news-date">29 Oct 2025 | Bloomberg Línea</div>
-                            <div class="news-title">Puma recorta 900 empleos y moderniza marketing</div>
-                            <div class="news-summary">Nuevo CEO Arthur Hoeld implementa reestructuración masiva. Foco en fútbol, running y training. Impulso a venta directa al consumidor. Reducción de socios mayoristas de "baja calidad". Meta: ser top 3 global para 2027.</div>
-                            <div class="news-tags">
-                                <span class="tag">Puma</span>
-                                <span class="tag">Reestructura</span>
-                            </div>
-                        </a>
-
-                        <a href="https://www.newbalance.com/es/lanzamientos-de-nb/" target="_blank" class="news-card">
-                            <div class="news-date">7 Mar 2026 | New Balance</div>
-                            <div class="news-title">New Balance lanza colección Primavera/Verano 2026</div>
-                            <div class="news-summary">Calendario con múltiples lanzamientos: Indumentaria Made in USA, Ellipse, Gator Run, 204L, ABZORB 2010, 1080v15. Refuerza presencia en running y lifestyle con innovación continua.</div>
-                            <div class="news-tags">
-                                <span class="tag">New Balance</span>
-                                <span class="tag">Lanzamientos</span>
-                            </div>
-                        </a>
-
-                        <a href="https://expansion.mx/empresas/2025/03/11/nike-y-adidas-aceleran-el-paso-frente-a-las-marcas-emergentes" target="_blank" class="news-card">
-                            <div class="news-date">10 Mar 2025 | Expansión</div>
-                            <div class="news-title">Marcas emergentes desafían a Nike y Adidas en México</div>
-                            <div class="news-summary">Running en México proyecta $236M USD en 2025, +1.07% anual hasta 2029 con 2.1M de pares. Nike y Adidas responden con relanzamientos icónicos y colaboraciones mientras enfrentan competencia de Reebok, NB y marcas nicho.</div>
-                            <div class="news-tags">
-                                <span class="tag">Mercado</span>
-                                <span class="tag">Competencia</span>
-                            </div>
-                        </a>
-
-                        <a href="https://www.modaes.com/empresas/under-armour-sigue-en-la-carrera-por-el-mercado-mexicano-cuatro-goles-hasta-fin-de-ano" target="_blank" class="news-card">
-                            <div class="news-date">29 Oct 2018 | Modaes (Ref.)</div>
-                            <div class="news-title">Under Armour mantiene ~20 tiendas en México</div>
-                            <div class="news-summary">Presencia consolidada con 20+ establecimientos monomarca, outlets y puntos en multimarcas. Foco en retail estructurado. Crecimiento moderado tras expansión agresiva 2017-2018. Latinoamérica creció +28% en 2017.</div>
-                            <div class="news-tags">
-                                <span class="tag">Under Armour</span>
-                                <span class="tag">Retail</span>
-                            </div>
-                        </a>
                     </div>
                 </div>
             </section>
@@ -754,57 +605,57 @@
                         <tbody>
                             <tr style="background: rgba(200, 16, 46, 0.15);">
                                 <td><strong>Reebok</strong></td>
-                                <td>5.5%</td>
+                                <td>5.6%</td>
                                 <td>+95%</td>
                                 <td>18</td>
                                 <td>Training, Running, Cross Training</td>
-                                <td>Nano (training), Floatzig (running)</td>
-                                <td>Expansión agresiva, foco performance</td>
+                                <td>Nano X4, Floatzig, Classic Leather</td>
+                                <td>Expansión agresiva, foco performance y relación valor</td>
                             </tr>
                             <tr>
                                 <td><strong>Nike</strong></td>
-                                <td>42%</td>
+                                <td>41.8%</td>
                                 <td>+3.5%</td>
                                 <td>85+</td>
                                 <td>Lifestyle, Running, Fútbol, Basketball</td>
                                 <td>Air Jordan, Air Max, Mercurial</td>
-                                <td>Líder dominante, recuperación en marcha</td>
+                                <td>Líder dominante, ecosistema digital muy robusto</td>
                             </tr>
                             <tr>
                                 <td><strong>Adidas</strong></td>
-                                <td>35%</td>
+                                <td>35.1%</td>
                                 <td>+2.8%</td>
                                 <td>75+</td>
                                 <td>Fútbol, Running, Originals</td>
                                 <td>Ultraboost, Predator, Selección MX</td>
-                                <td>Sólido, Mundial 2026 como catalizador</td>
+                                <td>Sólido, Mundial 2026 como catalizador principal</td>
                             </tr>
                             <tr>
                                 <td><strong>Puma</strong></td>
-                                <td>8%</td>
+                                <td>8.0%</td>
                                 <td>-4.5%</td>
                                 <td>30+</td>
                                 <td>Fútbol, Lifestyle, Training</td>
                                 <td>Future, Ultra, Hyrox (training)</td>
-                                <td>Año de transición, reestructuración</td>
+                                <td>Año de transición, reestructuración y ajuste de portafolio</td>
                             </tr>
                             <tr>
                                 <td><strong>Under Armour</strong></td>
-                                <td>5%</td>
+                                <td>5.0%</td>
                                 <td>+1.5%</td>
                                 <td>20+</td>
                                 <td>Training, Performance apparel</td>
                                 <td>Charged Assert, HeatGear</td>
-                                <td>Consolidación, presencia estable</td>
+                                <td>Consolidación, foco en performance puro</td>
                             </tr>
                             <tr>
                                 <td><strong>New Balance</strong></td>
-                                <td>3%</td>
+                                <td>3.0%</td>
                                 <td>+8%</td>
                                 <td>12+</td>
                                 <td>Running, Lifestyle</td>
                                 <td>1080v15, Made in USA</td>
-                                <td>Crecimiento sostenido, nicho premium</td>
+                                <td>Crecimiento sostenido, nicho premium técnico</td>
                             </tr>
                         </tbody>
                     </table>
@@ -818,6 +669,190 @@
                 </div>
             </section>
 
+            <!-- Noticias México -->
+            <section id="noticias" class="section">
+                <h2 class="section-title">📰 Noticias México (Últimos 6 Meses)</h2>
+                
+                <div class="news-grid">
+                    <!-- Reebok México -->
+                    <div class="news-column">
+                        <h3>Reebok México</h3>
+                        
+                        <a href="https://realestatemarket.com.mx/noticias/mercado-inmobiliario/comercial/43249-reebok-abrio-su-primera-tienda-outlet-en-la-cdmx" target="_blank" style="text-decoration:none;color:inherit" class="news-card">
+                            <div class="news-date">8 Mar 2026 | Real Estate Market</div>
+                            <div class="news-title">Reebok abre primera tienda outlet en CDMX</div>
+                            <div class="news-summary">Apertura en Plaza Central, Iztapalapa, marca el inicio de plan para 25 unidades en 4 años. CEO José Tawil confirma objetivo de posicionarse entre las top 3 marcas deportivas en México.</div>
+                            <div class="news-tags">
+                                <span class="tag">Expansión</span>
+                                <span class="tag">Retail</span>
+                            </div>
+                        </a>
+
+                        <a href="https://expansion.mx/empresas/2026/01/08/reebok-revela-estrategia-crecer-en-mexico" target="_blank" style="text-decoration:none;color:inherit" class="news-card">
+                            <div class="news-date">7 Ene 2026 | Expansión</div>
+                            <div class="news-title">Reebok revela estrategia para crecer 40% en México</div>
+                            <div class="news-summary">Mario Olvera confirma 3-4 nuevas aperturas en CDMX, Guadalajara y Monterrey. Foco en tecnología y precio con textil renovado y proveedores triple A. Meta: mantener la inercia tras crecer 95% en 2025.</div>
+                            <div class="news-tags">
+                                <span class="tag">Estrategia</span>
+                                <span class="tag">Crecimiento</span>
+                            </div>
+                        </a>
+
+                        <a href="https://mx.fashionnetwork.com/news/Reebok-ajusta-su-estrategia-en-mexico-para-acelerar-su-crecimiento,1796608.html" target="_blank" style="text-decoration:none;color:inherit" class="news-card">
+                            <div class="news-date">9 Ene 2026 | Fashion Network</div>
+                            <div class="news-title">Reebok ajusta estrategia: calzado técnico y expansión</div>
+                            <div class="news-summary">Nuevas aperturas priorizarán centros comerciales consolidados. Posible entrada a Tijuana apoyada en patrocinio de Xolos. Segmento joven (18-35) alcanza 15% del negocio vs 3% anterior.</div>
+                            <div class="news-tags">
+                                <span class="tag">Performance</span>
+                                <span class="tag">Tijuana</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.eleconomista.com.mx/deportes/reebok-reconquista-mexico-abre-mundo-20250705-766848.html" target="_blank" style="text-decoration:none;color:inherit" class="news-card">
+                            <div class="news-date">4 Jul 2025 | El Economista</div>
+                            <div class="news-title">Reebok reconquista México: Mundial 2026 como trampolín</div>
+                            <div class="news-summary">CEO revela calzado de fútbol tras 18 años, expandirá a golf y pádel. México proyectado top 3 mundial en ventas. De 1 outlet en 2023 a 18 tiendas actuales.</div>
+                            <div class="news-tags">
+                                <span class="tag">Mundial 2026</span>
+                                <span class="tag">Fútbol</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.informabtl.com/reebok-tienda-plaza-parque-tepeyac-cdmx/" target="_blank" style="text-decoration:none;color:inherit" class="news-card">
+                            <div class="news-date">19 Nov 2024 | Informa BTL</div>
+                            <div class="news-title">Reebok inaugura su tienda más grande en México</div>
+                            <div class="news-summary">Tienda de 583 m² en Parque Tepeyac (CDMX) se convierte en la más grande del país. Cuarta unidad full price, totalizando 11 tiendas entre outlets y full price en ese momento.</div>
+                            <div class="news-tags">
+                                <span class="tag">Flagship</span>
+                                <span class="tag">CDMX</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Nike & Adidas México -->
+                    <div class="news-column">
+                        <h3>Nike & Adidas México</h3>
+                        
+                        <a href="https://www.ambito.com/mexico/deportes/invasion-nike-cdmx-el-motivo-detras-la-agresiva-campana-la-capital-n6243116" target="_blank" style="text-decoration:none;color:inherit" class="news-card">
+                            <div class="news-date">5 Feb 2026 | Ámbito</div>
+                            <div class="news-title">Invasión Nike en CDMX: Chivas regresa a la palomita</div>
+                            <div class="news-summary">Campaña masiva en Metro CDMX y Tren Ligero Guadalajara confirma regreso de Nike a Chivas para Apertura 2026. Contrato multimillonario fortalece liderazgo de Nike en fútbol mexicano.</div>
+                            <div class="news-tags">
+                                <span class="tag">Nike</span>
+                                <span class="tag">Chivas</span>
+                                <span class="tag">Liga MX</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.estadiodeportes.mx/mundial/fecha-confirmada-cuando-sale-a-la-venta-la-nueva-playera-de-mexico-para-el-mundial-2026-2" target="_blank" style="text-decoration:none;color:inherit" class="news-card">
+                            <div class="news-date">5 Mar 2026 | Estadio Deportes</div>
+                            <div class="news-title">Adidas lanza playera visitante de México para Mundial</div>
+                            <div class="news-summary">Lanzamiento programado para 20 de marzo 2026. Diseño blanco retro con trébol Adidas en el pecho. Se refuerza la asociación Adidas–Selección Mexicana en pleno año mundialista.</div>
+                            <div class="news-tags">
+                                <span class="tag">Adidas</span>
+                                <span class="tag">Mundial 2026</span>
+                                <span class="tag">Selección</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.marca.com/mx/futbol/seleccion-mx/2026/01/08/695efeb8ca4741f9698b45d8.html" target="_blank" style="text-decoration:none;color:inherit" class="news-card">
+                            <div class="news-date">7 Ene 2026 | Marca</div>
+                            <div class="news-title">Adidas lanza colección alternativa de México para Mundial</div>
+                            <div class="news-summary">Línea especial con chamarras, playeras, gorras y tenis para fans. Algunos productos ya disponibles en México y refuerzan el rol de Adidas como socio técnico de la Selección.</div>
+                            <div class="news-tags">
+                                <span class="tag">Adidas</span>
+                                <span class="tag">Merchandising</span>
+                            </div>
+                        </a>
+
+                        <a href="https://mx.investing.com/news/transcripts/nike-supera-expectativas-en-2t-2026-acciones-suben-93CH-3417847" target="_blank" style="text-decoration:none;color:inherit" class="news-card">
+                            <div class="news-date">18 Dic 2025 | Investing.com</div>
+                            <div class="news-title">Nike supera expectativas en 2T 2026</div>
+                            <div class="news-summary">Ingresos y utilidades por encima de lo esperado; running y mayoristas impulsan resultados. Respaldan inversiones en México en web, app y ecosistema digital.</div>
+                            <div class="news-tags">
+                                <span class="tag">Nike</span>
+                                <span class="tag">Resultados</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.hubsports.mx/eventos/adidas-splits-30k-cdmx-2026" target="_blank" style="text-decoration:none;color:inherit" class="news-card">
+                            <div class="news-date">30 Nov 2025 | Hub Sports</div>
+                            <div class="news-title">Adidas Splits 30K CDMX 2026: 8 carreras en 3 ciudades</div>
+                            <div class="news-summary">Serial de running con +50 mil corredores esperados. Refuerza presencia de Adidas en comunidad running mexicana, apoyado por su ecosistema digital y app de running.</div>
+                            <div class="news-tags">
+                                <span class="tag">Adidas</span>
+                                <span class="tag">Running</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Puma, Under Armour & New Balance -->
+                    <div class="news-column">
+                        <h3>Puma, Under Armour & New Balance</h3>
+                        
+                        <a href="https://www.bloomberglinea.com/negocios/puma-advierte-que-2026-sera-un-ano-de-transicion-y-preve-perdidas/" target="_blank" style="text-decoration:none;color:inherit" class="news-card">
+                            <div class="news-date">25 Feb 2026 | Bloomberg Línea</div>
+                            <div class="news-title">Puma advierte: 2026 será año de transición con pérdidas</div>
+                            <div class="news-summary">CEO Arthur Hoeld proyecta pérdidas operativas relevantes en 2026. Se espera liquidación de inventario en outlets y un rol mayor de Latinoamérica para compensar la debilidad en Norteamérica.</div>
+                            <div class="news-tags">
+                                <span class="tag">Puma</span>
+                                <span class="tag">Crisis</span>
+                            </div>
+                        </a>
+
+                        <a href="https://elceo.com/negocios/puma-apuesta-por-hyrox-y-el-training-para-impulsar-de-nuevo-sus-ventas/" target="_blank" style="text-decoration:none;color:inherit" class="news-card">
+                            <div class="news-date">25 Feb 2026 | El CEO</div>
+                            <div class="news-title">Puma apuesta por Hyrox y training para recuperarse</div>
+                            <div class="news-summary">Colaboración con Hyrox hasta 2030, buscando hacer del training un pilar de crecimiento junto con fútbol y running. La reestructura incluye ajustes de personal y foco en venta directa.</div>
+                            <div class="news-tags">
+                                <span class="tag">Puma</span>
+                                <span class="tag">Training</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.bloomberglinea.com/negocios/ceo-de-puma-planea-recortar-900-puestos-de-trabajo-y-modernizar-estrategia-de-marketing/" target="_blank" style="text-decoration:none;color:inherit" class="news-card">
+                            <div class="news-date">29 Oct 2025 | Bloomberg Línea</div>
+                            <div class="news-title">Puma recorta 900 empleos y moderniza marketing</div>
+                            <div class="news-summary">Plan de reestructuración global con foco en fútbol, running y training, y en fortalecer la venta directa. Objetivo de ser top 3 global hacia 2027.</div>
+                            <div class="news-tags">
+                                <span class="tag">Puma</span>
+                                <span class="tag">Reestructura</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.newbalance.com/es/lanzamientos-de-nb/" target="_blank" style="text-decoration:none;color:inherit" class="news-card">
+                            <div class="news-date">7 Mar 2026 | New Balance</div>
+                            <div class="news-title">New Balance lanza colección Primavera/Verano 2026</div>
+                            <div class="news-summary">Lanzamientos en running y lifestyle (1080v15, ABZORB 2010, Made in USA) refuerzan su posicionamiento como marca técnica y de nicho premium, también relevante para el mercado mexicano.</div>
+                            <div class="news-tags">
+                                <span class="tag">New Balance</span>
+                                <span class="tag">Lanzamientos</span>
+                            </div>
+                        </a>
+
+                        <a href="https://expansion.mx/empresas/2025/03/11/nike-y-adidas-aceleran-el-paso-frente-a-las-marcas-emergentes" target="_blank" style="text-decoration:none;color:inherit" class="news-card">
+                            <div class="news-date">10 Mar 2025 | Expansión</div>
+                            <div class="news-title">Marcas emergentes desafían a Nike y Adidas en México</div>
+                            <div class="news-summary">El mercado de running en México sigue creciendo, mientras marcas como Reebok, New Balance y jugadores nicho presionan a los líderes en precio e innovación.</div>
+                            <div class="news-tags">
+                                <span class="tag">Mercado</span>
+                                <span class="tag">Competencia</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.modaes.com/empresas/under-armour-sigue-en-la-carrera-por-el-mercado-mexicano-cuatro-goles-hasta-fin-de-ano" target="_blank" style="text-decoration:none;color:inherit" class="news-card">
+                            <div class="news-date">29 Oct 2018 | Modaes (Ref.)</div>
+                            <div class="news-title">Under Armour mantiene ~20 tiendas en México</div>
+                            <div class="news-summary">Presencia consolidada con 20+ establecimientos monomarca, outlets y puntos en multimarcas. Crecimiento moderado pero estable en el país.</div>
+                            <div class="news-tags">
+                                <span class="tag">Under Armour</span>
+                                <span class="tag">Retail</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
             <!-- FODA Reebok México -->
             <section id="foda" class="section">
                 <h2 class="section-title">💪 FODA Reebok México 2026</h2>
@@ -826,52 +861,52 @@
                     <div class="swot-card">
                         <h3>Fortalezas</h3>
                         <ul>
-                            <li>Crecimiento explosivo: +95% en ventas 2025, mejor relación calidad-precio del mercado</li>
-                            <li>Expansión física acelerada: de 1 a 18 tiendas en 3 años, plan de 25 unidades en 4 años</li>
-                            <li>Foco en performance técnico: diferenciación en training/running con tecnología premium a precios competitivos</li>
-                            <li>Textil renovado 100% con proveedores clase mundial bajo respaldo de Authentic Brands Group</li>
-                            <li>Regreso al fútbol: patrocinio Xolos, Selección Panamá, calzado de futbol tras 18 años</li>
-                            <li>Crecimiento segmento joven (18-35): de 3% a 15% del negocio</li>
-                            <li>Distribución multicanal: tiendas propias + Martí, Liverpool, Sears, Innovasport, e-commerce</li>
+                            <li>Crecimiento explosivo: +95% en ventas 2025, muy buena relación calidad-precio.</li>
+                            <li>Expansión física acelerada: de 1 a 18 tiendas en 3 años, plan de 25 unidades en 4 años.</li>
+                            <li>Foco en performance técnico: diferenciación en training/running con tecnología premium a precio accesible.</li>
+                            <li>Textil renovado 100% con proveedores clase mundial bajo respaldo de Authentic Brands Group.</li>
+                            <li>Regreso al fútbol: patrocinio Xolos, Selección Panamá y producto específico previo al Mundial 2026.</li>
+                            <li>Crecimiento segmento joven (18-35): de 3% a 15% del negocio.</li>
+                            <li>Distribución multicanal: tiendas propias + Martí, Liverpool, Sears, Innovasport y e-commerce.</li>
                         </ul>
                     </div>
 
                     <div class="swot-card">
                         <h3>Oportunidades</h3>
                         <ul>
-                            <li>Mundial 2026 como catalizador: evento revelación para calzado de fútbol y visibilidad de marca</li>
-                            <li>Mercado running México: $236M USD 2025, crecimiento +1.07% anual hasta 2029</li>
-                            <li>Transición de Puma (pérdidas, reestructuración): oportunidad de captar cuota mientras competidor se debilita</li>
-                            <li>Entrada a Tijuana respaldada por patrocinio de Xolos, mercado fronterizo estratégico</li>
-                            <li>Expansión en golf y pádel: nuevos deportes con potencial en México</li>
-                            <li>Meta Top 3 global: México proyectado como uno de 3 mercados principales en ventas mundiales</li>
-                            <li>80% del mercado concentrado en CDMX, GDL, MTY, PUE: geografía enfocada facilita expansión</li>
+                            <li>Mundial 2026 como catalizador: evento clave para calzado de fútbol y visibilidad de marca.</li>
+                            <li>Mercado running México en expansión, con crecimiento moderado pero sostenido.</li>
+                            <li>Transición de Puma: oportunidad de capturar cuota mientras el competidor reestructura.</li>
+                            <li>Entrada a Tijuana respaldada por patrocinio de Xolos, mercado fronterizo estratégico.</li>
+                            <li>Expansión en golf y pádel: nuevos deportes con alto potencial en México.</li>
+                            <li>Meta Top 3 global: México proyectado como uno de los 3 mercados principales en ventas mundiales.</li>
+                            <li>Concentración de mercado en CDMX, GDL, MTY, PUE: facilita ejecución focalizada.</li>
                         </ul>
                     </div>
 
                     <div class="swot-card">
                         <h3>Debilidades</h3>
                         <ul>
-                            <li>Cuota de mercado aún limitada (5.5%) vs líderes Nike (42%) y Adidas (35%)</li>
-                            <li>Red de tiendas pequeña (18) vs Nike (85+) y Adidas (75+), menor alcance geográfico</li>
-                            <li>Presencia en fútbol incipiente vs competidores establecidos (1 equipo vs múltiples de Nike/Adidas)</li>
-                            <li>Dependencia de crecimiento acelerado para sostener momentum</li>
-                            <li>E-commerce en mejora pero aún detrás de competencia en experiencia digital</li>
-                            <li>Sin patrocinio de estrellas mexicanas de alto perfil en Liga MX o Selección Nacional</li>
-                            <li>Percepción de marca en reconstrucción tras años de menor presencia</li>
+                            <li>Cuota de mercado aún limitada (5.6%) vs líderes Nike (41.8%) y Adidas (35.1%).</li>
+                            <li>Red de tiendas más pequeña (18) vs Nike (85+) y Adidas (75+), menor alcance geográfico.</li>
+                            <li>Presencia en fútbol incipiente vs competidores con varios clubes y Selección Nacional.</li>
+                            <li>Dependencia de crecimiento acelerado para sostener momentum y expectativa interna.</li>
+                            <li>E-commerce en desarrollo, con brecha en personalización y ecosistema vs Nike/Adidas.</li>
+                            <li>Sin patrocinio de figuras mexicanas de altísimo perfil en Liga MX o Selección.</li>
+                            <li>Percepción de marca en reconstrucción tras años de menor visibilidad.</li>
                         </ul>
                     </div>
 
                     <div class="swot-card">
                         <h3>Amenazas</h3>
                         <ul>
-                            <li>Dominio de Nike y Adidas: 77% del mercado combinado, recursos vastamente superiores</li>
-                            <li>Nike recuperando Chivas (Apertura 2026): acuerdo multimillonario fortalece al líder</li>
-                            <li>Adidas con Selección Nacional y Mundial 2026: máxima exposición en evento local</li>
-                            <li>Puma en recuperación 2027: podría retomar agresividad tras reestructuración</li>
-                            <li>New Balance creciendo +8% con estrategia premium/nicho</li>
-                            <li>Aranceles y fluctuaciones cambiarias impactando costos de producto importado</li>
-                            <li>Consumo moderado en México: cautela del consumidor puede frenar expansión retail</li>
+                            <li>Dominio Nike + Adidas cerca de 77% del mercado, con recursos de marketing y digitales muy superiores.</li>
+                            <li>Nike recuperando Chivas (Apertura 2026): refuerza liderazgo en clubes populares.</li>
+                            <li>Adidas con Selección Nacional y portafolio especial Mundial 2026, alta exposición mediática.</li>
+                            <li>Puma podría recuperar agresividad a partir de 2027 tras reestructura.</li>
+                            <li>New Balance creciendo en segmento running y lifestyle premium.</li>
+                            <li>Aranceles y tipo de cambio impactando costos de producto importado.</li>
+                            <li>Consumo moderado en México que puede frenar la expansión de tiendas físicas.</li>
                         </ul>
                     </div>
                 </div>
@@ -895,12 +930,12 @@
                     <div class="kpi-card">
                         <div class="kpi-label">Outlets</div>
                         <div class="kpi-value">11</div>
-                        <div class="kpi-trend trend-up">Plaza Central más reciente</div>
+                        <div class="kpi-trend trend-up">Plaza Central, Iztapalapa, más reciente</div>
                     </div>
                     <div class="kpi-card">
                         <div class="kpi-label">Próximas Aperturas 2026</div>
                         <div class="kpi-value">3-4</div>
-                        <div class="kpi-trend trend-neutral">CDMX, GDL, MTY, Tijuana</div>
+                        <div class="kpi-trend trend-neutral">CDMX, GDL, MTY, posible Tijuana</div>
                     </div>
                 </div>
 
@@ -1019,11 +1054,11 @@
                 <div class="highlight-list">
                     <h3 style="color: var(--reebok-red); margin-bottom: 1rem;">E-commerce y Distribución Digital</h3>
                     <ul>
-                        <li><strong>Reebok.mx:</strong> Tienda oficial en mejora continua, gestión por concepto y categoría, mejora en tiempos de entrega</li>
-                        <li><strong>Marketplaces:</strong> Presencia en Mercado Libre y Amazon México para mayor alcance</li>
-                        <li><strong>Socios Retail:</strong> Liverpool.com.mx, Sears.com.mx, Innovasport.com con espacios Reebok</li>
-                        <li><strong>Distribución Multimarca:</strong> Presencia en 150-200 espacios en tiendas departamentales y especializadas</li>
-                        <li><strong>Estrategia Digital 2026:</strong> Integración omnicanal, experiencia personalizada, inventario en tiempo real</li>
+                        <li><strong>Reebok.mx:</strong> Tienda oficial con foco en tenis, ropa y accesorios; activa páginas especiales para Hot Sale y Hot Fashion con ofertas y beneficios de pago seguro y envío a todo México.</li>
+                        <li><strong>Promociones 2026:</strong> Eventos digitales (Hot Sale, Hot Fashion) se usan para impulsar modelos icónicos como Nano X4, Floatzig y Classic Leather con descuentos y mensajes de rendimiento y estilo.</li>
+                        <li><strong>Marketplaces:</strong> Presencia en Mercado Libre y Amazon México para expansión de alcance y manejo de campañas de precio agresivo en temporadas de compra.</li>
+                        <li><strong>Socios Retail:</strong> Liverpool.com.mx, Sears.com.mx e Innovasport.com con espacios dedicados a Reebok y surtido de performance y lifestyle.</li>
+                        <li><strong>Estrategia Digital 2026:</strong> Prioridad en integrar inventarios, mejorar usabilidad móvil, simplificar check-out y reforzar contenido de performance en sitio y redes.</li>
                     </ul>
                 </div>
 
@@ -1032,6 +1067,156 @@
                     <div class="chart-wrapper">
                         <canvas id="storesDistChart"></canvas>
                     </div>
+                </div>
+            </section>
+
+            <!-- Nueva sección: Web & Experiencia Digital -->
+            <section id="web" class="section">
+                <h2 class="section-title">🌐 Web & Experiencia Digital (México)</h2>
+
+                <div class="web-matrix">
+                    <div class="web-card">
+                        <h3>Reebok.mx <span class="web-badge">México</span></h3>
+                        <p style="font-size:0.95rem; margin-bottom:0.5rem;">
+                            Sitio enfocado en tienda en línea con navegación por categorías (hombre, mujer, niños), deportes y franquicias clave (Nano, Floatzig, Classics). Destaca promociones permanentes y eventos como Hot Sale y Hot Fashion con landing dedicadas y mensajes claros de descuentos y meses sin intereses.</p>
+                        <p style="font-size:0.9rem; margin-bottom:0.5rem;">
+                            Puntos fuertes actuales:
+                        </p>
+                        <p style="font-size:0.85rem;">
+                            <span class="pill">Portafolio performance y lifestyle balanceado</span>
+                            <span class="pill">Enfoque en promociones nacionales 2026</span>
+                            <span class="pill">FAQ y soporte de compra</span>
+                            <span class="pill">Entrega a todo México</span>
+                        </p>
+                        <p class="web-table-notes">
+                            Oportunidad: profundizar en personalización (recomendaciones dinámicas, contenido por deporte) y storytelling de rendimiento tipo “training first”.
+                        </p>
+                    </div>
+
+                    <div class="web-card">
+                        <h3>Nike.com/MX <span class="web-badge">Nike</span></h3>
+                        <p style="font-size:0.95rem; margin-bottom:0.5rem;">
+                            Plataforma operada localmente, con fuerte personalización y ecosistema integrado con Nike App, Nike Training Club y Nike Running Club. Ofrece experiencias para miembros (miembros Nike) con contenido exclusivo, recomendaciones hiper-personalizadas, beneficios de envío y acceso anticipado a lanzamientos.</p>
+                        <p style="font-size:0.9rem; margin-bottom:0.5rem;">
+                            Ventajas clave frente a Reebok:
+                        </p>
+                        <p style="font-size:0.85rem;">
+                            <span class="pill">Hiper-personalización digital</span>
+                            <span class="pill">Integración con apps de entrenamiento</span>
+                            <span class="pill">Programa de membresía robusto</span>
+                            <span class="pill">Centro de distribución dedicado en México</span>
+                        </p>
+                        <p class="web-table-notes">
+                            Benchmark para Reebok en: membresías, contenido de entrenamiento, comunidad y profundidad de datos de usuario.
+                        </p>
+                    </div>
+
+                    <div class="web-card">
+                        <h3>Adidas.mx <span class="web-badge">Adidas</span></h3>
+                        <p style="font-size:0.95rem; margin-bottom:0.5rem;">
+                            E-commerce con fuerte protagonismo de fútbol y colecciones especiales (Selección Mexicana, Mundial 2026, Originals), además de eventos de descuentos como Hot Fashion con páginas específicas y experiencia mobile optimizada.</p>
+                        <p style="font-size:0.9rem; margin-bottom:0.5rem;">
+                            Ventajas clave frente a Reebok:
+                        </p>
+                        <p style="font-size:0.85rem;">
+                            <span class="pill">Storytelling emocional de Selección y Mundial</span>
+                            <span class="pill">Colecciones cápsula y colaboraciones</span>
+                            <span class="pill">Experiencia visual muy pulida</span>
+                            <span class="pill">Oferta completa para familias</span>
+                        </p>
+                        <p class="web-table-notes">
+                            Benchmark para Reebok en: narrativa de producto, colecciones especiales y experiencia de lanzamiento en línea.
+                        </p>
+                    </div>
+
+                    <div class="web-card">
+                        <h3>Puma, Under Armour & New Balance</h3>
+                        <p style="font-size:0.95rem; margin-bottom:0.5rem;">
+                            Puma.mx combina fútbol, lifestyle y campañas globales; Under Armour privilegia performance y ropa técnica; New Balance refuerza running y colecciones premium. Todos priorizan experiencia mobile-first y se apoyan en campañas digitales estacionales.</p>
+                        <p style="font-size:0.9rem; margin-bottom:0.5rem;">
+                            Elementos a observar:
+                        </p>
+                        <p style="font-size:0.85rem;">
+                            <span class="pill">Historias de atletas y rendimiento</span>
+                            <span class="pill">Curaduría específica por deporte</span>
+                            <span class="pill">Guías de talla y de producto detalladas</span>
+                            <span class="pill">Integración con comunidades de running/training</span>
+                        </p>
+                        <p class="web-table-notes">
+                            Reebok puede capitalizar el momentum de performance con contenido educativo y comparativo en sitio, similar al enfoque técnico de UA y NB pero con mejor propuesta de valor.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <h3 style="color: var(--reebok-red); margin-bottom: 1rem;">Matriz Web México – Reebok vs Competencia</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Marca</th>
+                                <th>Rol del Sitio MX</th>
+                                <th>Fortalezas Digitales</th>
+                                <th>Brechas vs Reebok</th>
+                                <th>Oportunidades para Reebok</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: rgba(200, 16, 46, 0.15);">
+                                <td><strong>Reebok</strong></td>
+                                <td>Tienda online + hub de promociones (Hot Sale/Hot Fashion) y catálogo performance/lifestyle.</td>
+                                <td>Claridad de ofertas, surtido en Nano/Floatzig, facilidad de compra, envíos nacionales.</td>
+                                <td>Menos personalización, menos integración con apps de entrenamiento, menor peso de comunidad.</td>
+                                <td>Desarrollar programa de membresía, agregar contenido de entrenamiento, mejorar recomendador y fichas técnicas.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nike</strong></td>
+                                <td>Plataforma central del ecosistema digital (web + app + comunidad).</td>
+                                <td>Hiper-personalización, Nike App, NTC/NRC, beneficios para miembros, logística optimizada.</td>
+                                <td>Liderazgo en datos de usuario, engagement, frecuencia de compra y experiencia móvil.</td>
+                                <td>Tomar mejores prácticas en membresía sencilla (Reebok Members), contenido on-demand y beneficios recurrentes.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Adidas</strong></td>
+                                <td>E-commerce + vitrinas de colecciones (Mundial, Selección, Originals).</td>
+                                <td>Storytelling, imagen de marca, experiencia visual, lanzamientos y colecciones limitadas.</td>
+                                <td>Mayor fuerza emocional en fútbol y moda.</td>
+                                <td>Potenciar narrativa de regreso al fútbol y diferenciarse vía “performance accesible” en sitio.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Puma</strong></td>
+                                <td>Tienda con fuerte peso en fútbol y lifestyle urbano.</td>
+                                <td>Campañas globales atractivas, presencia en deportes clave.</td>
+                                <td>Año de transición, posibles inconsistencias de surtido y enfoque.</td>
+                                <td>Posicionarse como alternativa clara en training y running con experiencia web más estable.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Under Armour</strong></td>
+                                <td>Enfoque digital en performance duro (training, gym).</td>
+                                <td>Credibilidad técnica, fichas de producto detalladas.</td>
+                                <td>Menor peso aspiracional y de moda.</td>
+                                <td>Reebok puede combinar técnica con estilo y precio, y explicarlo mejor en su web.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>New Balance</strong></td>
+                                <td>Running y lifestyle premium, fuerte storytelling.</td>
+                                <td>Imagen aspiracional, innovación en modelos icónicos.</td>
+                                <td>Precios más altos, nicho limitado.</td>
+                                <td>Reforzar narrativa de valor “performance de alto nivel, precio accesible” en la experiencia online.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="highlight-list">
+                    <h3 style="color: var(--reebok-red); margin-bottom: 1rem;">Palancas Digitales a Fortalecer en Reebok.mx</h3>
+                    <ul>
+                        <li><strong>1. Personalización básica:</strong> Implementar módulos de “recomendados para ti” por deporte (training, running, fútbol) y páginas de entrada por tipo de usuario (gym, corredor, fútbol 7).</li>
+                        <li><strong>2. Contenido de performance:</strong> Crear guías de entrenamiento, tips de coaches y explicaciones claras de tecnologías (amortiguación, estabilidad) para Nano y Floatzig, ancladas en el sitio.</li>
+                        <li><strong>3. Programa de membresía:</strong> Lanzar una membresía ligera (Reebok Crew) con early access a lanzamientos, cupones Hot Sale/Hot Fashion y eventos en tienda física.</li>
+                        <li><strong>4. Fútbol y Mundial 2026:</strong> Desarrollar una sección dedicada a fútbol (tacos, apparel, Xolos, Selección Panamá) con storytelling claro para capitalizar el año mundialista.</li>
+                        <li><strong>5. Omnicanalidad:</strong> Visibilidad de inventario en tiendas y socios, con opción de “compra en línea, recoge en tienda” en fases piloto en CDMX.</li>
+                        <li><strong>6. Experiencia mobile-first:</strong> Optimizar velocidad y check-out en móviles, dado que la mayoría del tráfico y campañas pagadas llegan por este canal.</li>
+                    </ul>
                 </div>
             </section>
 
@@ -1056,47 +1241,47 @@
                         <tbody>
                             <tr style="background: rgba(200, 16, 46, 0.15);">
                                 <td><strong>Reebok</strong></td>
-                                <td>5.5%</td>
+                                <td>5.6%</td>
                                 <td>+95%</td>
                                 <td>18</td>
                                 <td>Xolos Tijuana</td>
-                                <td>Nano, Floatzig, Club C</td>
+                                <td>Nano X4, Floatzig, Club C</td>
                                 <td>18-35 fitness, training, cross training</td>
-                                <td>Expansión agresiva, reconquista de mercado</td>
+                                <td>Expansión agresiva, reconquista de mercado con foco performance</td>
                             </tr>
                             <tr>
                                 <td><strong>Nike</strong></td>
-                                <td>42%</td>
+                                <td>41.8%</td>
                                 <td>+3.5%</td>
                                 <td>85+</td>
                                 <td>Pumas, América, Cruz Azul, Chivas (A2026)</td>
                                 <td>Air Jordan, Air Max, Mercurial</td>
                                 <td>Masivo: lifestyle, fútbol, basketball, running</td>
-                                <td>Líder absoluto, recuperación en marcha, contrato Chivas</td>
+                                <td>Líder absoluto, ecosistema digital y de membresía muy avanzado</td>
                             </tr>
                             <tr>
                                 <td><strong>Adidas</strong></td>
-                                <td>35%</td>
+                                <td>35.1%</td>
                                 <td>+2.8%</td>
                                 <td>75+</td>
                                 <td>Selección Nacional, varios clubes</td>
                                 <td>Ultraboost, Predator, Originals</td>
                                 <td>Amplio: fútbol, running, lifestyle retro</td>
-                                <td>Sólido, Mundial 2026 como catalizador máximo</td>
+                                <td>Sólido, Mundial 2026 como catalizador máximo y foco en colecciones especiales</td>
                             </tr>
                             <tr>
                                 <td><strong>Puma</strong></td>
-                                <td>8%</td>
+                                <td>8.0%</td>
                                 <td>-4.5%</td>
                                 <td>30+</td>
                                 <td>Chivas (hasta C2026), perdió UNAM</td>
                                 <td>Future, Ultra, Hyrox</td>
                                 <td>Fútbol, training, lifestyle deportivo</td>
-                                <td>Año de transición, reestructuración profunda, pérdidas</td>
+                                <td>Año de transición, reestructuración profunda y ajustes de portafolio</td>
                             </tr>
                             <tr>
                                 <td><strong>Under Armour</strong></td>
-                                <td>5%</td>
+                                <td>5.0%</td>
                                 <td>+1.5%</td>
                                 <td>20+</td>
                                 <td>Cruz Azul (anteriormente)</td>
@@ -1106,13 +1291,13 @@
                             </tr>
                             <tr>
                                 <td><strong>New Balance</strong></td>
-                                <td>3%</td>
+                                <td>3.0%</td>
                                 <td>+8%</td>
                                 <td>12+</td>
                                 <td>Ninguno</td>
                                 <td>1080v15, Made in USA, 990</td>
                                 <td>Runners serios, premium lifestyle</td>
-                                <td>Crecimiento sostenido, nicho premium, innovación constante</td>
+                                <td>Crecimiento sostenido, nicho premium, innovación constante en running y heritage</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1152,7 +1337,7 @@
             data: {
                 labels: ['Nike', 'Adidas', 'Puma', 'Reebok', 'Under Armour', 'New Balance', 'Otros'],
                 datasets: [{
-                    data: [42, 35, 8, 5.5, 5, 3, 1.5],
+                    data: [41.8, 35.1, 8.0, 5.6, 5.0, 3.0, 1.5],
                     backgroundColor: [
                         '#FF6384',
                         '#36A2EB',
@@ -1301,19 +1486,19 @@
                 datasets: [
                     {
                         label: 'Reebok',
-                        data: [5.5, 95, 18, 20, 80, 95],
+                        data: [5.6, 95, 18, 20, 80, 95],
                         borderColor: '#C8102E',
                         backgroundColor: 'rgba(200, 16, 46, 0.2)'
                     },
                     {
                         label: 'Nike',
-                        data: [42, 3.5, 85, 90, 85, 60],
+                        data: [41.8, 3.5, 85, 90, 85, 60],
                         borderColor: '#FF6384',
                         backgroundColor: 'rgba(255, 99, 132, 0.2)'
                     },
                     {
                         label: 'Adidas',
-                        data: [35, 2.8, 75, 95, 80, 65],
+                        data: [35.1, 2.8, 75, 95, 80, 65],
                         borderColor: '#36A2EB',
                         backgroundColor: 'rgba(54, 162, 235, 0.2)'
                     }
