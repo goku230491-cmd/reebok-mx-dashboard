@@ -11,7 +11,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+ 
         :root {
             --reebok-black: #000000;
             --reebok-red: #C8102E;
@@ -26,19 +26,19 @@
             --warning: #ff9800;
             --danger: #f44336;
         }
-
+ 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: var(--bg-dark);
             color: var(--text-primary);
             line-height: 1.6;
         }
-
+ 
         .container {
             display: flex;
             min-height: 100vh;
         }
-
+ 
         /* Sidebar */
         .sidebar {
             width: 280px;
@@ -50,29 +50,29 @@
             height: 100vh;
             overflow-y: auto;
         }
-
+ 
         .logo-container {
             padding: 0 2rem 2rem;
             border-bottom: 1px solid var(--border-color);
             margin-bottom: 2rem;
             text-align: center;
         }
-
+ 
         .logo-svg {
             width: 160px;
             height: auto;
             margin: 0 auto;
             display: block;
         }
-
+ 
         .nav-menu {
             list-style: none;
         }
-
+ 
         .nav-item {
             margin-bottom: 0.5rem;
         }
-
+ 
         .nav-link {
             display: block;
             padding: 1rem 2rem;
@@ -81,42 +81,42 @@
             transition: all 0.3s ease;
             border-left: 3px solid transparent;
         }
-
+ 
         .nav-link:hover,
         .nav-link.active {
             background: var(--bg-hover);
             color: var(--text-primary);
             border-left-color: var(--reebok-red);
         }
-
+ 
         /* Main Content */
         .main-content {
             flex: 1;
             padding: 2rem;
             overflow-y: auto;
         }
-
+ 
         .header {
             margin-bottom: 3rem;
             padding-bottom: 1rem;
             border-bottom: 2px solid var(--reebok-red);
         }
-
+ 
         .header h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
         }
-
+ 
         .header .date {
             color: var(--text-secondary);
             font-size: 0.95rem;
         }
-
+ 
         /* Sections */
         .section {
             margin-bottom: 4rem;
         }
-
+ 
         .section-title {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
@@ -124,7 +124,7 @@
             border-bottom: 2px solid var(--border-color);
             padding-bottom: 0.5rem;
         }
-
+ 
         /* KPI Cards */
         .kpi-grid {
             display: grid;
@@ -132,7 +132,7 @@
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
-
+ 
         .kpi-card {
             background: var(--bg-card);
             padding: 1.5rem;
@@ -140,33 +140,33 @@
             border-left: 4px solid var(--reebok-red);
             transition: transform 0.3s ease;
         }
-
+ 
         .kpi-card:hover {
             transform: translateY(-5px);
         }
-
+ 
         .kpi-label {
             color: var(--text-secondary);
             font-size: 0.85rem;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
         }
-
+ 
         .kpi-value {
             font-size: 2rem;
             font-weight: bold;
             color: var(--text-primary);
         }
-
+ 
         .kpi-trend {
             font-size: 0.9rem;
             margin-top: 0.5rem;
         }
-
+ 
         .trend-up { color: var(--success); }
         .trend-down { color: var(--danger); }
         .trend-neutral { color: var(--warning); }
-
+ 
         /* Lists */
         .highlight-list {
             background: var(--bg-card);
@@ -174,29 +174,29 @@
             border-radius: 8px;
             border-left: 4px solid var(--reebok-red);
         }
-
+ 
         .highlight-list ul {
             list-style: none;
         }
-
+ 
         .highlight-list li {
             padding: 0.75rem 0;
             border-bottom: 1px solid var(--border-color);
             padding-left: 1.5rem;
             position: relative;
         }
-
+ 
         .highlight-list li:last-child {
             border-bottom: none;
         }
-
+ 
         .highlight-list li:before {
             content: "▸";
             color: var(--reebok-red);
             position: absolute;
             left: 0;
         }
-
+ 
         /* Tables */
         .table-container {
             overflow-x: auto;
@@ -204,12 +204,12 @@
             border-radius: 8px;
             padding: 1.5rem;
         }
-
+ 
         table {
             width: 100%;
             border-collapse: collapse;
         }
-
+ 
         th {
             background: var(--reebok-black);
             color: var(--text-primary);
@@ -219,16 +219,16 @@
             text-transform: uppercase;
             font-size: 0.85rem;
         }
-
+ 
         td {
             padding: 1rem;
             border-bottom: 1px solid var(--border-color);
         }
-
+ 
         tr:hover {
             background: var(--bg-hover);
         }
-
+ 
         .badge {
             display: inline-block;
             padding: 0.35rem 0.75rem;
@@ -237,32 +237,32 @@
             font-weight: 600;
             text-transform: uppercase;
         }
-
+ 
         .badge-success { background: var(--success); color: white; }
         .badge-warning { background: var(--warning); color: white; }
         .badge-danger { background: var(--danger); color: white; }
         .badge-info { background: #2196F3; color: white; }
-
+ 
         /* News Cards */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }
-
+ 
         .news-column {
             background: var(--bg-card);
             padding: 1.5rem;
             border-radius: 8px;
         }
-
+ 
         .news-column h3 {
             color: var(--reebok-red);
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
             border-bottom: 2px solid var(--border-color);
         }
-
+ 
         .news-card {
             background: var(--bg-dark);
             padding: 1rem;
@@ -275,37 +275,37 @@
             color: inherit;
             display: block;
         }
-
+ 
         .news-card:hover {
             transform: translateX(5px);
             background: var(--bg-hover);
         }
-
+ 
         .news-date {
             color: var(--text-secondary);
             font-size: 0.8rem;
             margin-bottom: 0.5rem;
         }
-
+ 
         .news-title {
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--text-primary);
         }
-
+ 
         .news-summary {
             color: var(--text-secondary);
             font-size: 0.9rem;
             line-height: 1.5;
         }
-
+ 
         .news-tags {
             margin-top: 0.5rem;
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
         }
-
+ 
         .tag {
             background: var(--reebok-red);
             color: white;
@@ -313,7 +313,7 @@
             border-radius: 3px;
             font-size: 0.75rem;
         }
-
+ 
         /* Charts */
         .chart-container {
             background: var(--bg-card);
@@ -321,41 +321,41 @@
             border-radius: 8px;
             margin-bottom: 2rem;
         }
-
+ 
         .chart-wrapper {
             position: relative;
             height: 400px;
         }
-
+ 
         /* SWOT */
         .swot-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
         }
-
+ 
         .swot-card {
             background: var(--bg-card);
             padding: 1.5rem;
             border-radius: 8px;
             border-top: 4px solid var(--reebok-red);
         }
-
+ 
         .swot-card h3 {
             color: var(--reebok-red);
             margin-bottom: 1rem;
         }
-
+ 
         .swot-card ul {
             list-style: none;
         }
-
+ 
         .swot-card li {
             padding: 0.5rem 0;
             padding-left: 1.5rem;
             position: relative;
         }
-
+ 
         .swot-card li:before {
             content: "•";
             color: var(--reebok-red);
@@ -363,18 +363,18 @@
             left: 0;
             font-size: 1.5rem;
         }
-
+ 
         @media (max-width: 1024px) {
             .container {
                 flex-direction: column;
             }
-
+ 
             .sidebar {
                 width: 100%;
                 height: auto;
                 position: relative;
             }
-
+ 
             .swot-grid {
                 grid-template-columns: 1fr;
             }
@@ -400,7 +400,7 @@
                 </ul>
             </nav>
         </aside>
-
+ 
         <!-- Main Content -->
         <main class="main-content">
             <header class="header">
@@ -408,7 +408,7 @@
                 <p class="date">Actualizado: Lunes 24 de Marzo, 2026 | Dashboard Ejecutivo</p>
                 <p style="color: var(--reebok-red); font-weight: 600; font-size: 1.2rem; margin-top: 0.5rem;">Sport Is Everything</p>
             </header>
-
+ 
             <!-- Inicio México -->
             <section id="inicio" class="section">
                 <h2 class="section-title">Reebok México</h2>
@@ -435,7 +435,7 @@
                         <div class="kpi-trend trend-neutral">4-5 aperturas previstas al cierre de año</div>
                     </div>
                 </div>
-
+ 
                 <div class="highlight-list">
                     <h3 style="color: var(--reebok-red); margin-bottom: 1rem;">🔥 Lo Más Relevante en México (Semana al 24 Mar 2026)</h3>
                     <ul>
@@ -448,7 +448,7 @@
                     </ul>
                 </div>
             </section>
-
+ 
             <!-- Scoreboard México -->
             <section id="scoreboard" class="section">
                 <h2 class="section-title">🏆 Scoreboard México</h2>
@@ -524,14 +524,14 @@
                         </tbody>
                     </table>
                 </div>
-
+ 
                 <div class="chart-container">
                     <h3 style="color: var(--reebok-red); margin-bottom: 1rem;">Cuota de Mercado México 2026</h3>
                     <div class="chart-wrapper">
                         <canvas id="marketShareChart"></canvas>
                     </div>
                 </div>
-
+ 
                 <div class="chart-container">
                     <h3 style="color: var(--reebok-red); margin-bottom: 1rem;">Crecimiento Anual México (%)</h3>
                     <div class="chart-wrapper">
@@ -539,7 +539,7 @@
                     </div>
                 </div>
             </section>
-
+ 
             <!-- Noticias México -->
             <section id="noticias" class="section">
                 <h2 class="section-title">📰 Noticias México (Últimos 6 Meses)</h2>
@@ -558,7 +558,7 @@
                                 <span class="tag">Retail</span>
                             </div>
                         </a>
-
+ 
                         <a href="https://mexicobusiness.news/ecommerce/news/despite-e-commerce-surge-physical-stores-still-dominate-reebok" target="_blank" class="news-card">
                             <div class="news-date">22 Nov 2023 | Mexico Business News</div>
                             <div class="news-title">Reebok: las tiendas físicas siguen dominando en México</div>
@@ -568,7 +568,7 @@
                                 <span class="tag">Omnicanal</span>
                             </div>
                         </a>
-
+ 
                         <a href="https://mexicobusiness.news/ecommerce/news/reebok-boosts-reach-mexico-citys-largest-store" target="_blank" class="news-card">
                             <div class="news-date">24 Nov 2024 | Mexico Business News</div>
                             <div class="news-title">Reebok impulsa alcance con la tienda más grande de CDMX</div>
@@ -578,7 +578,7 @@
                                 <span class="tag">CDMX</span>
                             </div>
                         </a>
-
+ 
                         <a href="https://www.retaildive.com/news/reebok-first-full-line-store-mexico-Forum-Buenavista/691380/" target="_blank" class="news-card">
                             <div class="news-date">20 Ago 2023 | Retail Dive</div>
                             <div class="news-title">Reebok abre primera tienda full-line en México</div>
@@ -589,7 +589,7 @@
                             </div>
                         </a>
                     </div>
-
+ 
                     <!-- Nike & Adidas México -->
                     <div class="news-column">
                         <h3>Nike & Adidas México</h3>
@@ -604,7 +604,7 @@
                                 <span class="tag">Liga MX</span>
                             </div>
                         </a>
-
+ 
                         <a href="https://www.estadiodeportes.mx/mundial/fecha-confirmada-cuando-sale-a-la-venta-la-nueva-playera-de-mexico-para-el-mundial-2026-2" target="_blank" class="news-card">
                             <div class="news-date">5 Mar 2026 | Estadio Deportes</div>
                             <div class="news-title">Adidas lanza playera visitante de México para el Mundial</div>
@@ -614,7 +614,7 @@
                                 <span class="tag">Mundial 2026</span>
                             </div>
                         </a>
-
+ 
                         <a href="https://www.marca.com/mx/futbol/seleccion-mx/2026/01/08/695efeb8ca4741f9698b45d8.html" target="_blank" class="news-card">
                             <div class="news-date">8 Ene 2026 | Marca</div>
                             <div class="news-title">Adidas presenta colección alternativa de México</div>
@@ -624,7 +624,7 @@
                                 <span class="tag">Merchandising</span>
                             </div>
                         </a>
-
+ 
                         <a href="https://mx.investing.com/news/transcripts/nike-supera-expectativas-en-2t-2026-acciones-suben-93CH-3417847" target="_blank" class="news-card">
                             <div class="news-date">18 Dic 2025 | Investing.com</div>
                             <div class="news-title">Nike supera expectativas en 2T 2026</div>
@@ -635,7 +635,7 @@
                             </div>
                         </a>
                     </div>
-
+ 
                     <!-- Puma, UA & NB México -->
                     <div class="news-column">
                         <h3>Puma, Under Armour & New Balance</h3>
@@ -649,7 +649,7 @@
                                 <span class="tag">Reestructura</span>
                             </div>
                         </a>
-
+ 
                         <a href="https://elceo.com/negocios/puma-apuesta-por-hyrox-y-el-training-para-impulsar-de-nuevo-sus-ventas/" target="_blank" class="news-card">
                             <div class="news-date">25 Feb 2026 | El CEO</div>
                             <div class="news-title">Puma apuesta por Hyrox y training para recuperarse</div>
@@ -659,7 +659,7 @@
                                 <span class="tag">Training</span>
                             </div>
                         </a>
-
+ 
                         <a href="https://www.newbalance.com/es/lanzamientos-de-nb/" target="_blank" class="news-card">
                             <div class="news-date">7 Mar 2026 | New Balance</div>
                             <div class="news-title">New Balance lanza colección Primavera/Verano 2026</div>
@@ -669,7 +669,7 @@
                                 <span class="tag">Lanzamientos</span>
                             </div>
                         </a>
-
+ 
                         <a href="https://www.modaes.com/empresas/under-armour-sigue-en-la-carrera-por-el-mercado-mexicano-cuatro-goles-hasta-fin-de-ano" target="_blank" class="news-card">
                             <div class="news-date">29 Oct 2018 | Modaes (Ref.)</div>
                             <div class="news-title">Under Armour mantiene ~20 tiendas en México</div>
@@ -682,7 +682,7 @@
                     </div>
                 </div>
             </section>
-
+ 
             <!-- Reebok vs Competencia -->
             <section id="comparativa" class="section">
                 <h2 class="section-title">⚔️ Reebok vs Competencia en México</h2>
@@ -758,7 +758,7 @@
                         </tbody>
                     </table>
                 </div>
-
+ 
                 <div class="chart-container">
                     <h3 style="color: var(--reebok-red); margin-bottom: 1rem;">Número de Tiendas por Marca en México</h3>
                     <div class="chart-wrapper">
@@ -766,7 +766,7 @@
                     </div>
                 </div>
             </section>
-
+ 
             <!-- FODA Reebok México -->
             <section id="foda" class="section">
                 <h2 class="section-title">💪 FODA Reebok México 2026</h2>
@@ -784,7 +784,7 @@
                             <li>Presencia multicanal con tiendas propias, socios departamentales y e-commerce oficial en consolidación.</li>
                         </ul>
                     </div>
-
+ 
                     <div class="swot-card">
                         <h3>Oportunidades</h3>
                         <ul>
@@ -796,7 +796,7 @@
                             <li>Meta de ubicar a México entre los mercados top globales, lo que asegura foco corporativo y recursos para acelerar inversión.</li>
                         </ul>
                     </div>
-
+ 
                     <div class="swot-card">
                         <h3>Debilidades</h3>
                         <ul>
@@ -808,7 +808,7 @@
                             <li>Percepción de marca en reconstrucción después de años con menor visibilidad frente a Nike y Adidas.</li>
                         </ul>
                     </div>
-
+ 
                     <div class="swot-card">
                         <h3>Amenazas</h3>
                         <ul>
@@ -823,7 +823,7 @@
                     </div>
                 </div>
             </section>
-
+ 
             <!-- Tiendas & E-commerce -->
             <section id="tiendas" class="section">
                 <h2 class="section-title">🛍️ Tiendas &amp; E-commerce (México)</h2>
@@ -850,7 +850,7 @@
                         <div class="kpi-trend trend-neutral">CDMX, GDL, MTY y ciudades estratégicas</div>
                     </div>
                 </div>
-
+ 
                 <div class="table-container" style="margin-bottom: 2rem;">
                     <h3 style="color: var(--reebok-red); margin-bottom: 1rem;">Tiendas Full Price</h3>
                     <table>
@@ -916,7 +916,7 @@
                         </tbody>
                     </table>
                 </div>
-
+ 
                 <div class="table-container" style="margin-bottom: 2rem;">
                     <h3 style="color: var(--reebok-red); margin-bottom: 1rem;">Outlets Clave</h3>
                     <table>
@@ -962,7 +962,7 @@
                         </tbody>
                     </table>
                 </div>
-
+ 
                 <div class="highlight-list">
                     <h3 style="color: var(--reebok-red); margin-bottom: 1rem;">E-commerce y Distribución Digital</h3>
                     <ul>
@@ -973,7 +973,7 @@
                         <li><strong>Estrategia Digital 2026:</strong> Integración omnicanal, mejor trazabilidad de inventario, uso de datos y tecnología para apoyar decisiones comerciales.</li>
                     </ul>
                 </div>
-
+ 
                 <div class="chart-container">
                     <h3 style="color: var(--reebok-red); margin-bottom: 1rem;">Distribución de Tiendas Reebok México</h3>
                     <div class="chart-wrapper">
@@ -981,7 +981,7 @@
                     </div>
                 </div>
             </section>
-
+ 
             <!-- Tabla Maestra México -->
             <section id="tabla-maestra" class="section">
                 <h2 class="section-title">📊 Tabla Maestra México</h2>
@@ -1064,7 +1064,7 @@
                         </tbody>
                     </table>
                 </div>
-
+ 
                 <div class="chart-container">
                     <h3 style="color: var(--reebok-red); margin-bottom: 1rem;">Panorama Competitivo México 2026</h3>
                     <div class="chart-wrapper">
@@ -1074,7 +1074,7 @@
             </section>
         </main>
     </div>
-
+ 
     <script>
         // Smooth scrolling
         document.querySelectorAll('.nav-link').forEach(link => {
@@ -1091,7 +1091,7 @@
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
-
+ 
         // Market Share Chart
         const marketShareCtx = document.getElementById('marketShareChart').getContext('2d');
         new Chart(marketShareCtx, {
@@ -1129,7 +1129,7 @@
                 }
             }
         });
-
+ 
         // Growth Chart
         const growthCtx = document.getElementById('growthChart').getContext('2d');
         new Chart(growthCtx, {
@@ -1168,7 +1168,7 @@
                 }
             }
         });
-
+ 
         // Stores Chart
         const storesCtx = document.getElementById('storesChart').getContext('2d');
         new Chart(storesCtx, {
@@ -1208,7 +1208,7 @@
                 }
             }
         });
-
+ 
         // Stores Distribution Chart
         const storesDistCtx = document.getElementById('storesDistChart').getContext('2d');
         new Chart(storesDistCtx, {
@@ -1238,7 +1238,7 @@
                 }
             }
         });
-
+ 
         // Radar Chart
         const radarCtx = document.getElementById('radarChart').getContext('2d');
         new Chart(radarCtx, {
@@ -1288,3 +1288,4 @@
     </script>
 </body>
 </html>
+ 
