@@ -1,1739 +1,1388 @@
 <!DOCTYPE html>
 <html lang="es" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reebok Workspace México 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Barlow+Condensed:wght@500;700;900&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
-<style>
-/* ===========================
-   DESIGN TOKENS
-   =========================== */
-:root {
-  --reebok-red: #CC0000;
-  --reebok-red-hover: #a80000;
-  --reebok-red-glow: rgba(204,0,0,0.18);
-
-  --color-bg:             #0d0d0d;
-  --color-surface:        #141414;
-  --color-surface-2:      #1a1a1a;
-  --color-surface-3:      #212121;
-  --color-surface-hover:  #272727;
-  --color-border:         rgba(255,255,255,0.08);
-  --color-border-strong:  rgba(255,255,255,0.14);
-
-  --color-text:           #f0f0f0;
-  --color-text-muted:     #8a8a8a;
-  --color-text-faint:     #555;
-  --color-text-inverse:   #0d0d0d;
-
-  --success: #22c55e;
-  --warning: #f59e0b;
-  --danger:  #ef4444;
-  --info:    #3b82f6;
-
-  --font-display: 'Barlow Condensed', 'Impact', sans-serif;
-  --font-body:    'Inter', 'Segoe UI', sans-serif;
-
-  --text-xs:   clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-  --text-sm:   clamp(0.8rem,  0.75rem + 0.3vw, 0.9375rem);
-  --text-base: clamp(0.9375rem, 0.9rem + 0.2vw, 1rem);
-  --text-lg:   clamp(1.1rem, 1rem + 0.5vw, 1.4rem);
-  --text-xl:   clamp(1.4rem, 1.2rem + 1vw, 2rem);
-  --text-2xl:  clamp(1.8rem, 1.4rem + 1.5vw, 2.8rem);
-
-  --space-1: 0.25rem; --space-2: 0.5rem;  --space-3: 0.75rem; --space-4: 1rem;
-  --space-5: 1.25rem; --space-6: 1.5rem;  --space-8: 2rem;    --space-10: 2.5rem;
-  --space-12: 3rem;   --space-16: 4rem;
-
-  --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px; --radius-xl: 16px;
-  --sidebar-w: 260px;
-  --transition: 180ms cubic-bezier(0.16,1,0.3,1);
-}
-
-/* ===========================
-   BASE
-   =========================== */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-font-smoothing: antialiased; }
-body {
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  color: var(--color-text);
-  background: var(--color-bg);
-  line-height: 1.65;
-  min-height: 100vh;
-}
-img { display: block; max-width: 100%; height: auto; }
-table { border-collapse: collapse; width: 100%; }
-button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
-a { color: inherit; text-decoration: none; }
-
-/* ===========================
-   LAYOUT
-   =========================== */
-.workspace {
-  display: flex;
-  min-height: 100vh;
-}
-
-/* ===========================
-   SIDEBAR
-   =========================== */
-.sidebar {
-  width: var(--sidebar-w);
-  background: var(--color-surface);
-  border-right: 1px solid var(--color-border);
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 0; left: 0;
-  height: 100vh;
-  overflow-y: auto;
-  z-index: 100;
-  transition: transform var(--transition);
-}
-
-.sidebar-logo {
-  padding: var(--space-6) var(--space-5);
-  border-bottom: 1px solid var(--color-border);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-2);
-}
-
-.sidebar-logo img {
-  width: 130px;
-  height: auto;
-  filter: brightness(0) invert(1);
-}
-
-.sidebar-badge {
-  font-size: var(--text-xs);
-  font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--reebok-red);
-  text-transform: uppercase;
-}
-
-.sidebar-update {
-  font-size: var(--text-xs);
-  color: var(--color-text-faint);
-  margin-top: var(--space-1);
-}
-
-.nav-label {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text-faint);
-  padding: var(--space-5) var(--space-5) var(--space-2);
-}
-
-.nav-menu { list-style: none; padding: 0 var(--space-3); }
-.nav-item { margin-bottom: 2px; }
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-3);
-  border-radius: var(--radius-md);
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  transition: all var(--transition);
-  cursor: pointer;
-  border: 1px solid transparent;
-}
-
-.nav-link:hover {
-  background: var(--color-surface-2);
-  color: var(--color-text);
-}
-
-.nav-link.active {
-  background: var(--reebok-red-glow);
-  color: var(--color-text);
-  border-color: rgba(204,0,0,0.3);
-}
-
-.nav-link .nav-icon {
-  width: 18px;
-  text-align: center;
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-
-/* ===========================
-   MAIN CONTENT
-   =========================== */
-.main {
-  margin-left: var(--sidebar-w);
-  flex: 1;
-  min-height: 100vh;
-}
-
-.topbar {
-  position: sticky;
-  top: 0;
-  background: rgba(13,13,13,0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--color-border);
-  padding: var(--space-4) var(--space-8);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 50;
-}
-
-.topbar-title {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
-.topbar-title span { color: var(--reebok-red); }
-
-.topbar-meta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-}
-
-.live-badge {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--text-xs);
-  color: var(--success);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.live-dot {
-  width: 7px; height: 7px;
-  background: var(--success);
-  border-radius: 50%;
-  animation: pulse-dot 2s infinite;
-}
-
-@keyframes pulse-dot {
-  0%,100% { opacity:1; transform:scale(1); }
-  50%      { opacity:0.5; transform:scale(1.4); }
-}
-
-.topbar-date {
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
-}
-
-.content {
-  padding: var(--space-8);
-  max-width: 1440px;
-}
-
-/* ===========================
-   SECTIONS
-   =========================== */
-.section {
-  margin-bottom: var(--space-16);
-  scroll-margin-top: 80px;
-}
-
-.section-header {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-3);
-  margin-bottom: var(--space-6);
-  padding-bottom: var(--space-4);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.section-title {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.section-title .accent { color: var(--reebok-red); }
-
-.section-tag {
-  font-size: var(--text-xs);
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-faint);
-  border: 1px solid var(--color-border);
-  padding: 2px var(--space-2);
-  border-radius: var(--radius-sm);
-}
-
-/* ===========================
-   KPI CARDS
-   =========================== */
-.kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: var(--space-4);
-  margin-bottom: var(--space-6);
-}
-
-.kpi-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-5);
-  position: relative;
-  overflow: hidden;
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-
-.kpi-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--reebok-red);
-}
-
-.kpi-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-}
-
-.kpi-label {
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-2);
-}
-
-.kpi-value {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  font-weight: 900;
-  letter-spacing: -0.01em;
-  line-height: 1;
-  margin-bottom: var(--space-2);
-}
-
-.kpi-sub {
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
-  display: flex;
-  align-items: center;
-  gap: var(--space-1);
-}
-
-.trend-up   { color: var(--success); }
-.trend-down { color: var(--danger); }
-.trend-flat { color: var(--warning); }
-
-/* ===========================
-   HIGHLIGHTS LIST
-   =========================== */
-.highlights {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-6);
-}
-
-.highlights-title {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--reebok-red);
-  margin-bottom: var(--space-5);
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.hl-list { list-style: none; }
-
-.hl-item {
-  display: flex;
-  gap: var(--space-4);
-  padding: var(--space-4) 0;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.hl-item:last-child { border-bottom: none; }
-
-.hl-icon {
-  font-size: 1.25rem;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.hl-text { font-size: var(--text-sm); line-height: 1.6; }
-.hl-text strong { color: var(--color-text); font-weight: 600; }
-
-/* ===========================
-   TABLES
-   =========================== */
-.table-wrap {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-
-.table-head {
-  padding: var(--space-4) var(--space-5);
-  border-bottom: 1px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.table-head-title {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.table-scroll { overflow-x: auto; }
-
-table th {
-  background: var(--color-surface-2);
-  padding: var(--space-3) var(--space-4);
-  text-align: left;
-  font-size: var(--text-xs);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  white-space: nowrap;
-  border-bottom: 1px solid var(--color-border);
-}
-
-table td {
-  padding: var(--space-4);
-  border-bottom: 1px solid var(--color-border);
-  font-size: var(--text-sm);
-  vertical-align: middle;
-}
-
-table tr:last-child td { border-bottom: none; }
-table tr:hover td { background: var(--color-surface-hover); }
-
-.row-reebok td { background: rgba(204,0,0,0.06); }
-.row-reebok:hover td { background: rgba(204,0,0,0.1) !important; }
-
-/* ===========================
-   BADGES
-   =========================== */
-.badge {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.badge-success { background: rgba(34,197,94,0.15);  color: var(--success);  border: 1px solid rgba(34,197,94,0.3);  }
-.badge-warning { background: rgba(245,158,11,0.15); color: var(--warning);  border: 1px solid rgba(245,158,11,0.3); }
-.badge-danger  { background: rgba(239,68,68,0.15);  color: var(--danger);   border: 1px solid rgba(239,68,68,0.3);  }
-.badge-info    { background: rgba(59,130,246,0.15); color: var(--info);     border: 1px solid rgba(59,130,246,0.3); }
-.badge-red     { background: rgba(204,0,0,0.18);    color: #ff6b6b;         border: 1px solid rgba(204,0,0,0.35);   }
-
-/* ===========================
-   NEWS
-   =========================== */
-.news-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
-}
-
-.news-col {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-
-.news-col-header {
-  padding: var(--space-4) var(--space-5);
-  border-bottom: 1px solid var(--color-border);
-  background: var(--color-surface-2);
-}
-
-.news-col-title {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.news-col-title.red   { color: var(--reebok-red); }
-.news-col-title.blue  { color: #60a5fa; }
-.news-col-title.amber { color: var(--warning); }
-
-.news-body { padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3); }
-
-.news-card {
-  display: block;
-  background: var(--color-surface-2);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-4);
-  transition: transform var(--transition), border-color var(--transition), background var(--transition);
-}
-
-.news-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-border-strong);
-  background: var(--color-surface-3);
-}
-
-.news-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--space-2);
-}
-
-.news-date { font-size: var(--text-xs); color: var(--color-text-faint); }
-.news-source {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--reebok-red);
-  background: var(--reebok-red-glow);
-  padding: 1px 6px;
-  border-radius: 3px;
-}
-
-.news-title {
-  font-size: var(--text-sm);
-  font-weight: 600;
-  line-height: 1.4;
-  color: var(--color-text);
-  margin-bottom: var(--space-2);
-}
-
-.news-summary {
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
-  line-height: 1.6;
-  margin-bottom: var(--space-2);
-}
-
-.news-tags { display: flex; gap: var(--space-1); flex-wrap: wrap; }
-.tag {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  background: var(--color-surface-3);
-  color: var(--color-text-muted);
-  border: 1px solid var(--color-border);
-  padding: 2px 7px;
-  border-radius: 3px;
-}
-
-/* ===========================
-   SWOT
-   =========================== */
-.swot-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-}
-
-.swot-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-5);
-}
-
-.swot-label {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: var(--space-4);
-}
-
-.swot-label.f { color: var(--success); }
-.swot-label.o { color: var(--info); }
-.swot-label.d { color: var(--warning); }
-.swot-label.a { color: var(--danger); }
-
-.swot-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-3); }
-.swot-item {
-  display: flex;
-  gap: var(--space-3);
-  font-size: var(--text-sm);
-  line-height: 1.55;
-  color: var(--color-text-muted);
-}
-.swot-item::before { content: '–'; color: var(--color-text-faint); flex-shrink: 0; margin-top: 1px; }
-
-/* ===========================
-   CHARTS
-   =========================== */
-.chart-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: var(--space-5);
-  margin-bottom: var(--space-5);
-}
-
-.chart-box {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-5);
-}
-
-.chart-box-title {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-4);
-}
-
-.chart-box-title .highlight { color: var(--color-text); }
-
-.chart-container { position: relative; width: 100%; }
-.chart-container.h280 { height: 280px; }
-.chart-container.h320 { height: 320px; }
-.chart-container.h350 { height: 350px; }
-
-/* ===========================
-   E-COMMERCE BLOCK
-   =========================== */
-.ecomm-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: var(--space-4);
-  margin-top: var(--space-5);
-}
-
-.ecomm-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-5);
-}
-
-.ecomm-icon { font-size: 1.8rem; margin-bottom: var(--space-3); }
-.ecomm-name { font-weight: 700; font-size: var(--text-sm); margin-bottom: var(--space-1); }
-.ecomm-desc { font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6; }
-
-/* ===========================
-   DIVIDER
-   =========================== */
-.divider {
-  height: 1px;
-  background: var(--color-border);
-  margin: var(--space-6) 0;
-}
-
-/* ===========================
-   MOBILE HAMBURGER
-   =========================== */
-.hamburger {
-  display: none;
-  position: fixed;
-  top: var(--space-4);
-  left: var(--space-4);
-  z-index: 200;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-2) var(--space-3);
-  font-size: 1.2rem;
-  color: var(--color-text);
-  cursor: pointer;
-}
-
-.sidebar-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  z-index: 90;
-}
-
-/* ===========================
-   RESPONSIVE
-   =========================== */
-@media (max-width: 1100px) {
-  .news-grid { grid-template-columns: 1fr; }
-  .chart-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 900px) {
-  .swot-grid { grid-template-columns: 1fr; }
-  .ecomm-grid { grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-  }
-  .sidebar.open {
-    transform: translateX(0);
-  }
-  .sidebar-overlay.open { display: block; }
-  .hamburger { display: block; }
-  .main { margin-left: 0; }
-  .content { padding: var(--space-4); }
-  .topbar { padding: var(--space-4); padding-left: 3.5rem; }
-  .topbar-title { font-size: var(--text-lg); }
-  .topbar-meta { display: none; }
-  .kpi-grid { grid-template-columns: 1fr 1fr; }
-  .ecomm-grid { grid-template-columns: 1fr; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reebok Workspace México 2026</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-font-smoothing: antialiased; }
+
+        :root {
+            --reebok-red: #C8102E;
+            --reebok-red-hover: #a50d25;
+            --reebok-red-glow: rgba(200, 16, 46, 0.15);
+            --bg: #0d0d0d;
+            --surface: #161616;
+            --surface-2: #1e1e1e;
+            --surface-3: #252525;
+            --border: rgba(255,255,255,0.08);
+            --text: #f0f0f0;
+            --text-muted: #8a8a8a;
+            --text-faint: #555;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #3b82f6;
+            --sidebar-width: 260px;
+            --font-display: 'Barlow Condensed', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* ── LAYOUT ── */
+        .layout { display: flex; min-height: 100vh; }
+
+        /* ── SIDEBAR ── */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+        .sidebar-logo {
+            padding: 24px 20px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .sidebar-logo img { width: 140px; height: auto; display: block; }
+        .sidebar-meta {
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .sidebar-meta .update-date {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .sidebar-meta .update-date span { color: var(--reebok-red); font-weight: 600; }
+        nav { padding: 16px 0; }
+        .nav-section-label {
+            padding: 6px 20px 4px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-faint);
+            font-weight: 600;
+        }
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            border-left: 2px solid transparent;
+            transition: all 0.18s ease;
+        }
+        .nav-link:hover, .nav-link.active {
+            background: var(--surface-2);
+            color: var(--text);
+            border-left-color: var(--reebok-red);
+        }
+        .nav-link .nav-icon { font-size: 15px; width: 18px; text-align: center; }
+        .sidebar-footer {
+            margin-top: auto;
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+        }
+        .brand-tagline {
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--reebok-red);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        /* ── MAIN ── */
+        .main { flex: 1; min-width: 0; }
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(13,13,13,0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .topbar-title {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text);
+        }
+        .topbar-title span { color: var(--reebok-red); }
+        .topbar-right { display: flex; align-items: center; gap: 12px; }
+        .badge-update {
+            background: var(--reebok-red-glow);
+            border: 1px solid rgba(200,16,46,0.3);
+            color: var(--reebok-red);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* ── CONTENT ── */
+        .content { padding: 32px; max-width: 1400px; }
+        .section { margin-bottom: 56px; scroll-margin-top: 80px; }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .section-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--reebok-red-glow);
+            border: 1px solid rgba(200,16,46,0.25);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 26px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text);
+        }
+        .section-title span { color: var(--reebok-red); }
+        .section-subtitle { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+        /* ── KPI CARDS ── */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .kpi-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--reebok-red);
+        }
+        .kpi-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        .kpi-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 8px; }
+        .kpi-value { font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 6px; }
+        .kpi-trend { font-size: 12px; display: flex; align-items: center; gap: 4px; }
+        .trend-up { color: var(--success); }
+        .trend-down { color: var(--danger); }
+        .trend-neutral { color: var(--warning); }
+
+        /* ── HIGHLIGHT LIST ── */
+        .highlight-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+        .highlight-card-header {
+            padding: 16px 20px;
+            background: rgba(200,16,46,0.06);
+            border-bottom: 1px solid rgba(200,16,46,0.2);
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--reebok-red);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .highlight-list { list-style: none; padding: 0; }
+        .highlight-list li {
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border);
+            font-size: 13.5px;
+            line-height: 1.55;
+            display: flex;
+            gap: 12px;
+        }
+        .highlight-list li:last-child { border-bottom: none; }
+        .highlight-list .bullet { color: var(--reebok-red); font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+        /* ── TABLES ── */
+        .table-wrapper {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .table-wrapper-header {
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+        }
+        .table-scroll { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        thead tr { background: var(--surface-2); }
+        th {
+            padding: 11px 16px;
+            text-align: left;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+        td { padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:hover { background: rgba(255,255,255,0.025); }
+        .row-reebok { background: rgba(200,16,46,0.05); }
+        .row-reebok:hover { background: rgba(200,16,46,0.08) !important; }
+
+        /* ── BADGES ── */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+        }
+        .badge-success { background: rgba(34,197,94,0.12); color: var(--success); border: 1px solid rgba(34,197,94,0.25); }
+        .badge-warning { background: rgba(245,158,11,0.12); color: var(--warning); border: 1px solid rgba(245,158,11,0.25); }
+        .badge-danger  { background: rgba(239,68,68,0.12);  color: var(--danger);  border: 1px solid rgba(239,68,68,0.25); }
+        .badge-info    { background: rgba(59,130,246,0.12); color: var(--info);    border: 1px solid rgba(59,130,246,0.25); }
+        .badge-red     { background: var(--reebok-red-glow); color: var(--reebok-red); border: 1px solid rgba(200,16,46,0.3); }
+
+        /* ── CHARTS ── */
+        .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 20px; margin-bottom: 24px; }
+        .chart-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+        }
+        .chart-card-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .chart-wrap { position: relative; height: 280px; }
+
+        /* ── NEWS ── */
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .news-column {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+        .news-column-header {
+            padding: 14px 18px;
+            background: var(--surface-2);
+            border-bottom: 1px solid var(--border);
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--reebok-red);
+        }
+        .news-list { padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+        .news-card {
+            display: block;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 14px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.18s ease;
+            position: relative;
+        }
+        .news-card:hover { background: var(--surface-2); border-color: rgba(200,16,46,0.3); transform: translateX(3px); }
+        .news-date { font-size: 11px; color: var(--text-faint); margin-bottom: 5px; }
+        .news-title { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.4; margin-bottom: 6px; }
+        .news-summary { font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px; }
+        .news-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+        .tag {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 2px 7px;
+            border-radius: 3px;
+            background: rgba(200,16,46,0.12);
+            color: var(--reebok-red);
+            border: 1px solid rgba(200,16,46,0.2);
+        }
+        .tag-alt { background: rgba(255,255,255,0.06); color: var(--text-muted); border-color: var(--border); }
+
+        /* ── SWOT ── */
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .swot-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+        .swot-card-header {
+            padding: 12px 18px;
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .swot-f .swot-card-header { background: rgba(34,197,94,0.08); color: var(--success); }
+        .swot-o .swot-card-header { background: rgba(59,130,246,0.08); color: var(--info); }
+        .swot-d .swot-card-header { background: rgba(245,158,11,0.08); color: var(--warning); }
+        .swot-a .swot-card-header { background: rgba(239,68,68,0.08); color: var(--danger); }
+        .swot-items { padding: 4px 0; }
+        .swot-item {
+            padding: 9px 18px;
+            border-bottom: 1px solid var(--border);
+            font-size: 12.5px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            display: flex;
+            gap: 8px;
+        }
+        .swot-item:last-child { border-bottom: none; }
+        .swot-bullet { color: var(--reebok-red); flex-shrink: 0; margin-top: 1px; font-size: 14px; }
+        .swot-f .swot-bullet { color: var(--success); }
+        .swot-o .swot-bullet { color: var(--info); }
+        .swot-d .swot-bullet { color: var(--warning); }
+        .swot-a .swot-bullet { color: var(--danger); }
+
+        /* ── STORES ── */
+        .stores-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+        .stores-kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+
+        /* ── ECOMMERCE ── */
+        .ecom-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+        .ecom-header {
+            padding: 14px 20px;
+            background: var(--surface-2);
+            border-bottom: 1px solid var(--border);
+            font-family: var(--font-display);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+        }
+        .ecom-items { padding: 0; list-style: none; }
+        .ecom-item {
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+            display: flex;
+            gap: 10px;
+        }
+        .ecom-item:last-child { border-bottom: none; }
+        .ecom-bullet { color: var(--reebok-red); flex-shrink: 0; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; flex-direction: row; flex-wrap: wrap; }
+            .sidebar-footer { display: none; }
+            nav { display: flex; flex-wrap: wrap; padding: 8px; gap: 4px; flex: 1; }
+            .nav-link { padding: 7px 12px; font-size: 12px; border-left: none; border-bottom: 2px solid transparent; }
+            .nav-link:hover, .nav-link.active { border-left-color: transparent; border-bottom-color: var(--reebok-red); }
+            .nav-section-label { display: none; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .stores-grid { grid-template-columns: 1fr; }
+            .stores-kpi-row { grid-template-columns: 1fr 1fr; }
+            .chart-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .content { padding: 16px; }
+            .kpi-grid { grid-template-columns: 1fr 1fr; }
+            .stores-kpi-row { grid-template-columns: 1fr 1fr; }
+            .topbar { padding: 10px 16px; }
+            .section-title { font-size: 20px; }
+        }
+    </style>
 </head>
 <body>
+<div class="layout">
 
-<!-- Mobile overlay -->
-<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
-
-<!-- Hamburger -->
-<button class="hamburger" onclick="toggleSidebar()" aria-label="Abrir menú">☰</button>
-
-<div class="workspace">
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Reebok_logo_2019.svg/1200px-Reebok_logo_2019.svg.png"
-           alt="Reebok" width="130" height="40" loading="lazy">
-      <div class="sidebar-badge">Workspace México</div>
-      <div class="sidebar-update">🗓 Lunes 6 Abr 2026 · 7:00 AM CDMX</div>
-    </div>
-
-    <div class="nav-label">Navegación</div>
-    <nav>
-      <ul class="nav-menu">
-        <li class="nav-item">
-          <a href="#inicio" class="nav-link active" data-section="inicio">
-            <span class="nav-icon">🏠</span> Inicio México
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#scoreboard" class="nav-link" data-section="scoreboard">
-            <span class="nav-icon">🏆</span> Scoreboard
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#noticias" class="nav-link" data-section="noticias">
-            <span class="nav-icon">📰</span> Noticias México
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#comparativa" class="nav-link" data-section="comparativa">
-            <span class="nav-icon">⚔️</span> vs Competencia
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#foda" class="nav-link" data-section="foda">
-            <span class="nav-icon">💡</span> FODA
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#tiendas" class="nav-link" data-section="tiendas">
-            <span class="nav-icon">🛍️</span> Tiendas & E-commerce
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#tabla-maestra" class="nav-link" data-section="tabla-maestra">
-            <span class="nav-icon">📊</span> Tabla Maestra
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </aside>
-
-  <!-- MAIN -->
-  <div class="main">
-
-    <!-- TOPBAR -->
-    <div class="topbar">
-      <div class="topbar-title">Reebok <span>MX</span> Dashboard</div>
-      <div class="topbar-meta">
-        <div class="live-badge">
-          <div class="live-dot"></div>
-          Actualización semanal
+    <!-- ══ SIDEBAR ══ -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="data:image/jpeg;base64,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" alt="Reebok" loading="lazy" style="width:160px;height:auto;display:block;" />
         </div>
-        <div class="topbar-date">Lunes 6 de Abril, 2026 · 7:00 AM CDMX</div>
-      </div>
-    </div>
-
-    <div class="content">
-
-      <!-- ================================
-           SECCIÓN 1: INICIO MÉXICO
-           ================================ -->
-      <section id="inicio" class="section">
-        <div class="section-header">
-          <div class="section-title">Inicio <span class="accent">México</span></div>
-          <div class="section-tag">KPIs Ejecutivos</div>
+        <div class="sidebar-meta">
+            <div class="update-date">Actualización: <span>Lun 20 Abr 2026</span></div>
+            <div class="update-date" style="margin-top:3px;">Próxima: Lun 27 Abr · 7:00 AM</div>
         </div>
-
-        <div class="kpi-grid">
-          <div class="kpi-card">
-            <div class="kpi-label">Cuota de Mercado MX</div>
-            <div class="kpi-value">4–5.5%</div>
-            <div class="kpi-sub trend-up">↑ Meta: 10–12% hacia 2026</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Total Tiendas MX</div>
-            <div class="kpi-value">16+</div>
-            <div class="kpi-sub trend-up">↑ Propias + plan 3-4 más en 2026</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Crecimiento 2024</div>
-            <div class="kpi-value">+80%</div>
-            <div class="kpi-sub trend-up">↑ La mayor inversión en 20 años</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Meta Crecimiento 2026</div>
-            <div class="kpi-value">Doble dígito</div>
-            <div class="kpi-sub trend-flat">▶ Foco en training + running</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Tiendas Full Price</div>
-            <div class="kpi-value">4+</div>
-            <div class="kpi-sub">Forum, Mitikah, Mundo E, Parque Tepeyac</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Primer Outlet CDMX</div>
-            <div class="kpi-value">Abr 2026</div>
-            <div class="kpi-sub trend-up">↑ Plaza Central — plan 25 outlets / 4 años</div>
-          </div>
+        <nav>
+            <div class="nav-section-label">Dashboard</div>
+            <a href="#inicio"         class="nav-link active"><span class="nav-icon">🏠</span>Inicio México</a>
+            <a href="#scoreboard"     class="nav-link"><span class="nav-icon">🏆</span>Scoreboard</a>
+            <a href="#noticias"       class="nav-link"><span class="nav-icon">📰</span>Noticias México</a>
+            <div class="nav-section-label">Análisis</div>
+            <a href="#comparativa"    class="nav-link"><span class="nav-icon">⚔️</span>Reebok vs Comp.</a>
+            <a href="#foda"           class="nav-link"><span class="nav-icon">💡</span>FODA Reebok MX</a>
+            <a href="#tiendas"        class="nav-link"><span class="nav-icon">🛍️</span>Tiendas &amp; E-com</a>
+            <div class="nav-section-label">Resumen</div>
+            <a href="#tabla-maestra"  class="nav-link"><span class="nav-icon">📊</span>Tabla Maestra</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="brand-tagline">Sport Is Everything</div>
+            <div style="font-size:11px;color:var(--text-faint);margin-top:4px;">Reebok México · Q2 2026</div>
         </div>
+    </aside>
 
-        <div class="highlights">
-          <div class="highlights-title">🔥 Qué está pasando en México — Semana del 6 Abr 2026</div>
-          <ul class="hl-list">
-            <li class="hl-item">
-              <span class="hl-icon">🏪</span>
-              <span class="hl-text"><strong>Primer outlet en CDMX (5 abr 2026):</strong> Reebok inauguró su primera tienda outlet en Plaza Central, Iztapalapa. Es el punto de partida del plan para abrir 25 outlets en 4 años, consolidando el formato descuento en la estrategia de expansión nacional.</span>
-            </li>
-            <li class="hl-item">
-              <span class="hl-icon">💰</span>
-              <strong>Mayor inversión en 20 años:</strong>
-              <span class="hl-text">Mario Olvera, Director General de Reebok México, confirmó que la marca ejecuta la inversión más fuerte de las últimas dos décadas: equipos, canales, retail y marketing digital, todo orientado a reconquistar el liderazgo que tuvo en los años 80-90.</span>
-            </li>
-            <li class="hl-item">
-              <span class="hl-icon">⚽</span>
-              <span class="hl-text"><strong>Patrocinio Xolos Tijuana activo (Clausura 2026):</strong> Reebok regresa al fútbol mexicano tras 14 años de ausencia vistiendo a Xolos de Tijuana con uniformes local, visitante y alternativa. Clave para evaluar entrada de tienda a Tijuana.</span>
-            </li>
-            <li class="hl-item">
-              <span class="hl-icon">🏋️</span>
-              <span class="hl-text"><strong>Partner oficial DEKA México:</strong> Alianza con DEKA México para el circuito de fitness funcional, cuyo hito de noviembre 2025 en Expo Santa Fe posicionó a Reebok como referente en training de alto rendimiento. Continúan activaciones en Innovasport.</span>
-            </li>
-            <li class="hl-item">
-              <span class="hl-icon">👟</span>
-              <span class="hl-text"><strong>Entrenamientos Reebok × Innovasport (mar 2026):</strong> Activaciones en Innovasport Parque Delta con el Nano X5 y Nano Gym lideradas por coaches certificados, reforzando la categoría training entre consumidores jóvenes de 18-35 años.</span>
-            </li>
-            <li class="hl-item">
-              <span class="hl-icon">📈</span>
-              <span class="hl-text"><strong>Estrategia 2026 — tecnología y precio competitivo:</strong> El foco es calzado especializado (Nano para training, Floatzig para running) a precios por debajo de Nike y Adidas, con renovación total del textil mediante proveedores clase mundial bajo Authentic Brands Group.</span>
-            </li>
-          </ul>
-        </div>
-      </section>
+    <!-- ══ MAIN ══ -->
+    <div class="main">
 
-      <!-- ================================
-           SECCIÓN 2: SCOREBOARD
-           ================================ -->
-      <section id="scoreboard" class="section">
-        <div class="section-header">
-          <div class="section-title">🏆 Scoreboard <span class="accent">México</span></div>
-          <div class="section-tag">Abr 2026</div>
-        </div>
-
-        <div class="table-wrap" style="margin-bottom: var(--space-6);">
-          <div class="table-head">
-            <div class="table-head-title">Ranking Competitivo — Mercado Deportivo México</div>
-          </div>
-          <div class="table-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Marca</th>
-                  <th>Cuota MX</th>
-                  <th>Momento</th>
-                  <th>Crecimiento MX</th>
-                  <th>Tiendas MX</th>
-                  <th>Equipos Liga MX</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>1</strong></td>
-                  <td><strong>Nike</strong></td>
-                  <td><strong>~40–42%</strong></td>
-                  <td><span class="badge badge-success">Dominante</span></td>
-                  <td class="trend-up">+3–5%</td>
-                  <td>85+</td>
-                  <td>Pumas, América, Cruz Azul; Chivas desde A2026</td>
-                </tr>
-                <tr>
-                  <td><strong>2</strong></td>
-                  <td><strong>Adidas</strong></td>
-                  <td><strong>~33–35%</strong></td>
-                  <td><span class="badge badge-success">Fuerte</span></td>
-                  <td class="trend-up">+2–4%</td>
-                  <td>70+</td>
-                  <td>Selección Mexicana (hasta 2034), varios clubes</td>
-                </tr>
-                <tr>
-                  <td><strong>3</strong></td>
-                  <td><strong>Puma</strong></td>
-                  <td><strong>~7–9%</strong></td>
-                  <td><span class="badge badge-warning">Transición</span></td>
-                  <td class="trend-down">–4%</td>
-                  <td>30+</td>
-                  <td>Chivas (hasta C2026)</td>
-                </tr>
-                <tr class="row-reebok">
-                  <td><strong>4</strong></td>
-                  <td><strong style="color:var(--reebok-red)">Reebok ★</strong></td>
-                  <td><strong>~4–5.5%</strong></td>
-                  <td><span class="badge badge-red">Expansión</span></td>
-                  <td class="trend-up">+80%+ (2024)</td>
-                  <td>16+</td>
-                  <td>Xolos de Tijuana (C2026)</td>
-                </tr>
-                <tr>
-                  <td><strong>5</strong></td>
-                  <td><strong>Under Armour</strong></td>
-                  <td><strong>~4–5%</strong></td>
-                  <td><span class="badge badge-info">Consolidación</span></td>
-                  <td class="trend-flat">+1–2%</td>
-                  <td>20+</td>
-                  <td>Sin acuerdos activos Liga MX</td>
-                </tr>
-                <tr>
-                  <td><strong>6</strong></td>
-                  <td><strong>New Balance</strong></td>
-                  <td><strong>~2–3%</strong></td>
-                  <td><span class="badge badge-info">Crecimiento</span></td>
-                  <td class="trend-up">+7–10%</td>
-                  <td>12+</td>
-                  <td>Sin clubes Liga MX</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="chart-grid">
-          <div class="chart-box">
-            <div class="chart-box-title">Cuota de Mercado <span class="highlight">Estimada</span> — México 2026</div>
-            <div class="chart-container h280">
-              <canvas id="chartCuota"></canvas>
+        <!-- Top bar -->
+        <div class="topbar">
+            <div class="topbar-title">Reebok Workspace <span>México</span> 2026</div>
+            <div class="topbar-right">
+                <div class="badge-update">⚡ Actualizado</div>
+                <div style="font-size:11px;color:var(--text-faint);">Semana del 20 Abr</div>
             </div>
-          </div>
-          <div class="chart-box">
-            <div class="chart-box-title">Crecimiento <span class="highlight">Anual</span> por Marca (%)</div>
-            <div class="chart-container h280">
-              <canvas id="chartCrecimiento"></canvas>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ================================
-           SECCIÓN 3: NOTICIAS
-           ================================ -->
-      <section id="noticias" class="section">
-        <div class="section-header">
-          <div class="section-title">📰 Noticias <span class="accent">México</span></div>
-          <div class="section-tag">Últimos 3–6 meses</div>
         </div>
 
-        <div class="news-grid">
+        <div class="content">
 
-          <!-- COL A: Reebok -->
-          <div class="news-col">
-            <div class="news-col-header">
-              <div class="news-col-title red">Reebok México</div>
-            </div>
-            <div class="news-body">
-
-              <a href="https://realestatemarket.com.mx/noticias/mercado-inmobiliario/comercial/43249-reebok-abrio-su-primera-tienda-outlet-en-la-cdmx" target="_blank" rel="noopener noreferrer" class="news-card">
-                <div class="news-meta">
-                  <span class="news-date">5 Abr 2026</span>
-                  <span class="news-source">Real Estate MX</span>
+            <!-- ══════════════════════════════════
+                 SECCIÓN 1 · INICIO MÉXICO
+            ══════════════════════════════════ -->
+            <section id="inicio" class="section">
+                <div class="section-header">
+                    <div class="section-icon">🏠</div>
+                    <div>
+                        <div class="section-title">Reebok <span>México</span></div>
+                        <div class="section-subtitle">KPIs y situación actual · Abril 2026</div>
+                    </div>
                 </div>
-                <div class="news-title">Reebok abre su primer outlet en CDMX — Plaza Central, Iztapalapa</div>
-                <div class="news-summary">Apertura del primer outlet en la CDMX dentro del plan para sumar 25 unidades en 4 años. José Tawil y Mario Olvera señalan que Plaza Central refuerza la estrategia de posicionarse entre las tres marcas más importantes del mercado mexicano.</div>
-                <div class="news-tags"><span class="tag">Outlet</span><span class="tag">CDMX</span><span class="tag">Expansión</span></div>
-              </a>
 
-              <a href="https://allevents.in/ciudad-de-m%C3%A9xico/entrena-con-reebok-en-innovasport-delta/100001982048101226" target="_blank" rel="noopener noreferrer" class="news-card">
-                <div class="news-meta">
-                  <span class="news-date">11 Mar 2026</span>
-                  <span class="news-source">Innovasport / Reebok</span>
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-label">Cuota de Mercado MX</div>
+                        <div class="kpi-value">5.5%</div>
+                        <div class="kpi-trend trend-up">↑ +1.5 pp vs 2025</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Total Tiendas MX</div>
+                        <div class="kpi-value">18</div>
+                        <div class="kpi-trend trend-up">↑ 16 op. + 2 en apertura</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Crecimiento 2025</div>
+                        <div class="kpi-value">+95%</div>
+                        <div class="kpi-trend trend-up">↑ Ventas duplicadas</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Meta Crecimiento 2026</div>
+                        <div class="kpi-value">+40%</div>
+                        <div class="kpi-trend trend-neutral">→ 3–4 aperturas previstas</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Meta Cuota (3 años)</div>
+                        <div class="kpi-value">15–18%</div>
+                        <div class="kpi-trend trend-up">↑ Top 3 marcas MX</div>
+                    </div>
                 </div>
-                <div class="news-title">Entrena con Reebok × Innovasport Parque Delta</div>
-                <div class="news-summary">Activación de training en Innovasport Parque Delta con el Nano X5 y Nano Gym, conducida por el coach Memo Corral. Parte de la estrategia de presencia en el punto de venta y construcción de comunidad fitness en CDMX.</div>
-                <div class="news-tags"><span class="tag">Training</span><span class="tag">Activación</span><span class="tag">Nano</span></div>
-              </a>
 
-              <a href="https://mx.fashionnetwork.com/news/Reebok-ajusta-su-estrategia-en-mexico-para-acelerar-su-crecimiento,1796608.html" target="_blank" rel="noopener noreferrer" class="news-card">
-                <div class="news-meta">
-                  <span class="news-date">9 Ene 2026</span>
-                  <span class="news-source">Fashion Network MX</span>
+                <div class="highlight-card">
+                    <div class="highlight-card-header">🔥 Lo más relevante en México — Semana del 20 de Abril, 2026</div>
+                    <ul class="highlight-list">
+                        <li>
+                            <span class="bullet">▸</span>
+                            <span><strong>🎭 Nuevo embajador local:</strong> Reebok México incorpora al actor Luis de la Rosa como embajador de marca (anuncio: 12–15 Abr 2026), apuntando a conectar con audiencias jóvenes y reforzar la identidad cultural de la marca en el país.</span>
+                        </li>
+                        <li>
+                            <span class="bullet">▸</span>
+                            <span><strong>🏪 Primer outlet CDMX consolidado:</strong> La tienda outlet de Plaza Central (Iztapalapa), abierta en marzo, afianza el modelo de acceso masivo como palanca de crecimiento de volumen, apuntando a consumidores sensibles al precio en el oriente de la ciudad.</span>
+                        </li>
+                        <li>
+                            <span class="bullet">▸</span>
+                            <span><strong>⚽ Fútbol + Mundial 2026:</strong> Con México como sede del Mundial el 11 de junio, Reebok activa su regreso al fútbol apoyado en el patrocinio de Xolos de Tijuana y el lanzamiento de calzado de fútbol por primera vez en 18 años.</span>
+                        </li>
+                        <li>
+                            <span class="bullet">▸</span>
+                            <span><strong>👟 Performance como diferenciador:</strong> La estrategia 2026 consolida la propuesta técnica en training (Nano) y running (Floatzig), priorizando calidad-precio frente a líderes de mercado. El segmento 18–35 años ya representa ~15% del negocio (vs 3% en 2024).</span>
+                        </li>
+                        <li>
+                            <span class="bullet">▸</span>
+                            <span><strong>📦 Expansión con disciplina:</strong> El plan contempla 3–4 nuevas aperturas en 2026 en centros comerciales consolidados (CDMX, GDL, MTY, posible Tijuana), priorizando rentabilidad sobre velocidad en las aperturas.</span>
+                        </li>
+                        <li>
+                            <span class="bullet">▸</span>
+                            <span><strong>🎯 Ambición Top 3 global:</strong> México proyectado como uno de los 3 mercados principales en ventas mundiales de Reebok en el mediano plazo, con ABG respaldando inversión en el país.</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="news-title">Reebok ajusta su estrategia en México para acelerar crecimiento</div>
-                <div class="news-summary">Mario Olvera (DG Reebok MX) explica el viraje hacia calzado técnico de training y running, el plan de 3-4 aperturas en 2026 en CDMX, GDL y MTY, y la posible entrada a Tijuana apoyada en el patrocinio de Xolos.</div>
-                <div class="news-tags"><span class="tag">Estrategia</span><span class="tag">Retail</span><span class="tag">Expansión</span></div>
-              </a>
+            </section>
 
-              <a href="https://www.msn.com/es-mx/dinero/noticias/reebok-apuesta-por-tecnolog%C3%ADa-y-precio-para-aumentar-su-participaci%C3%B3n-en-m%C3%A9xico/ar-BB1qkzIw" target="_blank" rel="noopener noreferrer" class="news-card">
-                <div class="news-meta">
-                  <span class="news-date">7 Ene 2026</span>
-                  <span class="news-source">Expansión / MSN</span>
+            <!-- ══════════════════════════════════
+                 SECCIÓN 2 · SCOREBOARD
+            ══════════════════════════════════ -->
+            <section id="scoreboard" class="section">
+                <div class="section-header">
+                    <div class="section-icon">🏆</div>
+                    <div>
+                        <div class="section-title">Scoreboard <span>México</span></div>
+                        <div class="section-subtitle">Ranking competitivo · Mercado deportivo MX · Abril 2026</div>
+                    </div>
                 </div>
-                <div class="news-title">Reebok apuesta por tecnología y precio competitivo en México</div>
-                <div class="news-summary">La marca reducirá dependencia de siluetas clásicas, potenciará Nano (training) y Floatzig (running) a precios por debajo de la competencia, y acelerará el segmento juvenil de 18-35 años del 3% al 15% del negocio en 2026.</div>
-                <div class="news-tags"><span class="tag">Nano</span><span class="tag">Floatzig</span><span class="tag">Precio</span></div>
-              </a>
 
-              <a href="https://www.record.com.mx/historia/xolos-de-tijuana-tendra-nuevo-patrocinador-partir-del-clausura-2026-2025101314482331630" target="_blank" rel="noopener noreferrer" class="news-card">
-                <div class="news-meta">
-                  <span class="news-date">Oct 2025</span>
-                  <span class="news-source">Récord</span>
+                <div class="table-wrapper">
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Marca</th>
+                                    <th>Cuota MX</th>
+                                    <th>Momento</th>
+                                    <th>Crecimiento MX</th>
+                                    <th>Tiendas MX</th>
+                                    <th>Equipos Liga MX</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1</strong></td>
+                                    <td><strong>Nike</strong></td>
+                                    <td><strong>42%</strong></td>
+                                    <td><span class="badge badge-success">Dominante</span></td>
+                                    <td style="color:var(--success)">+3.5%</td>
+                                    <td>85+</td>
+                                    <td>Pumas, América, Cruz Azul, <strong>Chivas (A2026)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2</strong></td>
+                                    <td><strong>Adidas</strong></td>
+                                    <td><strong>35%</strong></td>
+                                    <td><span class="badge badge-success">Fuerte</span></td>
+                                    <td style="color:var(--success)">+2.8%</td>
+                                    <td>75+</td>
+                                    <td>Selección Nacional, varios clubes</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3</strong></td>
+                                    <td><strong>Puma</strong></td>
+                                    <td><strong>8%</strong></td>
+                                    <td><span class="badge badge-warning">Transición</span></td>
+                                    <td style="color:var(--danger)">-4.5%</td>
+                                    <td>30+</td>
+                                    <td>Chivas (hasta C2026), UNAM (terminado)</td>
+                                </tr>
+                                <tr class="row-reebok">
+                                    <td><strong>4</strong></td>
+                                    <td><strong style="color:var(--reebok-red)">★ Reebok</strong></td>
+                                    <td><strong>5.5%</strong></td>
+                                    <td><span class="badge badge-red">Expansión</span></td>
+                                    <td style="color:var(--success)"><strong>+95%</strong></td>
+                                    <td>18</td>
+                                    <td>Xolos de Tijuana</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>5</strong></td>
+                                    <td><strong>Under Armour</strong></td>
+                                    <td><strong>5%</strong></td>
+                                    <td><span class="badge badge-info">Consolidación</span></td>
+                                    <td style="color:var(--success)">+1.5%</td>
+                                    <td>20+</td>
+                                    <td>Cruz Azul (anteriormente)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>6</strong></td>
+                                    <td><strong>New Balance</strong></td>
+                                    <td><strong>3%</strong></td>
+                                    <td><span class="badge badge-info">Crecimiento</span></td>
+                                    <td style="color:var(--success)">+8%</td>
+                                    <td>12+</td>
+                                    <td>Ninguno</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="news-title">Reebok regresa al fútbol mexicano vistiendo a Xolos de Tijuana</div>
-                <div class="news-summary">Tras 14 años de ausencia, Reebok vuelve a la Liga MX patrocinando a Xolos de Tijuana a partir del Clausura 2026. La última vez que vistió a un equipo mexicano fue a las Chivas campeón del Apertura 2006.</div>
-                <div class="news-tags"><span class="tag">Fútbol</span><span class="tag">Liga MX</span><span class="tag">Xolos</span></div>
-              </a>
 
-            </div>
-          </div>
-
-          <!-- COL B: Nike & Adidas -->
-          <div class="news-col">
-            <div class="news-col-header">
-              <div class="news-col-title blue">Nike &amp; Adidas México</div>
-            </div>
-            <div class="news-body">
-
-              <a href="https://925maxima.com/2026/03/19/nike-lanza-nuevos-tenis-celebrando-el-futbol-mexicano-para-la-copa-mundial-2026/" target="_blank" rel="noopener noreferrer" class="news-card">
-                <div class="news-meta">
-                  <span class="news-date">18 Mar 2026</span>
-                  <span class="news-source">925 Máxima / Nike</span>
+                <div class="chart-grid">
+                    <div class="chart-card">
+                        <div class="chart-card-title">📊 Cuota de mercado México 2026 (%)</div>
+                        <div class="chart-wrap"><canvas id="chartMarket"></canvas></div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-card-title">📈 Crecimiento anual por marca en MX (%)</div>
+                        <div class="chart-wrap"><canvas id="chartGrowth"></canvas></div>
+                    </div>
                 </div>
-                <div class="news-title">Nike lanza Air Force 1 "Mexico" y Air Max 95 "Mexico" para el Mundial</div>
-                <div class="news-summary">Nike presenta dos siluetas icónicas inspiradas en el fútbol mexicano: el AF1 "Mexico" (base neutral, Swoosh verde, suela vino tinto) y el Big Bubble Air Max 95 "Mexico". Se esperan para verano 2026 con precios de $125 y $200 USD.</div>
-                <div class="news-tags"><span class="tag">Nike</span><span class="tag">Mundial 2026</span><span class="tag">Lanzamiento</span></div>
-              </a>
+            </section>
 
-              <a href="https://about.nike.com/es-419/newsroom/collections/nike-football-unveils-2026-federation-kits-engineered-with-aero-fit-for-the-world-cup" target="_blank" rel="noopener noreferrer" class="news-card">
-                <div class="news-meta">
-                  <span class="news-date">23 Mar 2026</span>
-                  <span class="news-source">Nike Newsroom</span>
+            <!-- ══════════════════════════════════
+                 SECCIÓN 3 · NOTICIAS
+            ══════════════════════════════════ -->
+            <section id="noticias" class="section">
+                <div class="section-header">
+                    <div class="section-icon">📰</div>
+                    <div>
+                        <div class="section-title">Noticias <span>México</span></div>
+                        <div class="section-subtitle">Últimos 6 meses · Prioridad semana del 14 al 20 de Abril 2026</div>
+                    </div>
                 </div>
-                <div class="news-title">Nike presenta los kits de selecciones para el Mundial 2026 con tecnología Aero-FIT</div>
-                <div class="news-summary">Nike despliega su colección completa de camisetas para el Mundial 2026 con tecnología Aero-FIT, que elimina el clima como variable de rendimiento. Incluye a Pumas, América, Cruz Azul y las nuevas camisetas de Chivas (A2026).</div>
-                <div class="news-tags"><span class="tag">Nike</span><span class="tag">Mundial</span><span class="tag">Aero-FIT</span></div>
-              </a>
+                <div class="news-grid">
 
-              <a href="https://www.adidas.mx/mexico-copa_mundial_fifa" target="_blank" rel="noopener noreferrer" class="news-card">
-                <div class="news-meta">
-                  <span class="news-date">20 Mar 2026</span>
-                  <span class="news-source">Adidas MX</span>
+                    <!-- Col A: Reebok México -->
+                    <div class="news-column">
+                        <div class="news-column-header">🔴 Reebok México</div>
+                        <div class="news-list">
+
+                            <a href="https://www.instagram.com/p/DXJH9k5DQ2E/" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">15 Abr 2026 · Reebok MX (Instagram)</div>
+                                <div class="news-title">Reebok nombra a Luis de la Rosa nuevo embajador en México</div>
+                                <div class="news-summary">La marca confirma al actor como rostro de una nueva etapa de expresión cultural y conexión con audiencias jóvenes. Anuncio circuló en redes el 12–15 de abril.</div>
+                                <div class="news-tags"><span class="tag">Embajador</span><span class="tag">Branding</span><span class="tag">Juventud</span></div>
+                            </a>
+
+                            <a href="https://realestatemarket.com.mx/noticias/mercado-inmobiliario/comercial/43249-reebok-abrio-su-primera-tienda-outlet-en-la-cdmx" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">8 Mar 2026 · Real Estate Market</div>
+                                <div class="news-title">Reebok abre primera tienda outlet en CDMX</div>
+                                <div class="news-summary">Apertura en Plaza Central, Iztapalapa. Inicio del plan de 25 unidades en 4 años. CEO José Tawil confirma ambición Top 3 marcas deportivas en México.</div>
+                                <div class="news-tags"><span class="tag">Expansión</span><span class="tag">Outlet</span><span class="tag">CDMX</span></div>
+                            </a>
+
+                            <a href="https://expansion.mx/empresas/2026/01/08/reebok-revela-estrategia-crecer-en-mexico" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">7 Ene 2026 · Expansión</div>
+                                <div class="news-title">Reebok revela estrategia para crecer 40% en México</div>
+                                <div class="news-summary">3–4 nuevas aperturas en CDMX, GDL y MTY. Foco en performance técnico, textil renovado y proveedores clase mundial. Meta: duplicar ventas post +95% en 2025.</div>
+                                <div class="news-tags"><span class="tag">Estrategia</span><span class="tag">Crecimiento</span></div>
+                            </a>
+
+                            <a href="https://mx.fashionnetwork.com/news/Reebok-ajusta-su-estrategia-en-mexico-para-acelerar-su-crecimiento,1796608.html" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">9 Ene 2026 · Fashion Network MX</div>
+                                <div class="news-title">Reebok ajusta estrategia: calzado técnico y apertura en Tijuana</div>
+                                <div class="news-summary">Nuevas tiendas en plazas consolidadas. Posible entrada a Tijuana apoyada en patrocinio Xolos. Segmento 18–35 ya representa 15% del negocio vs 3% en 2024.</div>
+                                <div class="news-tags"><span class="tag">Performance</span><span class="tag">Tijuana</span></div>
+                            </a>
+
+                            <a href="https://www.footyheadlines.com/es/reebok-vuelve-al-futbol-mexicano-despues-de-14-anos.html" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">18 Dic 2025 · Footy Headlines ES</div>
+                                <div class="news-title">Reebok vuelve al fútbol mexicano: patrocina a Xolos de Tijuana</div>
+                                <div class="news-summary">Primera alianza oficial con club de Liga MX en 14 años. Incluye kit técnico y activaciones de marca en el estadio. Abre la puerta al mercado de Tijuana con nueva tienda.</div>
+                                <div class="news-tags"><span class="tag">Fútbol</span><span class="tag">Xolos</span><span class="tag">Liga MX</span></div>
+                            </a>
+
+                            <a href="https://www.eleconomista.com.mx/deportes/reebok-reconquista-mexico-abre-mundo-20250705-766848.html" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">4 Jul 2025 · El Economista</div>
+                                <div class="news-title">Reebok reconquista México: calzado de fútbol y meta Top 3</div>
+                                <div class="news-summary">CEO detalla retorno al fútbol tras 18 años, apuesta por golf y pádel. México proyectado como top 3 mundial. De 1 outlet en 2023 a 18 tiendas actuales.</div>
+                                <div class="news-tags"><span class="tag">Mundial 2026</span><span class="tag">Fútbol</span><span class="tag">CEO</span></div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Col B: Nike & Adidas México -->
+                    <div class="news-column">
+                        <div class="news-column-header">⚫⚪ Nike &amp; Adidas México</div>
+                        <div class="news-list">
+
+                            <a href="https://www.marca.com/mx/futbol/liga-mx/2026/02/05/6984047a46163ff21d8b45d2.html" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">5 Feb 2026 · Marca MX</div>
+                                <div class="news-title">Nike "invade" CDMX: Chivas regresa a la palomita en A2026</div>
+                                <div class="news-summary">Campaña masiva en Metro CDMX y Tren Ligero GDL adelanta el regreso de Nike a Chivas desde Apertura 2026, golpe clave para consolidar liderazgo en fútbol mexicano.</div>
+                                <div class="news-tags"><span class="tag alt tag-alt">Nike</span><span class="tag alt tag-alt">Chivas</span><span class="tag alt tag-alt">Liga MX</span></div>
+                            </a>
+
+                            <a href="https://espndeportes.espn.com/futbol/mundial/nota/_/id/16459927/mexico-presento-segundo-uniforme-mundial-2026-con-un-toque-retro" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">19 Mar 2026 · ESPN Deportes</div>
+                                <div class="news-title">Adidas presenta segundo uniforme de México para el Mundial</div>
+                                <div class="news-summary">Diseño blanco retro con trébol Adidas, referencias prehispánicas y detalle verde-rojo. Debut vs Sudáfrica el 11 de junio en Estadio Azteca. Alta demanda proyectada en México.</div>
+                                <div class="news-tags"><span class="tag alt tag-alt">Adidas</span><span class="tag alt tag-alt">Mundial 2026</span><span class="tag alt tag-alt">Selección</span></div>
+                            </a>
+
+                            <a href="https://www.footyheadlines.com/2025/04/mexico-2026-se-kit.html" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">11 Abr 2026 · Footy Headlines</div>
+                                <div class="news-title">Adidas x Someone Somewhere: tercera equipación México 2026</div>
+                                <div class="news-summary">Colabo con marca social mexicana para la tercera camiseta del Mundial. Diseño con motivos artesanales e identidad cultural. Cubre los tres kits de México bajo Adidas.</div>
+                                <div class="news-tags"><span class="tag alt tag-alt">Adidas</span><span class="tag alt tag-alt">Colabo</span><span class="tag alt tag-alt">Mundial</span></div>
+                            </a>
+
+                            <a href="https://mx.investing.com/news/transcripts/nike-supera-expectativas-en-2t-2026-acciones-suben-93CH-3417847" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">18 Dic 2025 · Investing.com MX</div>
+                                <div class="news-title">Nike supera expectativas: ingresos $12.4B en 2T fiscal 2026</div>
+                                <div class="news-summary">EPS $0.53 vs $0.37 esperado (+43%). Running creció +20% por segundo trimestre. Mayorista +8% compensa Nike Direct -9%. Refuerza capacidad de inversión en patrocinios globales.</div>
+                                <div class="news-tags"><span class="tag alt tag-alt">Nike</span><span class="tag alt tag-alt">Resultados</span></div>
+                            </a>
+
+                            <a href="https://www.marca.com/mx/futbol/seleccion-mx/2026/01/08/695efeb8ca4741f9698b45d8.html" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">7 Ene 2026 · Marca MX</div>
+                                <div class="news-title">Adidas lanza colección alternativa de México para el Mundial</div>
+                                <div class="news-summary">Chamarras, playeras, gorras, tenis, calcetas y mochilas de la Selección. Disponible inicialmente en EE.UU., con llegada programada a México antes del torneo.</div>
+                                <div class="news-tags"><span class="tag alt tag-alt">Adidas</span><span class="tag alt tag-alt">Merchandising</span></div>
+                            </a>
+
+                            <a href="https://www.hubsports.mx/eventos/adidas-splits-30k-cdmx-2026" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">30 Nov 2025 · Hub Sports MX</div>
+                                <div class="news-title">Adidas Splits 30K CDMX 2026: 8 carreras, 3 ciudades</div>
+                                <div class="news-summary">Serial de running con +50K corredores esperados. CDMX: 26 jul 2026, 8K cupos. Refuerza dominio de Adidas en comunidad running mexicana frente a competidores emergentes.</div>
+                                <div class="news-tags"><span class="tag alt tag-alt">Adidas</span><span class="tag alt tag-alt">Running</span><span class="tag alt tag-alt">CDMX</span></div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Col C: Puma, UA & NB México -->
+                    <div class="news-column">
+                        <div class="news-column-header">🐆 Puma · Under Armour · New Balance</div>
+                        <div class="news-list">
+
+                            <a href="https://www.bloomberglinea.com/negocios/puma-advierte-que-2026-sera-un-ano-de-transicion-y-preve-perdidas/" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">25 Feb 2026 · Bloomberg Línea</div>
+                                <div class="news-title">Puma advierte: 2026 será año de transición con pérdidas</div>
+                                <div class="news-summary">CEO Arthur Hoeld proyecta pérdidas op. de €50–150M. Ventas caerán dígito bajo-medio. LATAM como región compensatoria. Liquidación de inventarios en outlets México.</div>
+                                <div class="news-tags"><span class="tag alt tag-alt">Puma</span><span class="tag alt tag-alt">Crisis</span></div>
+                            </a>
+
+                            <a href="https://elceo.com/negocios/puma-apuesta-por-hyrox-y-el-training-para-impulsar-de-nuevo-sus-ventas/" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">25 Feb 2026 · El CEO</div>
+                                <div class="news-title">Puma apuesta por Hyrox y training hasta 2030 para recuperarse</div>
+                                <div class="news-summary">Colaboración exclusiva con Hyrox hasta 2030. Training actualmente <10% de ingresos, busca convertirlo en pilar junto a fútbol y running durante reestructuración.</div>
+                                <div class="news-tags"><span class="tag alt tag-alt">Puma</span><span class="tag alt tag-alt">Hyrox</span><span class="tag alt tag-alt">Training</span></div>
+                            </a>
+
+                            <a href="https://www.bloomberglinea.com/negocios/ceo-de-puma-planea-recortar-900-puestos-de-trabajo-y-modernizar-estrategia-de-marketing/" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">29 Oct 2025 · Bloomberg Línea</div>
+                                <div class="news-title">Puma recorta 900 empleos y moderniza marketing</div>
+                                <div class="news-summary">Nuevo CEO implementa reestructuración. Foco en fútbol, running y training. Apuesta por D2C. Reducción de socios mayoristas de "baja calidad". Meta: Top 3 global 2027.</div>
+                                <div class="news-tags"><span class="tag alt tag-alt">Puma</span><span class="tag alt tag-alt">Reestructura</span></div>
+                            </a>
+
+                            <a href="https://www.newbalance.com/es/lanzamientos-de-nb/" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">20 Abr 2026 · New Balance</div>
+                                <div class="news-title">New Balance mantiene calendario intenso: 1080v15, Gator Run y más</div>
+                                <div class="news-summary">Múltiples lanzamientos en running (1080v15, 204L, ABZORB 2010) y lifestyle en el mercado mexicano. Crecimiento sostenido a +8% con propuesta premium diferenciada.</div>
+                                <div class="news-tags"><span class="tag alt tag-alt">New Balance</span><span class="tag alt tag-alt">Lanzamientos</span></div>
+                            </a>
+
+                            <a href="https://expansion.mx/empresas/2025/03/11/nike-y-adidas-aceleran-el-paso-frente-a-las-marcas-emergentes" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">10 Mar 2025 · Expansión MX</div>
+                                <div class="news-title">Marcas emergentes desafían a Nike y Adidas en México</div>
+                                <div class="news-summary">Mercado running MX estimado en $236M USD para 2025. Reebok y NB capturan espacio que antes era exclusivo de las dos marcas líderes, presionando márgenes en canales especializados.</div>
+                                <div class="news-tags"><span class="tag alt tag-alt">Mercado</span><span class="tag alt tag-alt">Competencia</span></div>
+                            </a>
+
+                            <a href="https://www.larepublica.co/ocio/adidas-puma-y-nike-los-reyes-en-los-patrocinios-de-las-camisetas-del-mundial-2026-4363942" target="_blank" rel="noopener" class="news-card">
+                                <div class="news-date">3 Abr 2026 · La República</div>
+                                <div class="news-title">Adidas, Puma y Nike: dominan los patrocinios del Mundial 2026</div>
+                                <div class="news-summary">Adidas patrocina a 12 selecciones, Nike a 13, Puma a varias LATAM. Reebok y UA tienen presencia marginal. México juega en Adidas; Puma viste a varias selecciones latinoamericanas.</div>
+                                <div class="news-tags"><span class="tag alt tag-alt">Mundial 2026</span><span class="tag alt tag-alt">Patrocinios</span><span class="tag alt tag-alt">Puma</span></div>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="news-title">Adidas lanza la equipación de visitante de México para Copa Mundial 2026</div>
-                <div class="news-summary">Tras el lanzamiento de la camiseta local en noviembre 2025, Adidas publica el jersey de visita del Tri para el Mundial 2026. Disponible en adidas.mx, Liverpool, Innovasport, Martí, Coppel y Amazon MX desde $1,999 hasta $2,999 MXN.</div>
-                <div class="news-tags"><span class="tag">Adidas</span><span class="tag">Selección MX</span><span class="tag">Mundial</span></div>
-              </a>
+            </section>
 
-              <a href="https://www.eleconomista.com.mx/deportes/adidas-aliado-estampado-armadura-tricolor-20251106-785377.html" target="_blank" rel="noopener noreferrer" class="news-card">
-                <div class="news-meta">
-                  <span class="news-date">5 Nov 2025</span>
-                  <span class="news-source">El Economista</span>
+            <!-- ══════════════════════════════════
+                 SECCIÓN 4 · COMPARATIVA
+            ══════════════════════════════════ -->
+            <section id="comparativa" class="section">
+                <div class="section-header">
+                    <div class="section-icon">⚔️</div>
+                    <div>
+                        <div class="section-title">Reebok <span>vs Competencia</span> en México</div>
+                        <div class="section-subtitle">Tabla comparativa · Solo México · Abril 2026</div>
+                    </div>
                 </div>
-                <div class="news-title">Adidas renueva con Selección Mexicana hasta 2034 — tres Mundiales garantizados</div>
-                <div class="news-summary">Jorge Dionne, Director General de Adidas México, confirma la renovación del contrato de patrocinio con la FMF hasta 2034. México es el país con mayores ventas de su propio jersey a nivel global según Nielsen.</div>
-                <div class="news-tags"><span class="tag">Adidas</span><span class="tag">FMF</span><span class="tag">Patrocinio</span></div>
-              </a>
 
-              <a href="https://www.excelsior.com.mx/adrenalina/chivas-podria-regresar-a-nike-en-2026" target="_blank" rel="noopener noreferrer" class="news-card">
-                <div class="news-meta">
-                  <span class="news-date">Nov 2025</span>
-                  <span class="news-source">Excélsior</span>
+                <div class="table-wrapper">
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Marca</th>
+                                    <th>Cuota MX</th>
+                                    <th>Crecimiento MX</th>
+                                    <th>Tiendas MX</th>
+                                    <th>Categorías Fuertes MX</th>
+                                    <th>Producto Clave MX</th>
+                                    <th>Estado Actual</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="row-reebok">
+                                    <td><strong style="color:var(--reebok-red)">★ Reebok</strong></td>
+                                    <td>5.5%</td>
+                                    <td style="color:var(--success)"><strong>+95%</strong></td>
+                                    <td>18</td>
+                                    <td>Training, Running, Cross Training</td>
+                                    <td>Nano, Floatzig, Club C</td>
+                                    <td><span class="badge badge-red">Expansión agresiva</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Nike</strong></td>
+                                    <td>42%</td>
+                                    <td style="color:var(--success)">+3.5%</td>
+                                    <td>85+</td>
+                                    <td>Lifestyle, Running, Fútbol, Basketball</td>
+                                    <td>Air Jordan, Air Max, Mercurial</td>
+                                    <td><span class="badge badge-success">Líder dominante</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Adidas</strong></td>
+                                    <td>35%</td>
+                                    <td style="color:var(--success)">+2.8%</td>
+                                    <td>75+</td>
+                                    <td>Fútbol, Running, Originals</td>
+                                    <td>Ultraboost, Predator, Selección MX</td>
+                                    <td><span class="badge badge-success">Sólido / Mundial</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Puma</strong></td>
+                                    <td>8%</td>
+                                    <td style="color:var(--danger)">-4.5%</td>
+                                    <td>30+</td>
+                                    <td>Fútbol, Lifestyle, Training</td>
+                                    <td>Future, Ultra, Hyrox</td>
+                                    <td><span class="badge badge-warning">Año de transición</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Under Armour</strong></td>
+                                    <td>5%</td>
+                                    <td style="color:var(--success)">+1.5%</td>
+                                    <td>20+</td>
+                                    <td>Training, Performance Apparel</td>
+                                    <td>Charged Assert, HeatGear</td>
+                                    <td><span class="badge badge-info">Consolidación</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>New Balance</strong></td>
+                                    <td>3%</td>
+                                    <td style="color:var(--success)">+8%</td>
+                                    <td>12+</td>
+                                    <td>Running, Lifestyle Premium</td>
+                                    <td>1080v15, Made in USA, 990</td>
+                                    <td><span class="badge badge-info">Nicho premium</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="news-title">Chivas confirma regreso a Nike para el Apertura 2026 — fin de la era Puma</div>
-                <div class="news-summary">El Club Deportivo Guadalajara termina su relación con Puma y se une a Nike a partir del Apertura 2026, consolidando la presencia de la marca estadounidense en los clubes con mayor aficionados de México.</div>
-                <div class="news-tags"><span class="tag">Nike</span><span class="tag">Chivas</span><span class="tag">Liga MX</span></div>
-              </a>
 
-            </div>
-          </div>
-
-          <!-- COL C: Puma, UA & NB -->
-          <div class="news-col">
-            <div class="news-col-header">
-              <div class="news-col-title amber">Puma · Under Armour · New Balance</div>
-            </div>
-            <div class="news-body">
-
-              <a href="https://fashionunited.com.pe/noticias/empresas/puma-pone-en-marcha-un-programa-de-reestructuracion-y-recorta-empleos/20251030404" target="_blank" rel="noopener noreferrer" class="news-card">
-                <div class="news-meta">
-                  <span class="news-date">29 Oct 2025</span>
-                  <span class="news-source">Fashion United</span>
+                <div class="chart-grid">
+                    <div class="chart-card">
+                        <div class="chart-card-title">🏪 Número de tiendas por marca en México</div>
+                        <div class="chart-wrap"><canvas id="chartStores"></canvas></div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-card-title">🎯 Radar competitivo: Reebok vs Nike vs Adidas (MX)</div>
+                        <div class="chart-wrap"><canvas id="chartRadar"></canvas></div>
+                    </div>
                 </div>
-                <div class="news-title">Puma recorta 900 empleos y lanza programa de reestructuración global</div>
-                <div class="news-summary">CEO Arthur Hoeld declara 2026 como "año de transición". Puma eliminará 900 puestos administrativos, reducirá SKUs y priorizará fútbol, training y running. Meta: retomar crecimiento en 2027. Impacto directo en operaciones en México.</div>
-                <div class="news-tags"><span class="tag">Puma</span><span class="tag">Reestructura</span><span class="tag">Global</span></div>
-              </a>
+            </section>
 
-              <a href="https://us.puma.com/us/es/launch-calendar" target="_blank" rel="noopener noreferrer" class="news-card">
-                <div class="news-meta">
-                  <span class="news-date">Abr 2026</span>
-                  <span class="news-source">Puma US</span>
+            <!-- ══════════════════════════════════
+                 SECCIÓN 5 · FODA
+            ══════════════════════════════════ -->
+            <section id="foda" class="section">
+                <div class="section-header">
+                    <div class="section-icon">💡</div>
+                    <div>
+                        <div class="section-title">FODA Reebok <span>México</span></div>
+                        <div class="section-subtitle">Análisis estratégico · Mercado mexicano · Q2 2026</div>
+                    </div>
                 </div>
-                <div class="news-title">Puma lanza Nahmias Speedcat y Mostro Sashiko en abril 2026</div>
-                <div class="news-summary">A pesar de la reestructuración, Puma mantiene activo su calendario de lanzamientos con el NAHMIAS Speedcat (10 abr) y el Mostro Sashiko (16 abr). En el segmento performance, refuerza la alianza con Hyrox hasta 2030 con el Deviate Nitro Elite.</div>
-                <div class="news-tags"><span class="tag">Puma</span><span class="tag">Speedcat</span><span class="tag">Hyrox</span></div>
-              </a>
 
-              <a href="https://www.newbalancemexico.com" target="_blank" rel="noopener noreferrer" class="news-card">
-                <div class="news-meta">
-                  <span class="news-date">Q1 2026</span>
-                  <span class="news-source">New Balance MX</span>
+                <div class="swot-grid">
+                    <!-- Fortalezas -->
+                    <div class="swot-card swot-f">
+                        <div class="swot-card-header">💪 Fortalezas</div>
+                        <div class="swot-items">
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Crecimiento explosivo +95% en ventas 2025: mejor relación calidad-precio percibida en el mercado mexicano.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Expansión física acelerada: de 1 a 18 tiendas en 3 años; plan de 25 unidades en 4 años.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Portafolio técnico diferenciado: Nano (training) y Floatzig (running) con tecnología premium a precio competitivo.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Textil 100% renovado con proveedores clase mundial y respaldo de Authentic Brands Group.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Regreso al fútbol: patrocinio Xolos de Tijuana, calzado de fútbol tras 18 años, alineado con Mundial 2026 en México.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Segmento joven 18–35 ya en 15% del mix (vs 3% en 2024), impulsado por campañas digitales y nuevo embajador Luis de la Rosa.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Distribución multicanal: tiendas propias, outlets, Liverpool, Sears, Martí, Innovasport, Reebok.mx y marketplaces.</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Oportunidades -->
+                    <div class="swot-card swot-o">
+                        <div class="swot-card-header">🚀 Oportunidades</div>
+                        <div class="swot-items">
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Mundial 2026 en México (11 jun): visibilidad máxima, catalizador para calzado de fútbol y training.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Mercado running MX estimado en $236M USD con crecimiento constante; mayor participación de mujeres y jóvenes.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Puma en reestructuración y con pérdidas proyectadas: libera espacio en retail, puntos de distribución y patrocinios.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Expansión a ciudades con potencial: Tijuana (patrocinio Xolos), Monterrey y Guadalajara aún tienen espacio disponible.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Nuevos deportes (golf, pádel) y comunidades de fitness funcional (CrossFit, Hyrox) alineados con el ADN Reebok.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Mayor integración omnicanal con experiencia unificada tienda física + e-commerce + marketplaces.</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Debilidades -->
+                    <div class="swot-card swot-d">
+                        <div class="swot-card-header">⚠️ Debilidades</div>
+                        <div class="swot-items">
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Cuota de mercado aún baja (5.5%) frente a líderes consolidados; menor top of mind en consumidor masivo.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Red de tiendas limitada vs Nike (85+) y Adidas (75+); presencia concentrada en CDMX y Zona Metro.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Presencia en fútbol incipiente: solo Xolos vs múltiples clubes top de Nike y Adidas en Liga MX.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>E-commerce y experiencia digital por debajo de los benchmarks de mercado en México.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Dependencia de ejecución impecable del plan de expansión para sostener la inercia de crecimiento.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Herencia de percepción de marca "pausada" que requiere inversión continua en comunicación para revertirla.</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Amenazas -->
+                    <div class="swot-card swot-a">
+                        <div class="swot-card-header">🚨 Amenazas</div>
+                        <div class="swot-items">
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Dominio Nike + Adidas en el Mundial 2026: 25+ selecciones, millones en marketing, saturación del share of voice.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Nike refuerza Liga MX con Chivas (A2026): cierra acceso al gran patrocinio simbólico en el fútbol mexicano.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Adidas mantiene la Selección Nacional Mexicana y tres kits para el Mundial, acaparando el mercado coleccionable.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Puma podría retomar agresividad comercial en México post-reestructuración con inventario liquidado y nuevos precios.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>New Balance crece con propuesta premium y colaboraciones que capturan nicho de alto valor dispuesto a pagar más.</span></div>
+                            <div class="swot-item"><span class="swot-bullet">▸</span><span>Sensibilidad al precio e incertidumbre macroeconómica en México pueden limitar el ritmo de expansión física.</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="news-title">New Balance despliega catálogo PV2026 en México: 1080v15 y FuelCell SuperComp Elite v5</div>
-                <div class="news-summary">New Balance refuerza su oferta running en México con el 1080v15 ($4,299 MXN) y el FuelCell SuperComp Elite v5 ($6,299 MXN), posicionándose en el segmento premium de rendimiento. También consolida la 1906R como ícono lifestyle.</div>
-                <div class="news-tags"><span class="tag">New Balance</span><span class="tag">Running</span><span class="tag">Premium</span></div>
-              </a>
+            </section>
 
-              <a href="https://www.ejecentral.com.mx/nuestro-eje/golpe-a-la-pirateria-en-cdmx-decomisan-25-toneladas-de-productos-falsos-en-tepito" target="_blank" rel="noopener noreferrer" class="news-card">
-                <div class="news-meta">
-                  <span class="news-date">26 Mar 2026</span>
-                  <span class="news-source">Eje Central</span>
+            <!-- ══════════════════════════════════
+                 SECCIÓN 6 · TIENDAS & E-COM
+            ══════════════════════════════════ -->
+            <section id="tiendas" class="section">
+                <div class="section-header">
+                    <div class="section-icon">🛍️</div>
+                    <div>
+                        <div class="section-title">Tiendas <span>&amp; E-commerce</span></div>
+                        <div class="section-subtitle">Red de distribución física y digital · México · Abril 2026</div>
+                    </div>
                 </div>
-                <div class="news-title">Decomisan 25 toneladas de falsificaciones en Tepito: Adidas, Nike, Puma, Reebok y UA afectadas</div>
-                <div class="news-summary">Autoridades de CDMX incautaron 25 toneladas de productos falsificados en Tepito. Entre las marcas más replicadas figuran Adidas, Nike, Puma, Reebok y Under Armour. La piratería sigue siendo una amenaza estructural para todas las marcas deportivas en México.</div>
-                <div class="news-tags"><span class="tag">Piratería</span><span class="tag">CDMX</span><span class="tag">Mercado</span></div>
-              </a>
 
-              <a href="https://www.underarmour.com.mx" target="_blank" rel="noopener noreferrer" class="news-card">
-                <div class="news-meta">
-                  <span class="news-date">2026</span>
-                  <span class="news-source">Under Armour MX</span>
+                <div class="stores-kpi-row">
+                    <div class="kpi-card">
+                        <div class="kpi-label">Total Tiendas</div>
+                        <div class="kpi-value">18</div>
+                        <div class="kpi-trend trend-neutral">→ 16 op. + 2 apertura</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Full Price</div>
+                        <div class="kpi-value">7</div>
+                        <div class="kpi-trend trend-neutral">→ 400–583 m² prom.</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Outlets</div>
+                        <div class="kpi-value">11</div>
+                        <div class="kpi-trend trend-up">↑ Plaza Central más reciente</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Aperturas 2026</div>
+                        <div class="kpi-value">3–4</div>
+                        <div class="kpi-trend trend-neutral">→ CDMX, GDL, MTY, TIJ</div>
+                    </div>
                 </div>
-                <div class="news-title">Under Armour consolida su presencia en México con canal directo y Brand Houses</div>
-                <div class="news-summary">UA opera Brand Houses en plazas premium como Plaza Satélite y mantiene underarmour.com.mx activo. Sin grandes movimientos en patrocinios de Liga MX, pero refuerza performance apparel y HeatGear como pilares en el mercado mexicano.</div>
-                <div class="news-tags"><span class="tag">Under Armour</span><span class="tag">Retail</span><span class="tag">Training</span></div>
-              </a>
 
-            </div>
-          </div>
+                <div class="stores-grid">
+                    <!-- Full Price -->
+                    <div class="table-wrapper">
+                        <div class="table-wrapper-header">🔴 Tiendas Full Price</div>
+                        <div class="table-scroll">
+                            <table>
+                                <thead>
+                                    <tr><th>#</th><th>Plaza</th><th>Ciudad</th><th>m²</th><th>Notas</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>1</td><td>Forum Buenavista</td><td>CDMX</td><td>~400</td><td>Primera tienda MX (Ago 2023)</td></tr>
+                                    <tr><td>2</td><td>Mitikah</td><td>CDMX</td><td>~400</td><td>Centro comercial premium</td></tr>
+                                    <tr><td>3</td><td>Mundo E</td><td>CDMX Norte</td><td>550</td><td>Full price más grande del país</td></tr>
+                                    <tr><td>4</td><td>Parque Tepeyac</td><td>CDMX Norte</td><td>583</td><td>Flagship · mayor superficie</td></tr>
+                                    <tr><td>5</td><td>León</td><td>Guanajuato</td><td>~400</td><td>Expansión Bajío</td></tr>
+                                    <tr><td>6</td><td>Puebla</td><td>Puebla</td><td>~400</td><td>Plaza regional clave</td></tr>
+                                    <tr><td>7</td><td>Riviera Maya</td><td>Q. Roo</td><td>~400</td><td>Mercado turístico</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
-        </div>
-      </section>
+                    <!-- Outlets -->
+                    <div class="table-wrapper">
+                        <div class="table-wrapper-header">🏷️ Outlets Clave</div>
+                        <div class="table-scroll">
+                            <table>
+                                <thead>
+                                    <tr><th>Plaza</th><th>Ciudad</th><th>m²</th><th>Notas</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Punta Norte</td><td>CDMX Norte</td><td>~300</td><td>Primera ubicación outlet MX</td></tr>
+                                    <tr class="row-reebok"><td>Plaza Central</td><td>Iztapalapa CDMX</td><td>~350</td><td><strong>Nuevo · Mar 2026</strong> — foco precio/volumen</td></tr>
+                                    <tr><td>Lerma</td><td>Estado de México</td><td>~300</td><td>Zona metropolitana</td></tr>
+                                    <tr><td>Riviera Maya Outlet</td><td>Q. Roo</td><td>1,000</td><td>Outlet más grande de México</td></tr>
+                                    <tr><td>Otros 7 outlets</td><td>CDMX, Edo. Méx., GDL</td><td>Var.</td><td>Red en operación</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- ================================
-           SECCIÓN 4: REEBOK VS COMPETENCIA
-           ================================ -->
-      <section id="comparativa" class="section">
-        <div class="section-header">
-          <div class="section-title">Reebok <span class="accent">vs</span> Competencia</div>
-          <div class="section-tag">Solo México — Abr 2026</div>
-        </div>
+                <div class="chart-card" style="margin-bottom:20px;">
+                    <div class="chart-card-title">🗺️ Distribución de tiendas Reebok MX: Full Price vs Outlet</div>
+                    <div style="display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:center;max-width:560px;">
+                        <div class="chart-wrap" style="height:200px;"><canvas id="chartDist"></canvas></div>
+                        <div>
+                            <div style="margin-bottom:8px;font-size:13px;"><span style="display:inline-block;width:12px;height:12px;border-radius:2px;background:var(--reebok-red);margin-right:8px;"></span>Full Price: <strong>7</strong> tiendas</div>
+                            <div style="font-size:13px;"><span style="display:inline-block;width:12px;height:12px;border-radius:2px;background:#444;margin-right:8px;"></span>Outlets: <strong>11</strong> tiendas</div>
+                            <div style="margin-top:12px;font-size:12px;color:var(--text-muted);">Total: 18 · Plan: 24–25 unidades a 2027</div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="table-wrap">
-          <div class="table-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th>Marca</th>
-                  <th>Cuota MX</th>
-                  <th>Crecimiento MX</th>
-                  <th>Tiendas MX</th>
-                  <th>Categorías Fuertes MX</th>
-                  <th>Producto Clave MX</th>
-                  <th>Estado Actual</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="row-reebok">
-                  <td><strong style="color:var(--reebok-red)">Reebok ★</strong></td>
-                  <td>4–5.5%</td>
-                  <td class="trend-up">+80%+ (2024)</td>
-                  <td>16+</td>
-                  <td>Training, Running, Cross Training</td>
-                  <td>Nano X5, Floatzig, Club C</td>
-                  <td><span class="badge badge-red">Expansión agresiva</span></td>
-                </tr>
-                <tr>
-                  <td><strong>Nike</strong></td>
-                  <td>40–42%</td>
-                  <td class="trend-up">+3–5%</td>
-                  <td>85+</td>
-                  <td>Lifestyle, Running, Fútbol, Basketball</td>
-                  <td>Air Jordan, Mercurial, Air Force 1 "Mexico"</td>
-                  <td><span class="badge badge-success">Líder absoluto</span></td>
-                </tr>
-                <tr>
-                  <td><strong>Adidas</strong></td>
-                  <td>33–35%</td>
-                  <td class="trend-up">+2–4%</td>
-                  <td>70+</td>
-                  <td>Fútbol, Running, Originals</td>
-                  <td>Jersey Selección MX, Ultraboost, Predator</td>
-                  <td><span class="badge badge-success">Sólido / Mundial 2026</span></td>
-                </tr>
-                <tr>
-                  <td><strong>Puma</strong></td>
-                  <td>7–9%</td>
-                  <td class="trend-down">–4%</td>
-                  <td>30+</td>
-                  <td>Fútbol, Lifestyle, Training (Hyrox)</td>
-                  <td>Future, Speedcat, Deviate Nitro</td>
-                  <td><span class="badge badge-warning">Transición / Reestructura</span></td>
-                </tr>
-                <tr>
-                  <td><strong>Under Armour</strong></td>
-                  <td>4–5%</td>
-                  <td class="trend-flat">+1–2%</td>
-                  <td>20+</td>
-                  <td>Training, Performance Apparel</td>
-                  <td>Charged Assert, HeatGear</td>
-                  <td><span class="badge badge-info">Consolidación</span></td>
-                </tr>
-                <tr>
-                  <td><strong>New Balance</strong></td>
-                  <td>2–3%</td>
-                  <td class="trend-up">+7–10%</td>
-                  <td>12+</td>
-                  <td>Running Premium, Lifestyle</td>
-                  <td>1080v15, FuelCell SuperComp, 1906R</td>
-                  <td><span class="badge badge-info">Crecimiento nicho</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+                <div class="ecom-card">
+                    <div class="ecom-header">🌐 E-commerce &amp; Distribución Digital</div>
+                    <ul class="ecom-items">
+                        <li class="ecom-item"><span class="ecom-bullet">▸</span><strong>Reebok.mx:</strong> Tienda oficial con catálogo performance (Nano, Floatzig, Court Advance) y lifestyle. Eje de la estrategia omnicanal con campañas digitales ligadas al Mundial 2026 y al nuevo embajador Luis de la Rosa.</li>
+                        <li class="ecom-item"><span class="ecom-bullet">▸</span><strong>Marketplaces:</strong> Presencia activa en Mercado Libre y Amazon México para ampliar cobertura nacional más allá de tiendas físicas.</li>
+                        <li class="ecom-item"><span class="ecom-bullet">▸</span><strong>Socios Retail:</strong> Liverpool, Sears, Innovasport, Martí con corners dedicados tanto en tiendas físicas como en sus plataformas e-commerce.</li>
+                        <li class="ecom-item"><span class="ecom-bullet">▸</span><strong>Distribución Multimarca:</strong> ~150–200 espacios dentro de departamentales y tiendas especializadas deportivas en todo el país.</li>
+                        <li class="ecom-item"><span class="ecom-bullet">▸</span><strong>Estrategia Digital 2026:</strong> Foco en experiencia unificada, campañas con embajadores locales, activaciones del Mundial 2026 y mejora del inventario en tiempo real.</li>
+                    </ul>
+                </div>
+            </section>
 
-        <div style="margin-top: var(--space-5);">
-          <div class="chart-box">
-            <div class="chart-box-title">Tiendas por Marca — <span class="highlight">México 2026</span></div>
-            <div class="chart-container h320">
-              <canvas id="chartTiendas"></canvas>
-            </div>
-          </div>
-        </div>
-      </section>
+            <!-- ══════════════════════════════════
+                 SECCIÓN 7 · TABLA MAESTRA
+            ══════════════════════════════════ -->
+            <section id="tabla-maestra" class="section">
+                <div class="section-header">
+                    <div class="section-icon">📊</div>
+                    <div>
+                        <div class="section-title">Tabla <span>Maestra</span> México</div>
+                        <div class="section-subtitle">Resumen ejecutivo por marca · Mercado deportivo MX · Abril 2026</div>
+                    </div>
+                </div>
 
-      <!-- ================================
-           SECCIÓN 5: FODA
-           ================================ -->
-      <section id="foda" class="section">
-        <div class="section-header">
-          <div class="section-title"><span class="accent">FODA</span> Reebok México</div>
-          <div class="section-tag">2026</div>
-        </div>
+                <div class="table-wrapper">
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Marca</th>
+                                    <th>Cuota MX</th>
+                                    <th>Crec. MX</th>
+                                    <th>Tiendas MX</th>
+                                    <th>Liga MX</th>
+                                    <th>Producto Top MX</th>
+                                    <th>Público Objetivo</th>
+                                    <th>Estado Actual</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="row-reebok">
+                                    <td><strong style="color:var(--reebok-red)">★ Reebok</strong></td>
+                                    <td>5.5%</td>
+                                    <td style="color:var(--success)"><strong>+95%</strong></td>
+                                    <td>18</td>
+                                    <td>Xolos Tijuana</td>
+                                    <td>Nano, Floatzig, Club C</td>
+                                    <td>18–35 fitness, training, cross</td>
+                                    <td><span class="badge badge-red">Expansión · Reconquista</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Nike</strong></td>
+                                    <td>42%</td>
+                                    <td style="color:var(--success)">+3.5%</td>
+                                    <td>85+</td>
+                                    <td>Pumas, América, Cruz Azul, Chivas (A2026)</td>
+                                    <td>Air Jordan, Air Max, Mercurial</td>
+                                    <td>Masivo · lifestyle, fútbol, basket</td>
+                                    <td><span class="badge badge-success">Líder · Chivas A2026</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Adidas</strong></td>
+                                    <td>35%</td>
+                                    <td style="color:var(--success)">+2.8%</td>
+                                    <td>75+</td>
+                                    <td>Selección Nacional, varios clubes</td>
+                                    <td>Ultraboost, Predator, Originals</td>
+                                    <td>Amplio · fútbol, running, retro</td>
+                                    <td><span class="badge badge-success">Sólido · Mundial 2026</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Puma</strong></td>
+                                    <td>8%</td>
+                                    <td style="color:var(--danger)">-4.5%</td>
+                                    <td>30+</td>
+                                    <td>Chivas (hasta C2026), perdió UNAM</td>
+                                    <td>Future, Ultra, Hyrox</td>
+                                    <td>Fútbol, training, lifestyle</td>
+                                    <td><span class="badge badge-warning">Transición · Pérdidas</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Under Armour</strong></td>
+                                    <td>5%</td>
+                                    <td style="color:var(--success)">+1.5%</td>
+                                    <td>20+</td>
+                                    <td>Cruz Azul (antes)</td>
+                                    <td>Charged Assert, HeatGear</td>
+                                    <td>Athletes performance, fitness serio</td>
+                                    <td><span class="badge badge-info">Consolidación estable</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>New Balance</strong></td>
+                                    <td>3%</td>
+                                    <td style="color:var(--success)">+8%</td>
+                                    <td>12+</td>
+                                    <td>Ninguno</td>
+                                    <td>1080v15, Made in USA, 990</td>
+                                    <td>Runners serios, premium lifestyle</td>
+                                    <td><span class="badge badge-info">Nicho premium · Crecimiento</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-        <div class="swot-grid">
-          <div class="swot-card">
-            <div class="swot-label f">Fortalezas</div>
-            <ul class="swot-list">
-              <li class="swot-item">Crecimiento +80% en ventas en 2024; la mayor inversión de marca en México en 20 años.</li>
-              <li class="swot-item">Red de 16+ tiendas propias construidas desde cero desde ago 2023 (Forum Buenavista) hasta hoy.</li>
-              <li class="swot-item">Portafolio performance sólido: Nano X5 (training) y Floatzig (running) con tecnología premium a precio competitivo.</li>
-              <li class="swot-item">Regreso al fútbol mexicano con Xolos de Tijuana; primer patrocinio en Liga MX tras 14 años de ausencia.</li>
-              <li class="swot-item">Respaldo de Authentic Brands Group: renovación total de textil con proveedores clase mundial.</li>
-              <li class="swot-item">Alianza DEKA México como plataforma de credibilidad en fitness funcional y training de alto rendimiento.</li>
-            </ul>
-          </div>
+                <!-- Footer stamp -->
+                <div style="margin-top:32px;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+                    <div>
+                        <div style="font-family:var(--font-display);font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--reebok-red);">Sport Is Everything</div>
+                        <div style="font-size:11px;color:var(--text-faint);margin-top:3px;">Reebok México · Workspace Ejecutivo · Q2 2026</div>
+                    </div>
+                    <div style="text-align:right;">
+                        <div style="font-size:12px;color:var(--text-muted);">Última actualización: <strong style="color:var(--text)">Lun 20 de Abril, 2026</strong></div>
+                        <div style="font-size:11px;color:var(--text-faint);margin-top:2px;">Próxima revisión: Lun 27 de Abril, 2026 · 7:00 AM CDMX</div>
+                    </div>
+                </div>
+            </section>
 
-          <div class="swot-card">
-            <div class="swot-label o">Oportunidades</div>
-            <ul class="swot-list">
-              <li class="swot-item">Mundial 2026 en Norteamérica impulsa el consumo de productos deportivos; sedes en México (CDMX, GDL, MTY, Monterrey) = tráfico de marca.</li>
-              <li class="swot-item">Transición de Puma (pérdidas, reestructuración) libera espacio competitivo en training y fútbol para 2026-2027.</li>
-              <li class="swot-item">Mercado de running en México en expansión con comunidades activas en las 3 principales ciudades.</li>
-              <li class="swot-item">Plan de 25 outlets en 4 años capturará consumidores sensibles al precio y ampliará cobertura geográfica.</li>
-              <li class="swot-item">Segmento juvenil (18-35) con potencial de crecer de 3% a 15% del negocio mediante activaciones digitales y de training.</li>
-              <li class="swot-item">Piratería como amenaza compartida: campañas de autenticidad pueden elevar preferencia por marca original en precio accesible.</li>
-            </ul>
-          </div>
-
-          <div class="swot-card">
-            <div class="swot-label d">Debilidades</div>
-            <ul class="swot-list">
-              <li class="swot-item">Cuota de mercado aún reducida (4–5.5%) frente al 75%+ combinado de Nike y Adidas en México.</li>
-              <li class="swot-item">Red de tiendas (16+) muy inferior a Nike (85+) y Adidas (70+); menor cobertura geográfica nacional.</li>
-              <li class="swot-item">Presencia en Liga MX limitada a un solo club (Xolos Tijuana) vs. múltiples contratos de la competencia.</li>
-              <li class="swot-item">Top-of-mind bajo en generaciones sub-25; la marca perdió protagonismo entre 2005 y 2021 bajo Adidas.</li>
-              <li class="swot-item">E-commerce y experiencia digital en desarrollo frente a plataformas más maduras de Nike, Adidas y Puma.</li>
-              <li class="swot-item">Dependencia de crecimientos altos (80%+) para sostener la tesis de "reconquista"; cualquier desaceleración presiona la narrativa.</li>
-            </ul>
-          </div>
-
-          <div class="swot-card">
-            <div class="swot-label a">Amenazas</div>
-            <ul class="swot-list">
-              <li class="swot-item">Nike toma a Chivas y refuerza presencia en Liga MX; Adidas renueva con Selección Mexicana hasta 2034, blindando los dos activos de fútbol más valiosos.</li>
-              <li class="swot-item">Adidas capitaliza el Mundial 2026 como anfitrión con activaciones masivas en sedes mexicanas y producto de edición limitada.</li>
-              <li class="swot-item">Nike lanza colecciones Mexico-themed (AF1, AM95) para el Mundial generando demanda aspiracional difícil de contrarrestar.</li>
-              <li class="swot-item">Puma podría resurgir con propuesta más enfocada en training y Hyrox a partir de 2027 tras completar su reestructuración.</li>
-              <li class="swot-item">New Balance crece sostenidamente en running premium; amenaza directa en la categoría que Reebok intenta dominar.</li>
-              <li class="swot-item">Piratería en mercados populares de CDMX (Tepito, La Lagunilla) erosiona ventas y percepción de valor de marca.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- ================================
-           SECCIÓN 6: TIENDAS & E-COMMERCE
-           ================================ -->
-      <section id="tiendas" class="section">
-        <div class="section-header">
-          <div class="section-title">Tiendas &amp; <span class="accent">E-commerce</span></div>
-          <div class="section-tag">México</div>
-        </div>
-
-        <div class="kpi-grid" style="margin-bottom: var(--space-6);">
-          <div class="kpi-card">
-            <div class="kpi-label">Total Tiendas Propias</div>
-            <div class="kpi-value">16+</div>
-            <div class="kpi-sub">Operando en México (abr 2026)</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Full Price</div>
-            <div class="kpi-value">4+</div>
-            <div class="kpi-sub">400–583 m² promedio</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Outlets</div>
-            <div class="kpi-value">12+</div>
-            <div class="kpi-sub trend-up">↑ Nuevo: Plaza Central CDMX (abr 2026)</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Próximas Aperturas 2026</div>
-            <div class="kpi-value">3–4</div>
-            <div class="kpi-sub trend-flat">CDMX, GDL, MTY, posible Tijuana</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Plan Outlets 4 años</div>
-            <div class="kpi-value">25</div>
-            <div class="kpi-sub">Unidades objetivo desde 2026</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Tienda Full Price + Grande</div>
-            <div class="kpi-value">583 m²</div>
-            <div class="kpi-sub">Parque Tepeyac, CDMX Norte</div>
-          </div>
-        </div>
-
-        <div class="chart-grid" style="margin-bottom: var(--space-6);">
-          <div class="chart-box">
-            <div class="chart-box-title">Distribución <span class="highlight">Tiendas Reebok MX</span></div>
-            <div class="chart-container h280">
-              <canvas id="chartDistTiendas"></canvas>
-            </div>
-          </div>
-          <div class="chart-box">
-            <div class="chart-box-title">Radar <span class="highlight">Competitivo MX</span></div>
-            <div class="chart-container h280">
-              <canvas id="chartRadar"></canvas>
-            </div>
-          </div>
-        </div>
-
-        <div class="table-wrap" style="margin-bottom: var(--space-5);">
-          <div class="table-head">
-            <div class="table-head-title">Tiendas Full Price — Reebok México</div>
-          </div>
-          <div class="table-scroll">
-            <table>
-              <thead>
-                <tr><th>#</th><th>Plaza</th><th>Ciudad / Estado</th><th>Tamaño</th><th>Tipo</th><th>Notas Clave</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>1</td><td>Forum Buenavista</td><td>CDMX</td><td>~400 m²</td><td><span class="badge badge-red">Full Price</span></td><td>Primera tienda full price en México (ago 2023). Punto de origen del relanzamiento.</td></tr>
-                <tr><td>2</td><td>Mitikah</td><td>CDMX (Coyoacán)</td><td>~400 m²</td><td><span class="badge badge-red">Full Price</span></td><td>Alto tráfico, zona sur de CDMX.</td></tr>
-                <tr><td>3</td><td>Mundo E</td><td>Tlalnepantla, Edo. Méx.</td><td>550 m²</td><td><span class="badge badge-red">Full Price</span></td><td>Tercera tienda full price. Experiencia personalización Barbie (exclusiva). Colabs Anuel y NASA.</td></tr>
-                <tr><td>4</td><td>Parque Tepeyac</td><td>CDMX Norte</td><td><strong>583 m²</strong></td><td><span class="badge badge-red">Full Price</span></td><td>La más grande de México (nov 2024). Cuarto punto full price. Flagship norte CDMX.</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="table-wrap" style="margin-bottom: var(--space-6);">
-          <div class="table-head">
-            <div class="table-head-title">Outlets Confirmados — Reebok México</div>
-          </div>
-          <div class="table-scroll">
-            <table>
-              <thead>
-                <tr><th>#</th><th>Plaza</th><th>Ciudad / Estado</th><th>Tamaño</th><th>Notas Clave</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>1</td><td>Punta Norte</td><td>CDMX / Edo. Méx.</td><td>~300 m²</td><td>Primer formato outlet de Reebok en México.</td></tr>
-                <tr><td>2</td><td>Lerma</td><td>Estado de México</td><td>~300 m²</td><td>Zona metropolitana poniente.</td></tr>
-                <tr><td>3</td><td><strong>Plaza Central ★ NUEVO</strong></td><td>Iztapalapa, CDMX</td><td>~350 m²</td><td><strong>Apertura 5 abr 2026.</strong> Primer outlet en alcaldía Iztapalapa. Arranca el plan de 25 outlets en 4 años.</td></tr>
-                <tr><td>4</td><td>Outlet Riviera Maya</td><td>Quintana Roo</td><td>~1,000 m²</td><td>El más grande de México. Alto flujo turístico internacional.</td></tr>
-                <tr><td>5–16</td><td>Otras ubicaciones</td><td>CDMX, Edo. Méx., GDL, León, Puebla, Cancún</td><td>Variado</td><td>~8–12 outlets adicionales distribuidos en ciudades estratégicas según planes de expansión 2023-2024.</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="highlights">
-          <div class="highlights-title">🛒 E-commerce y Distribución Digital</div>
-          <div class="ecomm-grid">
-            <div class="ecomm-card">
-              <div class="ecomm-icon">🌐</div>
-              <div class="ecomm-name">Reebok.mx</div>
-              <div class="ecomm-desc">Tienda oficial con catálogo completo: performance (Nano, Floatzig) y lifestyle (Club C, Classic Leather). Colecciones especiales NASA, Anuel y Barbie disponibles en línea.</div>
-            </div>
-            <div class="ecomm-card">
-              <div class="ecomm-icon">🛍️</div>
-              <div class="ecomm-name">Socios Retail MX</div>
-              <div class="ecomm-desc">Liverpool, Innovasport, Martí, Sears y departamentales con espacios Reebok físicos y digitales. 150–200 puntos multimarca a nivel nacional.</div>
-            </div>
-            <div class="ecomm-card">
-              <div class="ecomm-icon">📦</div>
-              <div class="ecomm-name">Marketplaces</div>
-              <div class="ecomm-desc">Presencia activa en Amazon México, Mercado Libre y Shein para ampliar cobertura digital. Estrategia omnicanal en consolidación para 2026.</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ================================
-           SECCIÓN 7: TABLA MAESTRA
-           ================================ -->
-      <section id="tabla-maestra" class="section">
-        <div class="section-header">
-          <div class="section-title">📊 Tabla <span class="accent">Maestra</span> México</div>
-          <div class="section-tag">Resumen Ejecutivo — Abr 2026</div>
-        </div>
-
-        <div class="table-wrap">
-          <div class="table-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th>Marca</th>
-                  <th>Cuota MX</th>
-                  <th>Crecimiento MX</th>
-                  <th>Tiendas MX</th>
-                  <th>Liga MX</th>
-                  <th>Producto Top MX</th>
-                  <th>Público Objetivo</th>
-                  <th>Estado Actual</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="row-reebok">
-                  <td><strong style="color:var(--reebok-red)">Reebok ★</strong></td>
-                  <td>4–5.5%</td>
-                  <td class="trend-up">+80%+ (2024)</td>
-                  <td>16+</td>
-                  <td>Xolos Tijuana (C2026)</td>
-                  <td>Nano X5, Floatzig, Club C</td>
-                  <td>18–35 · Fitness / Training / Sneaker culture</td>
-                  <td><span class="badge badge-red">Expansión agresiva · Reconquista de mercado</span></td>
-                </tr>
-                <tr>
-                  <td><strong>Nike</strong></td>
-                  <td>40–42%</td>
-                  <td class="trend-up">+3–5%</td>
-                  <td>85+</td>
-                  <td>Pumas, América, Cruz Azul, Chivas (A2026)</td>
-                  <td>Air Jordan, Air Max, Mercurial</td>
-                  <td>Masivo · Lifestyle · Fútbol · Basketball</td>
-                  <td><span class="badge badge-success">Líder dominante · Mundial 2026</span></td>
-                </tr>
-                <tr>
-                  <td><strong>Adidas</strong></td>
-                  <td>33–35%</td>
-                  <td class="trend-up">+2–4%</td>
-                  <td>70+</td>
-                  <td>Selección MX (hasta 2034) + clubes</td>
-                  <td>Jersey Selección MX, Ultraboost, Predator</td>
-                  <td>Amplio · Fútbol · Running · Originals</td>
-                  <td><span class="badge badge-success">Sólido · Renovación FMF 2034</span></td>
-                </tr>
-                <tr>
-                  <td><strong>Puma</strong></td>
-                  <td>7–9%</td>
-                  <td class="trend-down">–4%</td>
-                  <td>30+</td>
-                  <td>Chivas (hasta C2026)</td>
-                  <td>Future, Speedcat, Deviate Nitro (Hyrox)</td>
-                  <td>Fútbol · Training · Sportstyle juvenil</td>
-                  <td><span class="badge badge-warning">Transición 2026 · Reestructura global</span></td>
-                </tr>
-                <tr>
-                  <td><strong>Under Armour</strong></td>
-                  <td>4–5%</td>
-                  <td class="trend-flat">+1–2%</td>
-                  <td>20+</td>
-                  <td>Sin acuerdos activos</td>
-                  <td>Charged Assert, HeatGear</td>
-                  <td>Performance · Atletas · Training</td>
-                  <td><span class="badge badge-info">Consolidación · Canal directo</span></td>
-                </tr>
-                <tr>
-                  <td><strong>New Balance</strong></td>
-                  <td>2–3%</td>
-                  <td class="trend-up">+7–10%</td>
-                  <td>12+</td>
-                  <td>Sin clubes Liga MX</td>
-                  <td>1080v15, FuelCell SuperComp, 1906R</td>
-                  <td>Runners serios · Lifestyle premium</td>
-                  <td><span class="badge badge-info">Crecimiento nicho · Running premium</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-      </section>
-
-    </div><!-- /content -->
-  </div><!-- /main -->
-</div><!-- /workspace -->
+        </div><!-- /content -->
+    </div><!-- /main -->
+</div><!-- /layout -->
 
 <script>
-// ===========================
-// SIDEBAR MOBILE
-// ===========================
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
-  document.getElementById('overlay').classList.toggle('open');
-}
-function closeSidebar() {
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('overlay').classList.remove('open');
-}
-
-// ===========================
-// ACTIVE NAV LINK ON SCROLL
-// ===========================
+// ── Sidebar active link on scroll ──
 const sections = document.querySelectorAll('.section');
 const navLinks = document.querySelectorAll('.nav-link');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navLinks.forEach(l => l.classList.remove('active'));
-      const id = entry.target.getAttribute('id');
-      const link = document.querySelector(`.nav-link[href="#${id}"]`);
-      if (link) link.classList.add('active');
-    }
-  });
-}, { rootMargin: '-30% 0px -60% 0px' });
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            const link = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+            if (link) link.classList.add('active');
+        }
+    });
+}, { rootMargin: '-20% 0px -70% 0px' });
 sections.forEach(s => observer.observe(s));
 
-// ===========================
-// CHART DEFAULTS
-// ===========================
-Chart.defaults.color = '#8a8a8a';
-Chart.defaults.font.family = "'Inter', sans-serif";
-Chart.defaults.font.size = 12;
-
-const RED   = '#CC0000';
-const RED2  = 'rgba(204,0,0,0.7)';
-const RED3  = 'rgba(204,0,0,0.35)';
-const BLUE  = '#3b82f6';
-const AMBER = '#f59e0b';
-const GREEN = '#22c55e';
-const GRAY  = '#555';
-const PURPLE = '#a855f7';
-const TEAL  = '#14b8a6';
-
-// ===========================
-// CHART 1 — CUOTA DE MERCADO
-// ===========================
-new Chart(document.getElementById('chartCuota'), {
-  type: 'doughnut',
-  data: {
-    labels: ['Nike (~41%)', 'Adidas (~34%)', 'Puma (~8%)', 'Reebok (~5%)', 'Under Armour (~5%)', 'New Balance (~3%)', 'Otros (~4%)'],
-    datasets: [{
-      data: [41, 34, 8, 5, 5, 3, 4],
-      backgroundColor: ['#ef4444','#3b82f6','#f59e0b','#CC0000','#14b8a6','#a855f7','#555'],
-      borderWidth: 2,
-      borderColor: '#141414',
-      hoverOffset: 8
-    }]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: {
-      legend: { position: 'right', labels: { padding: 14, font: { size: 11 }, color: '#8a8a8a', boxWidth: 14 } },
-      tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed}%` } }
-    }
-  }
+navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
 });
 
-// ===========================
-// CHART 2 — CRECIMIENTO
-// ===========================
-new Chart(document.getElementById('chartCrecimiento'), {
-  type: 'bar',
-  data: {
-    labels: ['Reebok', 'New Balance', 'Nike', 'Adidas', 'Under Armour', 'Puma'],
-    datasets: [{
-      label: 'Crecimiento Anual MX (%)',
-      data: [80, 9, 4, 3, 2, -4],
-      backgroundColor: ctx => ctx.parsed.y >= 0 ? (ctx.dataIndex === 0 ? RED2 : 'rgba(99,99,99,0.6)') : 'rgba(239,68,68,0.5)',
-      borderColor:     ctx => ctx.parsed.y >= 0 ? (ctx.dataIndex === 0 ? RED : '#666') : '#ef4444',
-      borderWidth: 1,
-      borderRadius: 4
-    }]
-  },
-  options: {
-    indexAxis: 'y',
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.x > 0 ? '+' : ''}${ctx.parsed.x}%` } } },
-    scales: {
-      x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { callback: v => v + '%' } },
-      y: { grid: { display: false } }
-    }
-  }
-});
+// ── CHART DEFAULTS ──
+const DEF = {
+    color: 'rgba(255,255,255,0.72)',
+    gridColor: 'rgba(255,255,255,0.07)',
+    font: { family: "'Inter', sans-serif", size: 12 }
+};
+Chart.defaults.color = DEF.color;
+Chart.defaults.font = DEF.font;
 
-// ===========================
-// CHART 3 — TIENDAS
-// ===========================
-new Chart(document.getElementById('chartTiendas'), {
-  type: 'bar',
-  data: {
-    labels: ['Nike', 'Adidas', 'Puma', 'Under Armour', 'Reebok', 'New Balance'],
-    datasets: [{
-      label: 'Tiendas en México',
-      data: [85, 70, 30, 20, 16, 12],
-      backgroundColor: ['rgba(239,68,68,0.6)','rgba(59,130,246,0.6)','rgba(245,158,11,0.6)','rgba(20,184,166,0.6)',RED2,'rgba(168,85,247,0.6)'],
-      borderColor:     ['#ef4444','#3b82f6','#f59e0b','#14b8a6',RED,'#a855f7'],
-      borderWidth: 1,
-      borderRadius: 6
-    }]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { display: false } },
-    scales: {
-      y: { grid: { color: 'rgba(255,255,255,0.05)' }, beginAtZero: true },
-      x: { grid: { display: false } }
-    }
-  }
-});
-
-// ===========================
-// CHART 4 — DISTRIBUCIÓN TIENDAS REEBOK
-// ===========================
-new Chart(document.getElementById('chartDistTiendas'), {
-  type: 'doughnut',
-  data: {
-    labels: ['Outlets (12+)', 'Full Price (4+)'],
-    datasets: [{
-      data: [12, 4],
-      backgroundColor: [RED3, RED],
-      borderWidth: 2,
-      borderColor: '#141414',
-      hoverOffset: 6
-    }]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: {
-      legend: { position: 'bottom', labels: { padding: 16, color: '#8a8a8a', font: { size: 12 } } },
-      tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed} tiendas` } }
-    }
-  }
-});
-
-// ===========================
-// CHART 5 — RADAR COMPETITIVO
-// ===========================
-new Chart(document.getElementById('chartRadar'), {
-  type: 'radar',
-  data: {
-    labels: ['Cuota MX', 'Crecimiento', 'Red Tiendas', 'Fútbol MX', 'Training', 'Precio MX'],
-    datasets: [
-      {
-        label: 'Reebok',
-        data: [20, 95, 16, 25, 90, 90],
-        borderColor: RED,
-        backgroundColor: RED3,
-        borderWidth: 2,
-        pointBackgroundColor: RED
-      },
-      {
-        label: 'Nike',
-        data: [90, 40, 95, 90, 70, 45],
-        borderColor: '#ef4444',
-        backgroundColor: 'rgba(239,68,68,0.1)',
-        borderWidth: 1.5,
-        pointBackgroundColor: '#ef4444'
-      },
-      {
-        label: 'Adidas',
-        data: [80, 35, 85, 98, 65, 50],
-        borderColor: BLUE,
-        backgroundColor: 'rgba(59,130,246,0.1)',
-        borderWidth: 1.5,
-        pointBackgroundColor: BLUE
-      }
-    ]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    scales: {
-      r: {
-        min: 0, max: 100,
-        angleLines: { color: 'rgba(255,255,255,0.07)' },
-        grid:       { color: 'rgba(255,255,255,0.07)' },
-        pointLabels: { color: '#8a8a8a', font: { size: 10 } },
-        ticks: { display: false }
-      }
+// ── 1. Market Share (Doughnut) ──
+new Chart(document.getElementById('chartMarket'), {
+    type: 'doughnut',
+    data: {
+        labels: ['Nike 42%', 'Adidas 35%', 'Puma 8%', 'Reebok 5.5%', 'Under Armour 5%', 'New Balance 3%', 'Otros 1.5%'],
+        datasets: [{
+            data: [42, 35, 8, 5.5, 5, 3, 1.5],
+            backgroundColor: ['#e5e5e5','#a0a0a0','#f59e0b','#C8102E','#3b82f6','#22c55e','#555'],
+            borderColor: '#161616',
+            borderWidth: 3,
+            hoverOffset: 8
+        }]
     },
-    plugins: {
-      legend: {
-        position: 'bottom',
-        labels: { color: '#8a8a8a', font: { size: 11 }, padding: 12, boxWidth: 12 }
-      }
+    options: {
+        responsive: true, maintainAspectRatio: false, cutout: '62%',
+        plugins: {
+            legend: { position: 'right', labels: { boxWidth: 12, padding: 14, font: { size: 12 } } },
+            tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed}%` } }
+        }
     }
-  }
+});
+
+// ── 2. Growth Bar ──
+new Chart(document.getElementById('chartGrowth'), {
+    type: 'bar',
+    data: {
+        labels: ['Nike', 'Adidas', 'Puma', 'Reebok', 'Under Armour', 'New Balance'],
+        datasets: [{
+            label: 'Crecimiento Anual (%)',
+            data: [3.5, 2.8, -4.5, 95, 1.5, 8],
+            backgroundColor: ['#e5e5e5','#a0a0a0','#ef4444','#C8102E','#3b82f6','#22c55e'],
+            borderRadius: 4,
+            borderSkipped: false
+        }]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+            y: { grid: { color: DEF.gridColor }, ticks: { callback: v => v + '%' } },
+            x: { grid: { display: false } }
+        }
+    }
+});
+
+// ── 3. Stores Horizontal Bar ──
+new Chart(document.getElementById('chartStores'), {
+    type: 'bar',
+    data: {
+        labels: ['Nike', 'Adidas', 'Puma', 'Under Armour', 'Reebok', 'New Balance'],
+        datasets: [{
+            label: 'Tiendas en México',
+            data: [85, 75, 30, 20, 18, 12],
+            backgroundColor: ['#e5e5e5','#a0a0a0','#f59e0b','#3b82f6','#C8102E','#22c55e'],
+            borderRadius: 4
+        }]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+        plugins: { legend: { display: false } },
+        scales: {
+            x: { grid: { color: DEF.gridColor }, beginAtZero: true },
+            y: { grid: { display: false } }
+        }
+    }
+});
+
+// ── 4. Radar ──
+new Chart(document.getElementById('chartRadar'), {
+    type: 'radar',
+    data: {
+        labels: ['Cuota Mercado','Crecimiento','Red Tiendas','Fútbol MX','Performance','Precio Comp.'],
+        datasets: [
+            {
+                label: 'Reebok',
+                data: [14, 95, 18, 20, 82, 90],
+                borderColor: '#C8102E', backgroundColor: 'rgba(200,16,46,0.15)',
+                borderWidth: 2, pointBackgroundColor: '#C8102E', pointRadius: 4
+            },
+            {
+                label: 'Nike',
+                data: [95, 12, 85, 90, 85, 55],
+                borderColor: '#e5e5e5', backgroundColor: 'rgba(229,229,229,0.08)',
+                borderWidth: 2, pointBackgroundColor: '#e5e5e5', pointRadius: 4
+            },
+            {
+                label: 'Adidas',
+                data: [85, 10, 78, 95, 80, 60],
+                borderColor: '#a0a0a0', backgroundColor: 'rgba(160,160,160,0.08)',
+                borderWidth: 2, pointBackgroundColor: '#a0a0a0', pointRadius: 4
+            }
+        ]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false,
+        scales: {
+            r: {
+                min: 0, max: 100,
+                angleLines: { color: DEF.gridColor },
+                grid: { color: DEF.gridColor },
+                pointLabels: { font: { size: 11 }, color: 'rgba(255,255,255,0.7)' },
+                ticks: { display: false, stepSize: 20 }
+            }
+        },
+        plugins: {
+            legend: { position: 'bottom', labels: { boxWidth: 12, padding: 14 } }
+        }
+    }
+});
+
+// ── 5. Store Distribution (Doughnut) ──
+new Chart(document.getElementById('chartDist'), {
+    type: 'doughnut',
+    data: {
+        labels: ['Full Price', 'Outlets'],
+        datasets: [{
+            data: [7, 11],
+            backgroundColor: ['#C8102E', '#444'],
+            borderColor: '#1e1e1e',
+            borderWidth: 3
+        }]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false, cutout: '58%',
+        plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed} tiendas` } }
+        }
+    }
 });
 </script>
 </body>
