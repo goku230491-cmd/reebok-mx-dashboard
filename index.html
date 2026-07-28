@@ -2660,6 +2660,67 @@ mark.hit {
 
     var PALETTE = ['#E7E7EC', '#4CC3FF', '#F2B705', '#C8102E', '#2ED3B7', '#A88BFA', '#4A4A55'];
 
+    /* Etiquetas visibles para que las gráficas se puedan leer sin depender del hover. */
+    var valueLabels = {
+        id: 'valueLabels',
+        afterDatasetsDraw: function (chart) {
+            var ctx = chart.ctx;
+            var dataset = chart.data.datasets[0];
+            var values = dataset.data || [];
+            var suffix = dataset.valueSuffix || '';
+            var type = chart.config.type;
+            var horizontal = chart.options.indexAxis === 'y';
+            var meta = chart.getDatasetMeta(0);
+
+            ctx.save();
+            ctx.font = '700 11px ' + cssVar('--mono');
+            ctx.textBaseline = 'middle';
+
+            meta.data.forEach(function (element, index) {
+                var value = values[index];
+                var label = value + suffix;
+                if (type === 'doughnut') {
+                    /* Los segmentos pequeños se leen en la leyenda, que también incluye el valor. */
+                    if (Number(value) < 3) return;
+                    var point = element.tooltipPosition();
+                    ctx.fillStyle = '#FFFFFF';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(label, point.x, point.y);
+                } else if (horizontal) {
+                    ctx.fillStyle = '#FFFFFF';
+                    ctx.textAlign = 'right';
+                    ctx.fillText(label, element.x - 8, element.y);
+                } else {
+                    ctx.fillStyle = cssVar('--chalk');
+                    ctx.textAlign = 'center';
+                    ctx.fillText(label, element.x, value >= 0 ? element.y - 10 : element.y + 12);
+                }
+            });
+            ctx.restore();
+        }
+    };
+    Chart.register(valueLabels);
+
+    function valueLegend() {
+        return {
+            position: 'right',
+            labels: {
+                generateLabels: function (chart) {
+                    var values = chart.data.datasets[0].data;
+                    return chart.data.labels.map(function (label, index) {
+                        return {
+                            text: label + ' · ' + values[index] + '%',
+                            fillStyle: chart.data.datasets[0].backgroundColor[index],
+                            strokeStyle: chart.data.datasets[0].backgroundColor[index],
+                            hidden: !chart.getDataVisibility(index),
+                            index: index
+                        };
+                    });
+                }
+            }
+        };
+    }
+
     function grid() { return { color: cssVar('--grid-ink'), drawTicks: false }; }
     function ticks() { return { color: cssVar('--muted') }; }
 
@@ -2698,11 +2759,11 @@ mark.hit {
             if (marketType === 'doughnut') {
                 return {
                     type: 'doughnut',
-                    data: { labels: labels, datasets: [{ data: data, backgroundColor: PALETTE, hoverOffset: 14 }] },
+                data: { labels: labels, datasets: [{ data: data, valueSuffix: '%', backgroundColor: PALETTE, hoverOffset: 14 }] },
                     options: {
                         responsive: true, maintainAspectRatio: false, cutout: '58%',
                         plugins: {
-                            legend: { position: 'right' },
+                            legend: valueLegend(),
                             tooltip: { callbacks: { label: function (c) { return c.label + ': ' + c.parsed + '%'; } } }
                         }
                     }
@@ -2710,7 +2771,7 @@ mark.hit {
             }
             return {
                 type: 'bar',
-                data: { labels: labels, datasets: [{ label: 'Cuota MX (%)', data: data, backgroundColor: PALETTE }] },
+                data: { labels: labels, datasets: [{ label: 'Cuota MX (%)', data: data, valueSuffix: '%', backgroundColor: PALETTE }] },
                 options: {
                     responsive: true, maintainAspectRatio: false, indexAxis: 'y',
                     scales: { x: { beginAtZero: true, ticks: ticks(), grid: grid() }, y: { ticks: ticks(), grid: { display: false } } },
@@ -2726,14 +2787,14 @@ mark.hit {
                     labels: ['Nike', 'Adidas', 'Puma', 'Reebok', 'Under Armour', 'New Balance'],
                     datasets: [{
                         label: 'Crecimiento anual (%)',
-                        data: [3.5, 2.8, -4.5, 95, 1.5, 8],
+                        data: [3.5, 2.8, -4.5, 95, 1.5, 8], valueSuffix: '%',
                         backgroundColor: ['#E7E7EC', '#4CC3FF', '#F2B705', '#C8102E', '#2ED3B7', '#A88BFA']
                     }]
                 },
                 options: {
                     responsive: true, maintainAspectRatio: false,
                     scales: { y: { beginAtZero: true, ticks: ticks(), grid: grid() }, x: { ticks: ticks(), grid: { display: false } } },
-                    plugins: { legend: { display: false } }
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: function (c) { return c.label + ': ' + c.parsed.y + '%'; } } } }
                 }
             };
         };
@@ -2744,14 +2805,14 @@ mark.hit {
                 data: {
                     labels: ['Nike', 'Adidas', 'Puma', 'Under Armour', 'Reebok', 'New Balance'],
                     datasets: [{
-                        label: 'Tiendas', data: [85, 75, 30, 20, 18, 12],
+                        label: 'Tiendas', data: [85, 75, 30, 20, 18, 12], valueSuffix: ' tiendas',
                         backgroundColor: ['#E7E7EC', '#4CC3FF', '#F2B705', '#2ED3B7', '#C8102E', '#A88BFA']
                     }]
                 },
                 options: {
                     responsive: true, maintainAspectRatio: false, indexAxis: 'y',
                     scales: { x: { beginAtZero: true, ticks: ticks(), grid: grid() }, y: { ticks: ticks(), grid: { display: false } } },
-                    plugins: { legend: { display: false } }
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: function (c) { return c.label + ': ' + c.parsed.x + ' tiendas'; } } } }
                 }
             };
         };
