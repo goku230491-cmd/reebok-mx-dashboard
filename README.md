@@ -1,6 +1,6 @@
 # Tablero de instrumentos Reebok MX
 
-El tablero es una página estática. Los valores de las gráficas se actualizan en `index.html`, dentro de `defineCharts()`.
+El tablero es una página estática. Los valores de las gráficas se actualizan en `index.html`, dentro de `defineCharts()`. Chart.js 4.5.1 se sirve desde `assets/vendor/chart.umd.min.js` para evitar que bloqueos del CDN dejen las gráficas vacías.
 
 ## Datos que se actualizan con frecuencia
 
