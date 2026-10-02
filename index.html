@@ -561,6 +561,116 @@ a { color: inherit; text-decoration: none; }
     line-height: 1.45;
 }
 
+/* ---------- Radar octubre ---------- */
+.october-radar {
+    position: relative;
+    margin-top: 1.25rem;
+    border: 1px solid var(--line);
+    background:
+        linear-gradient(120deg, var(--red-soft), transparent 42%),
+        var(--panel);
+    overflow: hidden;
+}
+.october-radar::after {
+    content: "OCT";
+    position: absolute;
+    right: -.04em;
+    top: -.28em;
+    font-family: var(--display);
+    font-size: clamp(7rem, 17vw, 14rem);
+    font-weight: 800;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--line);
+    pointer-events: none;
+}
+.radar-head {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.2rem 1.25rem 1rem;
+    border-bottom: 1px solid var(--line);
+}
+.radar-kicker {
+    display: block;
+    font-family: var(--mono);
+    font-size: .58rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--red-hot);
+    margin-bottom: .35rem;
+}
+.radar-head h2 {
+    font-family: var(--display);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: .95;
+    text-transform: uppercase;
+}
+.radar-head p {
+    max-width: 36rem;
+    font-size: .78rem;
+    line-height: 1.5;
+    color: var(--muted);
+    text-align: right;
+}
+.radar-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.radar-card {
+    position: relative;
+    min-height: 170px;
+    padding: 1.15rem;
+    border-right: 1px solid var(--line);
+    transition: background .25s var(--ease), transform .25s var(--ease);
+}
+.radar-card:last-child { border-right: 0; }
+.radar-card:hover { background: var(--panel-2); transform: translateY(-3px); }
+.radar-card.is-now {
+    background: linear-gradient(155deg, color-mix(in srgb, var(--red) 20%, transparent), transparent 65%);
+}
+.radar-card.is-now::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; right: 0;
+    height: 3px;
+    background: var(--red);
+}
+.radar-label {
+    display: block;
+    font-family: var(--mono);
+    font-size: .55rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--red-hot);
+    margin-bottom: .85rem;
+}
+.radar-card strong {
+    display: block;
+    font-family: var(--display);
+    font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin-bottom: .65rem;
+}
+.radar-card p { font-size: .76rem; line-height: 1.5; color: var(--muted); }
+.radar-source {
+    display: inline-block;
+    margin-top: .8rem;
+    font-family: var(--mono);
+    font-size: .54rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--dim);
+}
+
 /* ---------- Secciones ---------- */
 .section { padding: 3.2rem 0 1rem; scroll-margin-top: calc(var(--bar) + 56px); }
 
@@ -969,6 +1079,18 @@ tr.hidden-row, .hidden-el { display: none !important; }
     transform: skewX(var(--shear));
     animation: pulse 2.4s infinite;
 }
+.tl-next {
+    position: absolute;
+    top: -10px; right: -8px;
+    background: var(--chalk);
+    color: var(--void);
+    font-family: var(--mono);
+    font-size: .54rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    padding: .15rem .45rem;
+    transform: skewX(var(--shear));
+}
 
 .tl-scroll-hint {
     text-align: center;
@@ -1209,6 +1331,9 @@ mark.hit {
     .nav-toggle { display: inline-flex; }
     .main-content { padding-left: clamp(1rem, 4vw, 1.75rem); padding-right: clamp(1rem, 4vw, 1.75rem); }
     .vsearch { max-width: none; }
+    .radar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .radar-card:nth-child(2) { border-right: 0; }
+    .radar-card:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
 }
 
 @media (max-width: 620px) {
@@ -1216,6 +1341,12 @@ mark.hit {
     .masthead { padding-top: 1.8rem; }
     .tl-event { flex: 0 0 190px; }
     .vfilter-label { display: none; }
+    .radar-head { align-items: flex-start; flex-direction: column; }
+    .radar-head p { text-align: left; }
+    .radar-grid { grid-template-columns: 1fr; }
+    .radar-card { border-right: 0; border-bottom: 1px solid var(--line); min-height: 0; }
+    .radar-card:nth-child(3) { border-bottom: 1px solid var(--line); }
+    .radar-card:last-child { border-bottom: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1262,7 +1393,7 @@ mark.hit {
             <header class="masthead">
                 <div class="masthead-top">
                     <p class="eyebrow">Inteligencia competitiva · Dashboard ejecutivo</p>
-                    <p class="stamp">Actualizado <b>2 sep 2026</b></p>
+                    <p class="stamp">Actualizado <b>2 oct 2026</b> · CDMX</p>
                 </div>
                 <h1>Reebok Workspace<span>México 2026</span></h1>
                 <p class="tagline">Sport Is Everything</p>
@@ -1294,6 +1425,42 @@ mark.hit {
                         <span class="score-n">3-4 aperturas previstas</span>
                     </div>
                 </div>
+
+                <div class="october-radar" aria-labelledby="radar-title">
+                    <div class="radar-head">
+                        <div>
+                            <span class="radar-kicker">Corte ejecutivo · 02.10.26</span>
+                            <h2 id="radar-title">Radar de octubre</h2>
+                        </div>
+                        <p>Cuatro señales verificadas para leer el momento de la marca: tracción comercial en México, calor cultural y expansión de categorías.</p>
+                    </div>
+                    <div class="radar-grid">
+                        <a class="radar-card is-now" href="https://www.reebok.mx/promociones.html" target="_blank" rel="noopener">
+                            <span class="radar-label">México · ahora</span>
+                            <strong>Hasta 50% OFF</strong>
+                            <p>Sale en artículos seleccionados, envío gratis desde $1,499 y cupón de bienvenida de 15% para primera compra elegible.</p>
+                            <span class="radar-source">Reebok México</span>
+                        </a>
+                        <a class="radar-card" href="https://www.reebok.com/pages/release-dates" target="_blank" rel="noopener">
+                            <span class="radar-label">Producto · just dropped</span>
+                            <strong>Reebok x BBC</strong>
+                            <p>El Club C 85 de Billionaire Boys Club abre el calendario de drops con una lectura cultural y coleccionable.</p>
+                            <span class="radar-source">Reebok Release Dates</span>
+                        </a>
+                        <a class="radar-card" href="https://www.reebok.com/pages/freestyle-lo-by-celine-reebok" target="_blank" rel="noopener">
+                            <span class="radar-label">Cultura · lujo</span>
+                            <strong>Celine / Reebok</strong>
+                            <p>La Freestyle Lo de 1982 se reinterpreta en ocho colores y confirma el valor del archivo de Reebok fuera del deporte.</p>
+                            <span class="radar-source">Reebok + Celine</span>
+                        </a>
+                        <a class="radar-card" href="https://corporate.authentic.com/press-releases/reebok-ice-hockey-partnership-wholesale-sports" target="_blank" rel="noopener">
+                            <span class="radar-label">Q4 · por venir</span>
+                            <strong>Regreso al hockey</strong>
+                            <p>Reebok vuelve a la categoría de equipamiento con sticks, cascos y patines desarrollados junto con Wholesale Sports.</p>
+                            <span class="radar-source">Authentic Newsroom</span>
+                        </a>
+                    </div>
+                </div>
             </header>
 
             <!-- Inicio México -->
@@ -1301,14 +1468,15 @@ mark.hit {
                 <h2 class="section-title">Reebok México</h2>
 
                 <div class="highlight-list">
-                    <h3 class="panel-title">Novedades verificadas en México (Septiembre 2026)</h3>
+                    <h3 class="panel-title">Novedades clave verificadas · corte octubre 2026</h3>
                     <ul>
-                        <li><strong>Campaña Classics:</strong> Reebok México presenta <a href="https://www.reebok.mx/classics-karol-g.html" target="_blank" rel="noopener">Born Classic. Worn Together.</a> con Karol G, enfocada en Club C 85, Freestyle Hi y otros íconos de la marca.</li>
-                        <li><strong>Promoción vigente:</strong> Nuevos usuarios de Aplazo reciben 15% de descuento en su primera compra con el código <strong>CLASES15</strong>; compra mínima de $2,000 MXN y vigencia hasta el 7 de septiembre, según <a href="https://www.reebok.mx/promociones.html" target="_blank" rel="noopener">Reebok México</a>.</li>
-                        <li><strong>Hot Fashion:</strong> La edición 2026 <a href="https://www.reebok.mx/hot-fashion.html" target="_blank" rel="noopener">concluyó el 17 de agosto</a>; la página oficial mantiene ofertas posteriores al evento.</li>
+                        <li><strong>Promoción vigente en México:</strong> <a href="https://www.reebok.mx/promociones.html" target="_blank" rel="noopener">Reebok.mx</a> comunica hasta 50% de descuento en artículos seleccionados, envío gratis desde $1,499, 3 MSI desde $2,499 y 6 MSI desde $3,499.</li>
+                        <li><strong>Captación digital:</strong> el cupón de bienvenida ofrece 15% en la primera compra elegible de una cuenta registrada y verificada; ya no se presenta la promoción Aplazo de regreso a clases porque venció el 7 de septiembre.</li>
+                        <li><strong>Classics mantiene tracción:</strong> la campaña <a href="https://www.reebok.mx/classics-karol-g.html" target="_blank" rel="noopener">Born Classic. Worn for Life.</a> con Karol G sostiene el foco en Club C 85, Freestyle Hi y Workout Plus.</li>
                         <li><strong>Reebok x Xolos:</strong> La <a href="https://www.reebok.mx/club-tijuana-xolos.html" target="_blank" rel="noopener">colección oficial de Club Tijuana</a> está disponible en Reebok México, reforzando el regreso de la marca al fútbol nacional.</li>
-                        <li><strong>Presencia física:</strong> El <a href="https://www.reebok.mx/tiendas.html" target="_blank" rel="noopener">localizador oficial</a> mantiene el directorio de tiendas para consulta por ciudad.</li>
-                        <li><strong>Nota metodológica:</strong> Noticias y promociones verificadas al 2 de septiembre de 2026. Las cifras de participación, ventas y proyecciones siguen siendo estimaciones internas hasta contar con fuentes públicas comparables.</li>
+                        <li><strong>Calor cultural global:</strong> Reebok sumó a <a href="https://corporate.authentic.com/press-releases/reebok-hilary-duff-newest-ambassador" target="_blank" rel="noopener">Hilary Duff</a>, lanzó la Freestyle Lo con Celine y activó un nuevo Club C 85 con Billionaire Boys Club.</li>
+                        <li><strong>Expansión de categorías:</strong> el regreso de Reebok Hockey está anunciado para Q4 2026; la marca también mantiene disponibles sus wearables, encabezados por el Smart Ring.</li>
+                        <li><strong>Nota metodológica:</strong> noticias, promociones y páginas oficiales verificadas al 2 de octubre de 2026. Las cifras de participación, ventas y proyecciones permanecen como estimaciones internas hasta contar con fuentes públicas comparables.</li>
                     </ul>
                 </div>
             </section>
@@ -1408,12 +1576,12 @@ mark.hit {
 
             <!-- Noticias México -->
             <section id="noticias" class="section">
-                <h2 class="section-title">📰 Noticias México · Actualización Septiembre 2026</h2>
+                <h2 class="section-title">📰 Noticias y señales de marca · Octubre 2026</h2>
 
                 <!-- ===== LÍNEA DE TIEMPO ===== -->
                 <div class="news-timeline-wrapper">
                     <div class="news-timeline-header">
-                        <h3>📅 Cronología de Eventos — Nov 2024 → Sep 2026</h3>
+                        <h3>📅 Cronología de eventos — Nov 2024 → Oct 2026</h3>
                         <div class="timeline-legend">
                             <div class="tl-legend-item"><div class="tl-legend-dot" style="background:#C8102E"></div>Reebok</div>
                             <div class="tl-legend-item"><div class="tl-legend-dot" style="background:#E3E3E8"></div>Nike</div>
@@ -1621,52 +1789,141 @@ mark.hit {
                                 <div class="tl-card">
                                     <div class="tl-card-date">21 Ago 2026</div>
                                     <div class="tl-card-brand">Reebok</div>
-                                    <div class="tl-card-title">Born Classic. Worn Together. llega a México con Karol G</div>
+                                    <div class="tl-card-title">Born Classic. Worn for Life. llega a México con Karol G</div>
                                 </div>
                             </div>
 
                             <!-- 14 Ago-7 Sep 2026 -->
-                            <div class="tl-event tl-reebok" style="position:relative;">
-                                <div class="tl-card" style="border-color: var(--reebok-red);">
+                            <div class="tl-event tl-reebok">
+                                <div class="tl-card">
                                     <div class="tl-card-date">14 Ago–7 Sep 2026</div>
                                     <div class="tl-card-brand">Reebok</div>
-                                    <div class="tl-card-title">15% de descuento para nuevos usuarios de Aplazo</div>
-                                    <span class="tl-today">VIGENTE</span>
+                                    <div class="tl-card-title">Campaña Aplazo de regreso a clases concluye el 7 de septiembre</div>
+                                </div>
+                                <div class="tl-connector"></div>
+                                <div class="tl-dot-wrapper"><div class="tl-dot"></div></div>
+                            </div>
+
+                            <!-- 31 Ago 2026 -->
+                            <div class="tl-event tl-reebok">
+                                <div class="tl-dot-wrapper"><div class="tl-dot"></div></div>
+                                <div class="tl-connector"></div>
+                                <div class="tl-card">
+                                    <div class="tl-card-date">31 Ago 2026</div>
+                                    <div class="tl-card-brand">Reebok</div>
+                                    <div class="tl-card-title">Hilary Duff se suma como embajadora global con “Unfiltered &amp; Unstoppable”</div>
+                                </div>
+                            </div>
+
+                            <!-- 7 Sep 2026 -->
+                            <div class="tl-event tl-reebok">
+                                <div class="tl-card">
+                                    <div class="tl-card-date">7 Sep 2026</div>
+                                    <div class="tl-card-brand">Reebok</div>
+                                    <div class="tl-card-title">Evenflow amplía Reebok en India hacia accesorios, recuperación y aventura</div>
+                                </div>
+                                <div class="tl-connector"></div>
+                                <div class="tl-dot-wrapper"><div class="tl-dot"></div></div>
+                            </div>
+
+                            <!-- 10 Sep 2026 -->
+                            <div class="tl-event tl-reebok">
+                                <div class="tl-dot-wrapper"><div class="tl-dot"></div></div>
+                                <div class="tl-connector"></div>
+                                <div class="tl-card">
+                                    <div class="tl-card-date">10 Sep 2026</div>
+                                    <div class="tl-card-brand">Reebok × Celine</div>
+                                    <div class="tl-card-title">La Freestyle Lo de 1982 regresa reinterpretada en ocho colores</div>
+                                </div>
+                            </div>
+
+                            <!-- 2 Oct 2026 — corte actual -->
+                            <div class="tl-event tl-reebok" style="position:relative;">
+                                <div class="tl-card" style="border-color: var(--reebok-red);">
+                                    <div class="tl-card-date">2 Oct 2026</div>
+                                    <div class="tl-card-brand">Reebok México</div>
+                                    <div class="tl-card-title">Sale hasta 50% + bienvenida 15%; envío gratis desde $1,499</div>
+                                    <span class="tl-today">ACTUAL</span>
                                 </div>
                                 <div class="tl-connector"></div>
                                 <div class="tl-dot-wrapper"><div class="tl-dot" style="width:20px;height:20px;box-shadow:0 0 8px var(--reebok-red);"></div></div>
                             </div>
 
+                            <!-- Q4 2026 -->
+                            <div class="tl-event tl-reebok">
+                                <div class="tl-dot-wrapper"><div class="tl-dot"></div></div>
+                                <div class="tl-connector"></div>
+                                <div class="tl-card">
+                                    <div class="tl-card-date">Q4 2026</div>
+                                    <div class="tl-card-brand">Reebok Hockey</div>
+                                    <div class="tl-card-title">Regreso anunciado con sticks, cascos, patines y equipamiento de performance</div>
+                                    <span class="tl-next">PRÓXIMO</span>
+                                </div>
+                            </div>
+
                         </div><!-- /news-timeline -->
                     </div><!-- /scroll -->
-                    <div class="tl-scroll-hint">Arrastra la cronología o usa la rueda para recorrer nov 2024 → sep 2026</div>
+                    <div class="tl-scroll-hint">El corte abre en octubre · arrastra la cronología para recorrer nov 2024 → oct 2026</div>
                 </div>
                 <!-- ===== FIN LÍNEA DE TIEMPO ===== -->
 
                 <div class="news-grid">
                     <!-- Reebok México -->
                     <div class="news-column">
-                        <h3>Reebok México</h3>
+                        <h3>Reebok · México + señales globales</h3>
+
+                        <a href="https://www.reebok.mx/promociones.html" target="_blank" rel="noopener" class="news-card">
+                            <div class="news-date">2 Oct 2026 | Reebok México</div>
+                            <div class="news-title">Sale vigente y captación de nuevos clientes</div>
+                            <div class="news-summary">El sitio oficial comunica hasta 50% de descuento en artículos seleccionados, envío gratis desde $1,499, 3 MSI desde $2,499, 6 MSI desde $3,499 y 15% de bienvenida en la primera compra elegible.</div>
+                            <div class="news-tags">
+                                <span class="tag">México</span>
+                                <span class="tag">eCommerce</span>
+                                <span class="tag">Actual</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.reebok.com/pages/release-dates" target="_blank" rel="noopener" class="news-card">
+                            <div class="news-date">Corte 2 Oct 2026 | Reebok Global</div>
+                            <div class="news-title">Reebok x Billionaire Boys Club: nuevo Club C 85</div>
+                            <div class="news-summary">La página oficial de lanzamientos marca como recién llegada la colaboración con BBC, una lectura intergaláctica del Club C 85 que amplía el pulso cultural de la franquicia Classics.</div>
+                            <div class="news-tags">
+                                <span class="tag">Drop</span>
+                                <span class="tag">Club C 85</span>
+                                <span class="tag">BBC</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.reebok.com/pages/freestyle-lo-by-celine-reebok" target="_blank" rel="noopener" class="news-card">
+                            <div class="news-date">10 Sep 2026 | Reebok × Celine</div>
+                            <div class="news-title">Celine reinterpreta la Freestyle Lo de 1982</div>
+                            <div class="news-summary">La colaboración “Paris street, American movement” recupera una silueta histórica de Reebok en ocho colores y la coloca en el territorio de moda de lujo.</div>
+                            <div class="news-tags">
+                                <span class="tag">Classics</span>
+                                <span class="tag">Celine</span>
+                                <span class="tag">Cultura</span>
+                            </div>
+                        </a>
+
+                        <a href="https://corporate.authentic.com/press-releases/reebok-hilary-duff-newest-ambassador" target="_blank" rel="noopener" class="news-card">
+                            <div class="news-date">31 Ago 2026 | Authentic Newsroom</div>
+                            <div class="news-title">Hilary Duff se integra al roster de embajadores</div>
+                            <div class="news-summary">La campaña “Unfiltered &amp; Unstoppable” conecta lifestyle, movimiento cotidiano y confianza; Duff se suma a Karol G, Angel Reese y otros socios creativos de la marca.</div>
+                            <div class="news-tags">
+                                <span class="tag">Talento</span>
+                                <span class="tag">Lifestyle</span>
+                                <span class="tag">Global</span>
+                            </div>
+                        </a>
 
                         <a href="https://www.reebok.mx/classics-karol-g.html" target="_blank" rel="noopener" class="news-card">
                             <div class="news-date">21 Ago 2026 | Reebok México</div>
                             <div class="news-title">Karol G protagoniza el nuevo capítulo de Reebok Classics</div>
-                            <div class="news-summary">“Born Classic. Worn Together.” evoluciona la plataforma global de Classics y pone el foco en comunidad, autenticidad y estilo personal. En México, la campaña reúne Club C 85 Vintage, Freestyle Hi y Workout Plus, entre otras siluetas.</div>
+                            <div class="news-summary">“Born Classic. Worn for Life.” evoluciona la plataforma global de Classics y pone el foco en comunidad, autenticidad y estilo personal. En México, la campaña reúne Club C 85 Vintage, Freestyle Hi y Workout Plus, entre otras siluetas.</div>
                             <div class="news-tags">
                                 <span class="tag">Reebok</span>
                                 <span class="tag">Karol G</span>
                                 <span class="tag">Classics</span>
-                            </div>
-                        </a>
-
-                        <a href="https://www.reebok.mx/promociones.html" target="_blank" rel="noopener" class="news-card">
-                            <div class="news-date">14 Ago–7 Sep 2026 | Reebok México</div>
-                            <div class="news-title">Promoción de regreso a clases con Aplazo</div>
-                            <div class="news-summary">Nuevos usuarios de Aplazo obtienen 15% de descuento en su primera compra con el código CLASES15, desde $2,000 MXN y con tope de $1,000. El sitio también mantiene hasta 50% de descuento en artículos seleccionados.</div>
-                            <div class="news-tags">
-                                <span class="tag">eCommerce</span>
-                                <span class="tag">Promoción</span>
-                                <span class="tag">Vigente</span>
                             </div>
                         </a>
 
